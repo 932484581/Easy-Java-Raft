@@ -7,6 +7,11 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * @description: 日志信息
+ * @return {*}
+ * @author: WJC
+ */
 @SuppressWarnings("rawtypes")
 @Data
 @Builder
