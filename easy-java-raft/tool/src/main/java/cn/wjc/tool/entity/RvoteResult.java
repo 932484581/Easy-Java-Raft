@@ -1,4 +1,4 @@
-package cn.wjc.entity;
+package cn.wjc.tool.entity;
 
 import java.io.Serializable;
 
@@ -13,5 +13,4 @@ public class RvoteResult implements Serializable {
 
     /** 候选人赢得了此张选票时为真 */
     boolean voteGranted;
-
 }

@@ -1,0 +1,17 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Main",
+      "request": "launch",
+      "mainClass": "cn.wjc.Main",
+      "projectName": "tool"
+    },
+    {
+      "name": "Java: Current File",
+      "type": "java",
+      "request": "launch",
+      "vmArgs": ["-Xmx100m", "-Xms100m", "-XX:+UseSerialGC"]
+    }
+  ]
+}

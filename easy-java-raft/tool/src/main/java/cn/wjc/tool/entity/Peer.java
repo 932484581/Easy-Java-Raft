@@ -1,4 +1,4 @@
-package cn.wjc.entity;
+package cn.wjc.tool.entity;
 
 import java.util.Objects;
 
