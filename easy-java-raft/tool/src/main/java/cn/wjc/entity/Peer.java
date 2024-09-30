@@ -1,0 +1,30 @@
+package cn.wjc.entity;
+
+import java.util.Objects;
+
+import lombok.Data;
+
+/**
+ * @description: 自身节点定义
+ * @return {*}
+ * @author: WJC
+ */
+
+@Data
+public class Peer {
+    // 节点地址
+    private final String addr;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Peer peer = (Peer) o;
+        return Objects.equals(addr, peer.addr);
+    }
+
+}
