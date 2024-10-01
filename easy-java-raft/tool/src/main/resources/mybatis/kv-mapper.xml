@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.wjc.tool.database.mapper.TestMapper">
+
+    <select id="selectTest" resultType="cn.wjc.tool.entity.KVEntity" parameterType="string"> SELECT
+        * FROM kv_store WHERE `key` = #{key} </select>
+
+    <insert id="insertTest" parameterType="cn.wjc.tool.entity.KVEntity"> INSERT INTO kv_store
+        (`key`, value) VALUES (#{key}, #{key}) </insert>
+    <!-- 其他 SQL 语句 -->
+</mapper>

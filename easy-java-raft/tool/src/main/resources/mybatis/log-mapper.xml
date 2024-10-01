@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.wjc.tool.database.mapper.LogMapper">
+
+    <resultMap id="LogResultMap" type="cn.wjc.tool.entity.LogEntry">
+        <id property="index" column="log_index" />
+        <result property="term" column="log_term" />
+        <association property="command" javaType="cn.wjc.tool.entity.Command">
+            <result property="command" column="command" />
+        </association>
+    </resultMap>
+
+    <select id="getLogEntryByIndex" resultMap="LogResultMap"> SELECT * FROM log WHERE log_index=
+        #{index} </select>
+
+    <select id="getMaxIndexLogEntry" resultMap="LogResultMap"> SELECT * FROM log WHERE log_index=
+        (SELECT MAX(index) FROM log) </select>
+
+    <select id="getMaxIndex" resultType="long"> SELECT MAX(log_index) FROM log; </select>
+
+    <select id="getMinIndex" resultType="long"> SELECT MIN(log_index) FROM log; </select>
+
+    <insert id="insertLogEntity" parameterType="cn.wjc.tool.entity.LogEntry"> INSERT INTO `log`
+        (log_index, log_term, command) VALUES (#{index}, #{term}, #{command.command}) </insert>
+
+    <delete id="deleteLogEntityByIndex" parameterType="cn.wjc.tool.entity.LogEntry">DELETE FROM log
+        WHERE log_index = #{index};</delete>
+
+    <delete id="deleteLogEntityLess" parameterType="cn.wjc.tool.entity.LogEntry">DELETE FROM log
+        WHERE log_index &lt;= #{index};</delete>
+
+    <delete id="deleteLogEntityGreater" parameterType="cn.wjc.tool.entity.LogEntry">DELETE FROM log
+        WHERE log_index &gt;= #{index};</delete>
+
+</mapper>

@@ -18,9 +18,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class LogEntry implements Serializable, Comparable {
-
+    // 日志索引
     private Long index;
-
+    // 日志任期
     private long term;
 
     private Command command;
