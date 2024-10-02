@@ -2,6 +2,7 @@ package cn.wjc.tool.entity;
 
 import java.io.Serializable;
 
+import lombok.Builder;
 import lombok.Data;
 
 /**
@@ -10,6 +11,7 @@ import lombok.Data;
  * @author: WJC
  */
 @Data
+@Builder
 public class KVEntity implements Serializable {
     String value;
     String key;

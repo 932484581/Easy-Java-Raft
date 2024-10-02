@@ -3,8 +3,9 @@ package cn.wjc.tool.storage;
 import java.util.List;
 
 import cn.wjc.tool.entity.LogEntry;
+import cn.wjc.tool.rpc.LifeCycle;
 
-public interface LogStorage {
+public interface LogStorage extends LifeCycle {
     /**
      * 获取第一个日志
      */
@@ -57,5 +58,4 @@ public interface LogStorage {
      */
     boolean truncateSuffix(final long lastIndexKept);
 
-    boolean init();
 }

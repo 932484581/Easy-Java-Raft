@@ -8,6 +8,8 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.Test;
 
 import cn.wjc.tool.database.mapper.LogMapper;
+import cn.wjc.tool.entity.Command;
+import cn.wjc.tool.entity.LogEntry;
 
 /**
  * @author 李昊哲
@@ -37,12 +39,17 @@ public class mybatisTest {
              */
 
             LogMapper testMapper = session.getMapper(LogMapper.class);
+            try {
+                testMapper.insertLogEntity(
+                        LogEntry.builder().index(9L).term(2L).command(Command.builder().command("这是测试样例").build())
+                                .build());
 
-            // testMapper.insertLogEntity(
-            // LogEntry.builder().index(6L).term(2L).command(Command.builder().command("这是测试样例").build()).build());
-            // LogEntry blog = testMapper.getLogEntryByIndex(6L);
-            // System.out.println(blog);
-            testMapper.deleteLogEntityLess(5L);
+            } catch (Exception e) {
+                System.err.println(e.toString());
+            }
+            LogEntry blog = testMapper.getLogEntryByIndex(6L);
+            System.out.println(blog);
+            // testMapper.deleteLogEntityLess(5L);
             session.commit();
             // 例如：List<YourEntity> list = session.selectList("namespace.statementId");
 

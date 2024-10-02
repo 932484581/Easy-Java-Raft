@@ -1,14 +1,17 @@
 package cn.wjc.tool.storage;
 
-import cn.wjc.tool.entity.LogEntry;
+import java.util.List;
 
-public interface KVStorage {
+import cn.wjc.tool.entity.KVEntity;
+import cn.wjc.tool.rpc.LifeCycle;
 
-    void apply(LogEntry logEntry);
+public interface KVStorage extends LifeCycle {
+
+    int apply(List<KVEntity> entries);
 
     String getString(String key);
 
-    void setString(String key, String value);
+    boolean setString(String key, String value);
 
     void delString(String... key);
 }
