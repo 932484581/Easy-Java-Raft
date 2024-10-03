@@ -2,6 +2,8 @@ package cn.wjc.tool.storage.impl;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.concurrent.locks.ReadWriteLock;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -16,6 +18,7 @@ public class KVStorageImpl implements KVStorage {
 
     private SqlSession session = null;
     private KVMapper kvMapper = null;
+    private final ReadWriteLock readWriteLock = new ReentrantReadWriteLock();
 
     @Override
     public void destroy() throws Throwable {
