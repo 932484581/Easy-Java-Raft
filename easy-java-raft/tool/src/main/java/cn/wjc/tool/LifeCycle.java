@@ -1,4 +1,4 @@
-package cn.wjc.tool.rpc;
+package cn.wjc.tool;
 
 public interface LifeCycle {
     /**

@@ -1,20 +1,18 @@
+import cn.wjc.tool.database.mapper.LogMapper;
+import cn.wjc.tool.entity.Command;
+import cn.wjc.tool.entity.LogEntry;
 import java.io.IOException;
 import java.io.Reader;
-
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.Test;
 
-import cn.wjc.tool.database.mapper.LogMapper;
-import cn.wjc.tool.entity.Command;
-import cn.wjc.tool.entity.LogEntry;
 
-/**
- * @author 李昊哲
- * @version 1.0.0
- */
+
+
+
 public class mybatisTest {
 
     @Test

@@ -63,12 +63,15 @@
                 <version>4.13.2</version>
                 <scope>test</scope>
             </dependency>
-            <!-- RPC框架 -->
+            <!-- 通信 -->
+            <!-- https://mvnrepository.com/artifact/io.netty/netty-all -->
             <dependency>
-                <groupId>com.alipay.sofa</groupId>
-                <artifactId>bolt</artifactId>
-                <version>1.6.7</version>
+                <groupId>io.netty</groupId>
+                <artifactId>netty-all</artifactId>
+                <version>4.1.114.Final</version>
             </dependency>
+
+
             <!-- 序列化 -->
             <dependency>
                 <groupId>com.alibaba</groupId>

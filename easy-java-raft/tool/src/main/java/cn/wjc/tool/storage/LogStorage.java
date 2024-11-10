@@ -2,8 +2,8 @@ package cn.wjc.tool.storage;
 
 import java.util.List;
 
+import cn.wjc.tool.LifeCycle;
 import cn.wjc.tool.entity.LogEntry;
-import cn.wjc.tool.rpc.LifeCycle;
 
 public interface LogStorage extends LifeCycle {
     /**
