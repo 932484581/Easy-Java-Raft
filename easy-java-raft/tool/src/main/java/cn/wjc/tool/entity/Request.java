@@ -7,7 +7,7 @@ import lombok.Data;
 
 @Builder
 @Data
-public class RpcRequest implements Serializable {
+public class Request implements Serializable {
     /** 请求投票 */
     public static final int R_VOTE = 0;
     /** 附加日志 */
@@ -26,7 +26,7 @@ public class RpcRequest implements Serializable {
     // 请求的地址
     private String url;
 
-    public RpcRequest(int cmd, Object obj, String url) {
+    public Request(int cmd, Object obj, String url) {
         this.cmd = cmd;
         this.obj = obj;
         this.url = url;

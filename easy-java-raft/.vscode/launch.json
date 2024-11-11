@@ -2,6 +2,27 @@
   "configurations": [
     {
       "type": "java",
+      "name": "mainServer2",
+      "request": "launch",
+      "mainClass": "cn.wjc.tool.netty.server.mainServer2",
+      "projectName": "tool"
+    },
+    {
+      "type": "java",
+      "name": "mainClient",
+      "request": "launch",
+      "mainClass": "cn.wjc.tool.netty.client.mainClient",
+      "projectName": "tool"
+    },
+    {
+      "type": "java",
+      "name": "mainServer",
+      "request": "launch",
+      "mainClass": "cn.wjc.tool.netty.server.mainServer",
+      "projectName": "tool"
+    },
+    {
+      "type": "java",
       "name": "Main",
       "request": "launch",
       "mainClass": "cn.wjc.Main",
@@ -11,7 +32,11 @@
       "name": "Java: Current File",
       "type": "java",
       "request": "launch",
-      "vmArgs": ["-Xmx100m", "-Xms100m", "-XX:+UseSerialGC"]
+      "vmArgs": [
+        "-Xmx100m",
+        "-Xms100m",
+        "-XX:+UseSerialGC"
+      ]
     }
   ]
 }

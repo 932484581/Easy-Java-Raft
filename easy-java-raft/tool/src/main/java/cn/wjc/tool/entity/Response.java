@@ -7,10 +7,6 @@ import lombok.Data;
 
 @Data
 @Builder
-public class RpcResponse<T> implements Serializable {
+public class Response<T> implements Serializable {
     private T result;
-
-    public RpcResponse(T result) {
-        this.result = result;
-    }
 }
