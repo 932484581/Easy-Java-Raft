@@ -1,0 +1,12 @@
+2024-11-12 01:09:08,210 main  INFO [mynettytest:clientTest:12] - begin test
+2024-11-12 01:09:08,311 nioEventLoopGroup-2-1  INFO [io.netty.handler.logging.LoggingHandler:log:148] - [id: 0x5b53d3ca] REGISTERED
+2024-11-12 01:09:08,311 nioEventLoopGroup-3-1  INFO [io.netty.handler.logging.LoggingHandler:log:148] - [id: 0xfc18707d] REGISTERED
+2024-11-12 01:09:08,312 nioEventLoopGroup-2-1  INFO [io.netty.handler.logging.LoggingHandler:log:148] - [id: 0x5b53d3ca] BIND: 0.0.0.0/0.0.0.0:8899
+2024-11-12 01:09:08,312 nioEventLoopGroup-3-1  INFO [io.netty.handler.logging.LoggingHandler:log:148] - [id: 0xfc18707d] BIND: 0.0.0.0/0.0.0.0:8890
+2024-11-12 01:09:08,315 nioEventLoopGroup-3-1  INFO [io.netty.handler.logging.LoggingHandler:log:148] - [id: 0xfc18707d, L:/[0:0:0:0:0:0:0:0]:8890] ACTIVE
+2024-11-12 01:09:08,315 nioEventLoopGroup-2-1  INFO [io.netty.handler.logging.LoggingHandler:log:148] - [id: 0x5b53d3ca, L:/[0:0:0:0:0:0:0:0]:8899] ACTIVE
+2024-11-12 01:09:09,240 nioEventLoopGroup-3-1  INFO [io.netty.handler.logging.LoggingHandler:log:148] - [id: 0xfc18707d, L:/[0:0:0:0:0:0:0:0]:8890] READ: [id: 0xa3dde553, L:/127.0.0.1:8890 - R:/127.0.0.1:54850]
+2024-11-12 01:09:09,240 nioEventLoopGroup-2-1  INFO [io.netty.handler.logging.LoggingHandler:log:148] - [id: 0x5b53d3ca, L:/[0:0:0:0:0:0:0:0]:8899] READ: [id: 0x0aa5927a, L:/127.0.0.1:8899 - R:/127.0.0.1:38922]
+2024-11-12 01:09:09,241 nioEventLoopGroup-3-1  INFO [io.netty.handler.logging.LoggingHandler:log:148] - [id: 0xfc18707d, L:/[0:0:0:0:0:0:0:0]:8890] READ COMPLETE
+2024-11-12 01:09:09,242 nioEventLoopGroup-2-1  INFO [io.netty.handler.logging.LoggingHandler:log:148] - [id: 0x5b53d3ca, L:/[0:0:0:0:0:0:0:0]:8899] READ COMPLETE
+2024-11-12 01:09:19,243 main  INFO [mynettytest:clientTest:21] - successful

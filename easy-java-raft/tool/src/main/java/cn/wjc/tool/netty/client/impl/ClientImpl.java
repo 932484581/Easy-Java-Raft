@@ -15,7 +15,9 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.timeout.TimeoutException;
 import io.netty.util.concurrent.GenericFutureListener;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 public class ClientImpl implements Client {
     private EventLoopGroup group;
     private final ConcurrentMap<String, Channel> channels = new ConcurrentHashMap<>();
@@ -46,13 +48,15 @@ public class ClientImpl implements Client {
             public void operationComplete(ChannelFuture future) throws Exception {
                 if (future.isSuccess()) {
                     // 连接成功
+                    log.info("创建了一个Client，并成功连接:" + host + ":" + port);
                 } else {
                     // 连接失败
                     Throwable cause = future.cause();
                     if (cause instanceof TimeoutException) {
                         // 处理连接超时的情况
-                        System.err.println("连接失败，连接超时");
+                        log.error("Client连接超时:" + host + ":" + port);
                     } else {
+                        log.error("Client连接失败:" + host + ":" + port);
                         // 处理其他类型的连接错误
                         cause.printStackTrace();
                     }

@@ -3,10 +3,13 @@ import org.junit.Test;
 import cn.wjc.tool.entity.Request;
 import cn.wjc.tool.netty.client.impl.ClientImpl;
 import cn.wjc.tool.netty.server.impl.ServerImpl;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 public class mynettytest {
     @Test
     public void clientTest() throws Throwable {
+        log.info("begin test");
         MyServerThread myServerThread = new MyServerThread(8899);
         myServerThread.start(); // 启动第二个线程
         MyServerThread myServerThread2 = new MyServerThread(8890);
@@ -15,7 +18,7 @@ public class mynettytest {
         MyClientThread myClientThread = new MyClientThread();
         myClientThread.start();
         myClientThread.join();
-
+        log.info("successful");
     }
 
     public class MyClientThread extends Thread {
@@ -36,6 +39,7 @@ public class mynettytest {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             }
+
         }
     }
 

@@ -11,9 +11,11 @@ import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
 import lombok.Builder;
 import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
 
 @Data
 @Builder
+@Slf4j
 public class ServerImpl implements Server {
     private EventLoopGroup bossGroup;
     private EventLoopGroup workerGroup;
@@ -31,6 +33,7 @@ public class ServerImpl implements Server {
                 .handler(new LoggingHandler(LogLevel.INFO))
                 .childHandler(new ServerInitializer());
         channelFuture = b.bind(port);
+        log.info("启动了一个Server，端口为：" + port);
     }
 
     @Override

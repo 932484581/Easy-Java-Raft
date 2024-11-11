@@ -6,6 +6,7 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 
 @Sharable
+
 public class ClientHandler extends SimpleChannelInboundHandler<Response<?>> {
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, Response<?> msg) throws Exception {
