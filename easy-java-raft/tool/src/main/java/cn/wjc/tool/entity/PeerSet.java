@@ -27,7 +27,7 @@ public class PeerSet implements Serializable {
         list.remove(peer);
     }
 
-    public List<Peer> getPeersWithoutSelf() {
+    public List<Peer> getPeersWithOutSelf() {
         List<Peer> list2 = new ArrayList<>(list);
         list2.remove(self);
         return list2;

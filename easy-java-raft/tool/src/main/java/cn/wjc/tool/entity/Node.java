@@ -9,12 +9,12 @@ import lombok.Data;
 public class Node {
     /* ============节点当前的状态============ */
     // 角色
-    public State state;
+    public volatile int state;
     // 存储的服务器和自身的节点信息
     public PeerSet peerSet;
     // 选举时间间隔基数
     @Builder.Default
-    public volatile long electionTime = 15 * 1000;
+    public volatile long electionTime = 1500;
     // 上一次选举时间
     @Builder.Default
     public volatile long preElectionTime = 0;
@@ -27,18 +27,18 @@ public class Node {
     /* ============服务器============ */
     // 服务器的任期号
     @Builder.Default
-    volatile long currentTerm = 0;
+    public volatile long currentTerm = 0;
     // 在当前获得选票的候选人的 Id
-    volatile String votedFor;
+    public volatile String votedFor;
 
     /* ============日志============ */
     // 日志条目集
-    LogStorage logStorage;
+    public LogStorage logStorage;
     // 已知的最大的已经被提交的日志条目的索引值
-    volatile long commitIndex;
+    public volatile long commitIndex;
     // 最后被应用到状态机的日志条目索引值
     @Builder.Default
-    volatile long lastApplied = 0;
+    public volatile long lastApplied = 0;
 
     /* ============传输相关============ */
     // public RpcService rpcServer;

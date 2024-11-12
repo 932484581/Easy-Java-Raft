@@ -1,23 +1,25 @@
 package cn.wjc.tool.database.mapper;
 
+import org.apache.ibatis.annotations.Param;
+
 import cn.wjc.tool.entity.LogEntry;
 
 public interface LogMapper {
 
-    LogEntry getLogEntryByIndex(Long index);
+    LogEntry getLogEntryByIndex(@Param("index") Long index, @Param("name") String name);
 
-    LogEntry getMaxIndexLogEntry();
+    LogEntry getMaxIndexLogEntry(@Param("name") String name);
 
-    Long getMaxIndex();
+    Long getMaxIndex(@Param("name") String name);
 
-    Long getMinIndex();
+    Long getMinIndex(@Param("name") String name);
 
-    void insertLogEntity(LogEntry logEntry);
+    void insertLogEntity(@Param("data") LogEntry logEntry, @Param("name") String name);
 
-    void deleteLogEntityByIndex(Long index);
+    void deleteLogEntityByIndex(@Param("index") Long index, @Param("name") String name);
 
-    void deleteLogEntityLess(Long index);
+    void deleteLogEntityLess(@Param("index") Long index, @Param("name") String name);
 
-    void deleteLogEntityGreater(Long index);
+    void deleteLogEntityGreater(@Param("index") Long index, @Param("name") String name);
 
 }

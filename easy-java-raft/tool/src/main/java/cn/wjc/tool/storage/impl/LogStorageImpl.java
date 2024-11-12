@@ -15,28 +15,33 @@ import lombok.extern.slf4j.Slf4j;
 public class LogStorageImpl implements LogStorage {
     private SqlSession session = null;
     private LogMapper LogMapper = null;
+    private String dabaseName;
+
+    public LogStorageImpl(String dabaseName) {
+        this.dabaseName = dabaseName;
+    }
 
     @Override
     public long getFirstLogIndex() {
-        long result = LogMapper.getMinIndex();
+        long result = LogMapper.getMinIndex(dabaseName);
         return result;
     }
 
     @Override
     public long getLastLogIndex() {
-        long result = LogMapper.getMaxIndex();
+        long result = LogMapper.getMaxIndex(dabaseName);
         return result;
     }
 
     @Override
     public LogEntry getEntry(long index) {
-        LogEntry result = LogMapper.getLogEntryByIndex(index);
+        LogEntry result = LogMapper.getLogEntryByIndex(index, dabaseName);
         return result;
     }
 
     @Override
     public long getTerm(long index) {
-        LogEntry entity = LogMapper.getLogEntryByIndex(index);
+        LogEntry entity = LogMapper.getLogEntryByIndex(index, dabaseName);
         long result = entity.getTerm();
         return result;
     }
@@ -44,7 +49,7 @@ public class LogStorageImpl implements LogStorage {
     @Override
     public boolean appendEntry(LogEntry entry) {
         try {
-            LogMapper.insertLogEntity(entry);
+            LogMapper.insertLogEntity(entry, dabaseName);
             session.commit();
             return true;
         } catch (Exception e) {
@@ -59,7 +64,7 @@ public class LogStorageImpl implements LogStorage {
         while (iterator.hasNext()) {
             LogEntry entry = iterator.next();
             try {
-                LogMapper.insertLogEntity(entry);
+                LogMapper.insertLogEntity(entry, dabaseName);
                 result = result + 1;
             } catch (Exception e) {
                 log.error(e.toString());
@@ -73,7 +78,7 @@ public class LogStorageImpl implements LogStorage {
     @Override
     public boolean truncatePrefix(long firstIndexKept) {
         try {
-            LogMapper.deleteLogEntityLess(firstIndexKept);
+            LogMapper.deleteLogEntityLess(firstIndexKept, dabaseName);
             session.commit();
             return true;
         } catch (Exception e) {
@@ -84,7 +89,7 @@ public class LogStorageImpl implements LogStorage {
     @Override
     public boolean truncateSuffix(long lastIndexKept) {
         try {
-            LogMapper.deleteLogEntityGreater(lastIndexKept);
+            LogMapper.deleteLogEntityGreater(lastIndexKept, dabaseName);
             session.commit();
             return true;
         } catch (Exception e) {

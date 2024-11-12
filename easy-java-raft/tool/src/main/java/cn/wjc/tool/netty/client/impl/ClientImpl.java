@@ -30,7 +30,10 @@ public class ClientImpl implements Client {
     public void init() throws Throwable {
     }
 
-    public void connectToServer(String host, int port, String serverId) throws Throwable {
+    public void connectToServer(String addr) throws Throwable {
+        String[] parts = addr.split(":", 2);
+        String host = parts[0];
+        int port = Integer.parseInt(parts[1]);
         // 创建Bootstrap实例
         Bootstrap bootstrap = new Bootstrap();
 
@@ -40,7 +43,7 @@ public class ClientImpl implements Client {
                 .handler(new ClientInitializer());
         ChannelFuture future = bootstrap.connect(host, port);
         Channel channel = future.channel();
-        channels.put(serverId, channel);
+        channels.put(addr, channel);
 
         future.addListener(new GenericFutureListener<ChannelFuture>() {
 
@@ -77,25 +80,13 @@ public class ClientImpl implements Client {
     }
 
     @Override
-    public void send(String serverId, Request request) throws Exception {
-        Channel channel = channels.get(serverId);
+    public void send(String addr, Request request) throws Exception {
+        Channel channel = channels.get(addr);
         if (channel != null && channel.isActive()) {
             channel.writeAndFlush(request);
         } else {
             // 处理无法找到Channel或Channel不活跃的情况
-            System.err.println("Cannot send message to server " + serverId + ": Channel is not available.");
+            System.err.println("Cannot send message to server " + addr + ": Channel is not available.");
         }
     }
-
-    @Override
-    public void send(String serverId, Request request, int timeout) throws Exception {
-        Channel channel = channels.get(serverId);
-        if (channel != null && channel.isActive()) {
-            channel.writeAndFlush(request);
-        } else {
-            // 处理无法找到Channel或Channel不活跃的情况
-            System.err.println("Cannot send message to server " + serverId + ": Channel is not available.");
-        }
-    }
-
 }

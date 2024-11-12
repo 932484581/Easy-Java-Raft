@@ -10,26 +10,26 @@
         </association>
     </resultMap>
 
-    <select id="getLogEntryByIndex" resultMap="LogResultMap"> SELECT * FROM log WHERE log_index=
+    <select id="getLogEntryByIndex" resultMap="LogResultMap"> SELECT * FROM ${name} WHERE log_index=
         #{index} </select>
 
-    <select id="getMaxIndexLogEntry" resultMap="LogResultMap"> SELECT * FROM log WHERE log_index=
-        (SELECT MAX(index) FROM log) </select>
+    <select id="getMaxIndexLogEntry" resultMap="LogResultMap"> SELECT * FROM ${name} WHERE
+        log_index= (SELECT MAX(index) FROM log) </select>
 
-    <select id="getMaxIndex" resultType="long"> SELECT MAX(log_index) FROM log; </select>
+    <select id="getMaxIndex" resultType="long"> SELECT MAX(log_index) FROM ${name}; </select>
 
-    <select id="getMinIndex" resultType="long"> SELECT MIN(log_index) FROM log; </select>
+    <select id="getMinIndex" resultType="long"> SELECT MIN(log_index) FROM ${name}; </select>
 
-    <insert id="insertLogEntity" parameterType="cn.wjc.tool.entity.LogEntry"> INSERT INTO `log`
-        (log_index, log_term, command) VALUES (#{index}, #{term}, #{command.command}) </insert>
+    <insert id="insertLogEntity" parameterType="cn.wjc.tool.entity.LogEntry"> INSERT INTO ${name}
+        (log_index, log_term, command) VALUES (#{data.index}, #{data.term}, #{data.command.command}) </insert>
 
-    <delete id="deleteLogEntityByIndex" parameterType="cn.wjc.tool.entity.LogEntry">DELETE FROM log
-        WHERE log_index = #{index};</delete>
+    <delete id="deleteLogEntityByIndex" parameterType="cn.wjc.tool.entity.LogEntry">DELETE FROM
+        ${name} WHERE log_index = #{index};</delete>
 
-    <delete id="deleteLogEntityLess" parameterType="cn.wjc.tool.entity.LogEntry">DELETE FROM log
+    <delete id="deleteLogEntityLess" parameterType="cn.wjc.tool.entity.LogEntry">DELETE FROM ${name}
         WHERE log_index &lt;= #{index};</delete>
 
-    <delete id="deleteLogEntityGreater" parameterType="cn.wjc.tool.entity.LogEntry">DELETE FROM log
-        WHERE log_index &gt;= #{index};</delete>
+    <delete id="deleteLogEntityGreater" parameterType="cn.wjc.tool.entity.LogEntry">DELETE FROM
+        ${name} WHERE log_index &gt;= #{index};</delete>
 
 </mapper>

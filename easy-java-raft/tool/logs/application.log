@@ -1,4 +1,0 @@
-2024-11-12 01:09:08,307 Thread-1  INFO [cn.wjc.tool.netty.server.impl.ServerImpl:init:36] - 启动了一个Server，端口为：8890
-2024-11-12 01:09:08,307 Thread-0  INFO [cn.wjc.tool.netty.server.impl.ServerImpl:init:36] - 启动了一个Server，端口为：8899
-2024-11-12 01:09:09,244 nioEventLoopGroup-6-2  INFO [cn.wjc.tool.netty.client.impl.ClientImpl:operationComplete:51] - 创建了一个Client，并成功连接:127.0.0.1:8890
-2024-11-12 01:09:09,244 nioEventLoopGroup-6-1  INFO [cn.wjc.tool.netty.client.impl.ClientImpl:operationComplete:51] - 创建了一个Client，并成功连接:127.0.0.1:8899

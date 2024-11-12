@@ -28,12 +28,12 @@ public class mynettytest {
             ClientImpl client = new ClientImpl();
             try {
                 client.init();
-                client.connectToServer("127.0.0.1", 8899, "1");
-                client.connectToServer("127.0.0.1", 8890, "2");
+                client.connectToServer("127.0.0.1:8899");
+                client.connectToServer("127.0.0.1:8890");
                 for (int i = 0; i < 10; i++) {
                     Thread.sleep(1000);
-                    client.send("1", request);
-                    client.send("2", request);
+                    client.send("127.0.0.1:8899", request);
+                    client.send("127.0.0.1:8890", request);
                 }
             } catch (Throwable e) {
                 // TODO Auto-generated catch block

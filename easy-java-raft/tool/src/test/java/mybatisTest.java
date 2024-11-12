@@ -1,17 +1,16 @@
-import cn.wjc.tool.database.mapper.LogMapper;
-import cn.wjc.tool.entity.Command;
-import cn.wjc.tool.entity.LogEntry;
 import java.io.IOException;
 import java.io.Reader;
+
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.Test;
 
-
-
-
+import cn.wjc.tool.database.mapper.LogMapper;
+import cn.wjc.tool.entity.Command;
+import cn.wjc.tool.entity.LogEntry;
+import cn.wjc.tool.storage.impl.LogStorageImpl;
 
 public class mybatisTest {
 
@@ -39,13 +38,14 @@ public class mybatisTest {
             LogMapper testMapper = session.getMapper(LogMapper.class);
             try {
                 testMapper.insertLogEntity(
-                        LogEntry.builder().index(9L).term(2L).command(Command.builder().command("这是测试样例").build())
-                                .build());
+                        LogEntry.builder().index(15L).term(2L).command(Command.builder().command("这是测试样例").build())
+                                .build(),
+                        "log");
 
             } catch (Exception e) {
                 System.err.println(e.toString());
             }
-            LogEntry blog = testMapper.getLogEntryByIndex(6L);
+            LogEntry blog = testMapper.getLogEntryByIndex(5L, "log");
             System.out.println(blog);
             // testMapper.deleteLogEntityLess(5L);
             session.commit();
@@ -60,5 +60,17 @@ public class mybatisTest {
                 session.close();
             }
         }
+    }
+
+    @Test
+    public void LogStorageTest() throws Throwable {
+
+        LogStorageImpl logStorage = new LogStorageImpl("log1");
+        logStorage.init();
+        logStorage.appendEntry(LogEntry.builder().term(2L).command(Command.builder().command("这是测试样例").build())
+                .build());
+        long res = logStorage.getLastLogIndex();
+        System.out.println(res);
+
     }
 }

@@ -2,7 +2,8 @@ package cn.wjc.tool.entity;
 
 import lombok.Getter;
 
-public class State {
+public interface State {
+
     int FOLLOWER = 0;
     int CANDIDATE = 1;
     int LEADER = 2;
@@ -27,4 +28,5 @@ public class State {
         }
 
     }
+
 }
