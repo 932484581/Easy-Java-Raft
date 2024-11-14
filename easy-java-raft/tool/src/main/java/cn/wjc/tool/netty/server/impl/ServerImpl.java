@@ -32,7 +32,7 @@ public class ServerImpl implements Server {
                 // 设置 NioServerSocketChannel 的处理器
                 .handler(new LoggingHandler(LogLevel.INFO))
                 .childHandler(new ServerInitializer());
-        channelFuture = b.bind(port);
+        channelFuture = b.bind(port).sync();
         log.info("启动了一个Server，端口为：" + port);
     }
 

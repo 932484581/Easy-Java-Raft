@@ -1,5 +1,6 @@
 package cn.wjc.tool.netty.server;
 
+import cn.wjc.tool.entity.Node;
 import cn.wjc.tool.entity.Request;
 import cn.wjc.tool.entity.Response;
 import io.netty.channel.ChannelHandler.Sharable;
@@ -9,6 +10,8 @@ import io.netty.channel.socket.SocketChannel;
 
 @Sharable
 public class ServerHandler extends SimpleChannelInboundHandler<Request> {
+    private Node node;
+
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         SocketChannel socketChannel = (SocketChannel) ctx.channel();
@@ -19,11 +22,15 @@ public class ServerHandler extends SimpleChannelInboundHandler<Request> {
     @Override
     public void channelRead0(ChannelHandlerContext ctx, Request request) throws Exception {
         // Generate and write a response.
-        Response response = Response.builder().result("已经接收到了数据" + request).build();
-        if (request != null) {
-            System.out.println("接受到了请求信息：" + request);
+
+        if (request.getCmd() == -1) {
+            System.out.println("接受到了请求的测试信息：" + request);
+            Response response = Response.builder().result("已经接收到了测试数据" + request).type(request.getCmd()).build();
+            ctx.writeAndFlush(response);
+        } else if (request.getCmd() == Request.R_VOTE) {
+
         }
-        ctx.writeAndFlush(response);
+
     }
 
     @Override

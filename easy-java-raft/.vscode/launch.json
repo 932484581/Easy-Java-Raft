@@ -2,6 +2,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "server1",
+      "request": "launch",
+      "mainClass": "cn.wjc.server.server1",
+      "projectName": "server"
+    },
+    {
+      "type": "java",
       "name": "mainServer2",
       "request": "launch",
       "mainClass": "cn.wjc.tool.netty.server.mainServer2",

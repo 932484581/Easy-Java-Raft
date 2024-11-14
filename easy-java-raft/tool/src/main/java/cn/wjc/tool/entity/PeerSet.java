@@ -16,7 +16,6 @@ public class PeerSet implements Serializable {
     private List<Peer> list = new ArrayList<>();
 
     private volatile Peer leader;
-
     private volatile Peer self;
 
     public void addPeer(Peer peer) {

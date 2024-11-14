@@ -3,6 +3,7 @@ package cn.wjc.tool.netty.client.impl;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
+import cn.wjc.tool.entity.Node;
 import cn.wjc.tool.entity.Request;
 import cn.wjc.tool.netty.client.Client;
 import cn.wjc.tool.netty.client.ClientInitializer;
@@ -20,7 +21,8 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class ClientImpl implements Client {
     private EventLoopGroup group;
-    private final ConcurrentMap<String, Channel> channels = new ConcurrentHashMap<>();
+    private final ConcurrentMap<String, Channel> channels = new ConcurrentHashMap();
+    private Node node;
 
     public ClientImpl() {
         group = new NioEventLoopGroup();
@@ -40,8 +42,8 @@ public class ClientImpl implements Client {
         bootstrap.group(group)
                 .option(ChannelOption.CONNECT_TIMEOUT_MILLIS, 5000) // 设置连接超时时间为10秒
                 .channel(NioSocketChannel.class)
-                .handler(new ClientInitializer());
-        ChannelFuture future = bootstrap.connect(host, port);
+                .handler(new ClientInitializer(node));
+        ChannelFuture future = bootstrap.connect(host, port).sync();
         Channel channel = future.channel();
         channels.put(addr, channel);
 
@@ -80,13 +82,13 @@ public class ClientImpl implements Client {
     }
 
     @Override
-    public void send(String addr, Request request) throws Exception {
-        Channel channel = channels.get(addr);
+    public void send(Request request) throws Exception {
+        Channel channel = channels.get(request.getAddr());
         if (channel != null && channel.isActive()) {
             channel.writeAndFlush(request);
         } else {
             // 处理无法找到Channel或Channel不活跃的情况
-            System.err.println("Cannot send message to server " + addr + ": Channel is not available.");
+            System.err.println("Cannot send message to server " + request.getAddr() + ": Channel is not available.");
         }
     }
 }

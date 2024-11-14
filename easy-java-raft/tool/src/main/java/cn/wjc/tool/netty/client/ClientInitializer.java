@@ -1,5 +1,6 @@
 package cn.wjc.tool.netty.client;
 
+import cn.wjc.tool.entity.Node;
 import cn.wjc.tool.netty.RequestEncoder;
 import cn.wjc.tool.netty.ResponseDecoder;
 import io.netty.channel.ChannelInitializer;
@@ -9,8 +10,11 @@ import io.netty.channel.socket.SocketChannel;
 public class ClientInitializer extends ChannelInitializer<SocketChannel> {
     private ResponseDecoder DECODER = new ResponseDecoder();
     private RequestEncoder ENCODER = new RequestEncoder();
+    private static ClientHandler CLIENT_HANDLER;
 
-    private static final ClientHandler CLIENT_HANDLER = new ClientHandler();
+    public ClientInitializer(Node node) {
+        this.CLIENT_HANDLER = new ClientHandler(node);
+    }
 
     @Override
     public void initChannel(SocketChannel ch) {

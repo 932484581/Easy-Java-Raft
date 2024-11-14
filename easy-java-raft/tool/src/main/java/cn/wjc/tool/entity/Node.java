@@ -1,5 +1,8 @@
 package cn.wjc.tool.entity;
 
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
+
 import cn.wjc.tool.storage.LogStorage;
 import lombok.Builder;
 import lombok.Data;
@@ -9,12 +12,12 @@ import lombok.Data;
 public class Node {
     /* ============节点当前的状态============ */
     // 角色
-    public volatile int state;
+    private volatile int state;
     // 存储的服务器和自身的节点信息
     public PeerSet peerSet;
     // 选举时间间隔基数
     @Builder.Default
-    public volatile long electionTime = 1500;
+    public volatile long electionTime = 15000;
     // 上一次选举时间
     @Builder.Default
     public volatile long preElectionTime = 0;
@@ -22,7 +25,7 @@ public class Node {
     @Builder.Default
     public volatile long preHeartBeatTime = 0;
     // 心跳间隔基数
-    public final long heartBeatTick = 5 * 100;
+    public final long heartBeatTick = 4 * 1000;
 
     /* ============服务器============ */
     // 服务器的任期号
@@ -39,8 +42,7 @@ public class Node {
     // 最后被应用到状态机的日志条目索引值
     @Builder.Default
     public volatile long lastApplied = 0;
-
-    /* ============传输相关============ */
-    // public RpcService rpcServer;
+    // 投票相关，接收到的选票
+    public ConcurrentMap<String, Boolean> leaderRequest = new ConcurrentHashMap();
 
 }

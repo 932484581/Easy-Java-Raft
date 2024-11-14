@@ -21,10 +21,30 @@ public class mynettytest {
         log.info("successful");
     }
 
+    @Test
+    public void finaltest() throws Throwable {
+        Request request = Request.builder().cmd(-1).addr("127.0.0.1:9988").build();
+
+        ServerImpl server = ServerImpl.builder().port(9988).build();
+        server.init();
+
+        ClientImpl client = new ClientImpl();
+        client.connectToServer("127.0.0.1:9988");
+
+        Thread.sleep(1000);
+
+        client.send(request);
+        client.send(request);
+        client.send(request);
+
+        Thread.sleep(1000);
+
+    }
+
     public class MyClientThread extends Thread {
         @Override
         public void run() {
-            Request request = Request.builder().cmd(Request.R_VOTE).url("127.0.0.1").build();
+            Request request = Request.builder().cmd(-1).addr("127.0.0.1").build();
             ClientImpl client = new ClientImpl();
             try {
                 client.init();
@@ -32,8 +52,10 @@ public class mynettytest {
                 client.connectToServer("127.0.0.1:8890");
                 for (int i = 0; i < 10; i++) {
                     Thread.sleep(1000);
-                    client.send("127.0.0.1:8899", request);
-                    client.send("127.0.0.1:8890", request);
+                    request.setAddr("127.0.0.1:8899");
+                    client.send(request);
+                    request.setAddr("127.0.0.1:8890");
+                    client.send(request);
                 }
             } catch (Throwable e) {
                 // TODO Auto-generated catch block

@@ -32,4 +32,5 @@
     <delete id="deleteLogEntityGreater" parameterType="cn.wjc.tool.entity.LogEntry">DELETE FROM
         ${name} WHERE log_index &gt;= #{index};</delete>
 
+
 </mapper>

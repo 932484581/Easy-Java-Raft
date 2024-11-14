@@ -15,6 +15,10 @@ public class Peer {
     // 节点地址 节点格式为"host:port"
     private final String addr;
 
+    public Peer(String addr) {
+        this.addr = addr;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {

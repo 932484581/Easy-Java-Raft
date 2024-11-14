@@ -1,0 +1,2 @@
+2024-11-13 00:07:36,883 main  INFO [cn.wjc.tool.netty.server.impl.ServerImpl:init:36] - 启动了一个Server，端口为：9988
+2024-11-13 00:07:36,914 nioEventLoopGroup-4-1  INFO [cn.wjc.tool.netty.client.impl.ClientImpl:operationComplete:56] - 创建了一个Client，并成功连接:127.0.0.1:9988

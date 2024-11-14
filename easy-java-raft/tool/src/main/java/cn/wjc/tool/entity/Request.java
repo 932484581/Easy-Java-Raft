@@ -24,11 +24,11 @@ public class Request implements Serializable {
     // 请求体
     private Object obj;
     // 请求的地址
-    private String url;
+    private String addr;
 
-    public Request(int cmd, Object obj, String url) {
+    public Request(int cmd, Object obj, String addr) {
         this.cmd = cmd;
         this.obj = obj;
-        this.url = url;
+        this.addr = addr;
     }
 }
