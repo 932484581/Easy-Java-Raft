@@ -1,5 +1,0 @@
-2024-11-13 00:07:36,878 nioEventLoopGroup-2-1  INFO [io.netty.handler.logging.LoggingHandler:log:148] - [id: 0xa76c3281] REGISTERED
-2024-11-13 00:07:36,880 nioEventLoopGroup-2-1  INFO [io.netty.handler.logging.LoggingHandler:log:148] - [id: 0xa76c3281] BIND: 0.0.0.0/0.0.0.0:9988
-2024-11-13 00:07:36,881 nioEventLoopGroup-2-1  INFO [io.netty.handler.logging.LoggingHandler:log:148] - [id: 0xa76c3281, L:/[0:0:0:0:0:0:0:0]:9988] ACTIVE
-2024-11-13 00:07:36,912 nioEventLoopGroup-2-1  INFO [io.netty.handler.logging.LoggingHandler:log:148] - [id: 0xa76c3281, L:/[0:0:0:0:0:0:0:0]:9988] READ: [id: 0x438c300e, L:/127.0.0.1:9988 - R:/127.0.0.1:36618]
-2024-11-13 00:07:36,912 nioEventLoopGroup-2-1  INFO [io.netty.handler.logging.LoggingHandler:log:148] - [id: 0xa76c3281, L:/[0:0:0:0:0:0:0:0]:9988] READ COMPLETE

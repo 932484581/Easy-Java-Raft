@@ -1,0 +1,30 @@
+2024-11-14 23:35:32,867 main  INFO [cn.wjc.server.model.impl.NodeDefaultImpl:setConfig:25] - 开始初始化127.0.0.1:8000
+2024-11-14 23:35:32,972 main  INFO [cn.wjc.tool.netty.server.impl.ServerImpl:init:36] - 启动了一个Server，端口为：8000
+2024-11-14 23:35:48,007 Raft thread DEBUG [cn.wjc.server.model.impl.NodeDefaultImpl:changeState:56] - 节点Peer(addr=127.0.0.1:8000)转变为了CANDIDATE
+2024-11-14 23:35:48,013 Raft thread DEBUG [cn.wjc.server.action.TimeOutAction:run:43] - 定时器127.0.0.1:8000超时，进入新一轮的选举状态，当前Trem:1
+2024-11-14 23:36:06,002 Raft thread DEBUG [cn.wjc.server.model.impl.NodeDefaultImpl:changeState:56] - 节点Peer(addr=127.0.0.1:8000)转变为了CANDIDATE
+2024-11-14 23:36:06,003 Raft thread DEBUG [cn.wjc.server.action.TimeOutAction:run:43] - 定时器127.0.0.1:8000超时，进入新一轮的选举状态，当前Trem:2
+2024-11-14 23:36:25,802 Raft thread DEBUG [cn.wjc.server.model.impl.NodeDefaultImpl:changeState:56] - 节点Peer(addr=127.0.0.1:8000)转变为了CANDIDATE
+2024-11-14 23:36:25,803 Raft thread DEBUG [cn.wjc.server.action.TimeOutAction:run:43] - 定时器127.0.0.1:8000超时，进入新一轮的选举状态，当前Trem:3
+2024-11-14 23:36:46,502 Raft thread DEBUG [cn.wjc.server.model.impl.NodeDefaultImpl:changeState:56] - 节点Peer(addr=127.0.0.1:8000)转变为了CANDIDATE
+2024-11-14 23:36:46,503 Raft thread DEBUG [cn.wjc.server.action.TimeOutAction:run:43] - 定时器127.0.0.1:8000超时，进入新一轮的选举状态，当前Trem:4
+2024-11-14 23:37:08,403 Raft thread DEBUG [cn.wjc.server.model.impl.NodeDefaultImpl:changeState:56] - 节点Peer(addr=127.0.0.1:8000)转变为了CANDIDATE
+2024-11-14 23:37:08,403 Raft thread DEBUG [cn.wjc.server.action.TimeOutAction:run:43] - 定时器127.0.0.1:8000超时，进入新一轮的选举状态，当前Trem:5
+2024-11-14 23:37:32,103 Raft thread DEBUG [cn.wjc.server.model.impl.NodeDefaultImpl:changeState:56] - 节点Peer(addr=127.0.0.1:8000)转变为了CANDIDATE
+2024-11-14 23:37:32,103 Raft thread DEBUG [cn.wjc.server.action.TimeOutAction:run:43] - 定时器127.0.0.1:8000超时，进入新一轮的选举状态，当前Trem:6
+2024-11-14 23:37:57,002 Raft thread DEBUG [cn.wjc.server.model.impl.NodeDefaultImpl:changeState:56] - 节点Peer(addr=127.0.0.1:8000)转变为了CANDIDATE
+2024-11-14 23:37:57,003 Raft thread DEBUG [cn.wjc.server.action.TimeOutAction:run:43] - 定时器127.0.0.1:8000超时，进入新一轮的选举状态，当前Trem:7
+2024-11-14 23:38:23,702 Raft thread DEBUG [cn.wjc.server.model.impl.NodeDefaultImpl:changeState:56] - 节点Peer(addr=127.0.0.1:8000)转变为了CANDIDATE
+2024-11-14 23:38:23,703 Raft thread DEBUG [cn.wjc.server.action.TimeOutAction:run:43] - 定时器127.0.0.1:8000超时，进入新一轮的选举状态，当前Trem:8
+2024-11-14 23:38:51,303 Raft thread DEBUG [cn.wjc.server.model.impl.NodeDefaultImpl:changeState:56] - 节点Peer(addr=127.0.0.1:8000)转变为了CANDIDATE
+2024-11-14 23:38:51,303 Raft thread DEBUG [cn.wjc.server.action.TimeOutAction:run:43] - 定时器127.0.0.1:8000超时，进入新一轮的选举状态，当前Trem:9
+2024-11-14 23:39:19,502 Raft thread DEBUG [cn.wjc.server.model.impl.NodeDefaultImpl:changeState:56] - 节点Peer(addr=127.0.0.1:8000)转变为了CANDIDATE
+2024-11-14 23:39:19,503 Raft thread DEBUG [cn.wjc.server.action.TimeOutAction:run:43] - 定时器127.0.0.1:8000超时，进入新一轮的选举状态，当前Trem:10
+2024-11-14 23:39:50,402 Raft thread DEBUG [cn.wjc.server.model.impl.NodeDefaultImpl:changeState:56] - 节点Peer(addr=127.0.0.1:8000)转变为了CANDIDATE
+2024-11-14 23:39:50,403 Raft thread DEBUG [cn.wjc.server.action.TimeOutAction:run:43] - 定时器127.0.0.1:8000超时，进入新一轮的选举状态，当前Trem:11
+2024-11-14 23:40:22,203 Raft thread DEBUG [cn.wjc.server.model.impl.NodeDefaultImpl:changeState:56] - 节点Peer(addr=127.0.0.1:8000)转变为了CANDIDATE
+2024-11-14 23:40:22,203 Raft thread DEBUG [cn.wjc.server.action.TimeOutAction:run:43] - 定时器127.0.0.1:8000超时，进入新一轮的选举状态，当前Trem:12
+2024-11-14 23:40:54,302 Raft thread DEBUG [cn.wjc.server.model.impl.NodeDefaultImpl:changeState:56] - 节点Peer(addr=127.0.0.1:8000)转变为了CANDIDATE
+2024-11-14 23:40:54,303 Raft thread DEBUG [cn.wjc.server.action.TimeOutAction:run:43] - 定时器127.0.0.1:8000超时，进入新一轮的选举状态，当前Trem:13
+2024-11-14 23:41:27,302 Raft thread DEBUG [cn.wjc.server.model.impl.NodeDefaultImpl:changeState:56] - 节点Peer(addr=127.0.0.1:8000)转变为了CANDIDATE
+2024-11-14 23:41:27,303 Raft thread DEBUG [cn.wjc.server.action.TimeOutAction:run:43] - 定时器127.0.0.1:8000超时，进入新一轮的选举状态，当前Trem:14

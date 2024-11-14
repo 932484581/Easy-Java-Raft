@@ -1,0 +1,21 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "server1",
+            "request": "launch",
+            "mainClass": "cn.wjc.server.server1",
+            "projectName": "server"
+        },
+        {
+            "name": "Java: Current File",
+            "type": "java",
+            "request": "launch",
+            "vmArgs": [
+                "-Xmx100m",
+                "-Xms100m",
+                "-XX:+UseSerialGC"
+            ]
+        }
+    ]
+}

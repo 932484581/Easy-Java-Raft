@@ -1,2 +1,0 @@
-2024-11-13 01:30:36,435 main  INFO [cn.wjc.server.model.impl.NodeDefaultImpl:setConfig:25] - 开始初始化127.0.0.1:8000
-2024-11-13 01:30:36,531 main  INFO [cn.wjc.tool.netty.server.impl.ServerImpl:init:36] - 启动了一个Server，端口为：8000

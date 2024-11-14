@@ -36,7 +36,7 @@ public class NodeDefaultImpl implements NodeDefault {
         }
         // 启动超时检测
         node.preElectionTime = System.currentTimeMillis();
-        RaftThreadPool.scheduleAtFixedRate(new TimeOutAction(node), 300, 0);
+        RaftThreadPool.scheduleAtFixedRate(new TimeOutAction(node), 10, 300);
 
     }
 
