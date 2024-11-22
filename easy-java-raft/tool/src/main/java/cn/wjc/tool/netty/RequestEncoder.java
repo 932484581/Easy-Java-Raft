@@ -5,9 +5,11 @@ import java.io.ObjectOutputStream;
 
 import cn.wjc.tool.entity.Request;
 import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelHandler.Sharable;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.MessageToByteEncoder;
 
+@Sharable
 public class RequestEncoder extends MessageToByteEncoder<Request> {
 
     @Override

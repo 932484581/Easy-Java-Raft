@@ -32,7 +32,6 @@ public class RequestDecoder extends ByteToMessageDecoder {
         ObjectInputStream objectInputStream = new ObjectInputStream(byteArrayInputStream);
         Request user = (Request) objectInputStream.readObject();
         out.add(user); // 将解码后的对象添加到输出列表中
-
     }
 
 }

@@ -1,0 +1,104 @@
+2024-11-22 14:22:32,545 main  INFO [cn.wjc.server.model.impl.NodeDefaultImpl:setConfig:35] - 开始初始化127.0.0.1:5000
+2024-11-22 14:22:32,551 main DEBUG [io.netty.util.internal.logging.InternalLoggerFactory:useSlf4JLoggerFactory:63] - Using SLF4J as the default logging framework
+2024-11-22 14:22:32,553 main DEBUG [io.netty.channel.MultithreadEventLoopGroup:<clinit>:44] - -Dio.netty.eventLoopThreads: 48
+2024-11-22 14:22:32,558 main DEBUG [io.netty.util.concurrent.GlobalEventExecutor:<clinit>:53] - -Dio.netty.globalEventExecutor.quietPeriodSeconds: 1
+2024-11-22 14:22:32,562 main DEBUG [io.netty.util.internal.InternalThreadLocalMap:<clinit>:100] - -Dio.netty.threadLocalMap.stringBuilder.initialSize: 1024
+2024-11-22 14:22:32,562 main DEBUG [io.netty.util.internal.InternalThreadLocalMap:<clinit>:101] - -Dio.netty.threadLocalMap.stringBuilder.maxSize: 4096
+2024-11-22 14:22:32,574 main DEBUG [io.netty.util.internal.PlatformDependent0:explicitNoUnsafeCause0:554] - -Dio.netty.noUnsafe: false
+2024-11-22 14:22:32,574 main DEBUG [io.netty.util.internal.PlatformDependent0:javaVersion0:1072] - Java version: 17
+2024-11-22 14:22:32,575 main DEBUG [io.netty.util.internal.PlatformDependent0:<clinit>:140] - sun.misc.Unsafe.theUnsafe: available
+2024-11-22 14:22:32,575 main DEBUG [io.netty.util.internal.PlatformDependent0:<clinit>:203] - sun.misc.Unsafe base methods: all available
+2024-11-22 14:22:32,575 main DEBUG [io.netty.util.internal.PlatformDependent0:<clinit>:235] - sun.misc.Unsafe.storeFence: available
+2024-11-22 14:22:32,575 main DEBUG [io.netty.util.internal.PlatformDependent0:<clinit>:278] - java.nio.Buffer.address: available
+2024-11-22 14:22:32,576 main DEBUG [io.netty.util.internal.PlatformDependent0:<clinit>:364] - direct buffer constructor: unavailable: Reflective setAccessible(true) disabled
+2024-11-22 14:22:32,576 main DEBUG [io.netty.util.internal.PlatformDependent0:<clinit>:442] - java.nio.Bits.unaligned: available, true
+2024-11-22 14:22:32,576 main DEBUG [io.netty.util.internal.PlatformDependent0:<clinit>:510] - jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable: class io.netty.util.internal.PlatformDependent0$7 cannot access class jdk.internal.misc.Unsafe (in module java.base) because module java.base does not export jdk.internal.misc to unnamed module @6a463b3d
+2024-11-22 14:22:32,577 main DEBUG [io.netty.util.internal.PlatformDependent0:<clinit>:540] - java.nio.DirectByteBuffer.<init>(long, {int,long}): unavailable
+2024-11-22 14:22:32,578 main DEBUG [io.netty.util.internal.PlatformDependent:unsafeUnavailabilityCause0:1186] - sun.misc.Unsafe: available
+2024-11-22 14:22:32,578 main DEBUG [io.netty.util.internal.PlatformDependent:tmpdir0:1332] - -Dio.netty.tmpdir: /tmp (java.io.tmpdir)
+2024-11-22 14:22:32,578 main DEBUG [io.netty.util.internal.PlatformDependent:bitMode0:1411] - -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2024-11-22 14:22:32,578 main DEBUG [io.netty.util.internal.PlatformDependent:<clinit>:178] - -Dio.netty.maxDirectMemory: -1 bytes
+2024-11-22 14:22:32,579 main DEBUG [io.netty.util.internal.PlatformDependent:<clinit>:185] - -Dio.netty.uninitializedArrayAllocationThreshold: -1
+2024-11-22 14:22:32,579 main DEBUG [io.netty.util.internal.CleanerJava9:<clinit>:71] - java.nio.ByteBuffer.cleaner(): available
+2024-11-22 14:22:32,579 main DEBUG [io.netty.util.internal.PlatformDependent:<clinit>:205] - -Dio.netty.noPreferDirect: false
+2024-11-22 14:22:32,580 main DEBUG [io.netty.channel.nio.NioEventLoop:<clinit>:110] - -Dio.netty.noKeySetOptimization: false
+2024-11-22 14:22:32,580 main DEBUG [io.netty.channel.nio.NioEventLoop:<clinit>:111] - -Dio.netty.selectorAutoRebuildThreshold: 512
+2024-11-22 14:22:32,583 main DEBUG [io.netty.util.internal.PlatformDependent:<clinit>:1029] - org.jctools-core.MpscChunkedArrayQueue: available
+2024-11-22 14:22:32,602 main DEBUG [io.netty.channel.DefaultChannelId:<clinit>:84] - -Dio.netty.processId: 67606 (auto-detected)
+2024-11-22 14:22:32,604 main DEBUG [io.netty.util.NetUtil:<clinit>:148] - -Djava.net.preferIPv4Stack: false
+2024-11-22 14:22:32,604 main DEBUG [io.netty.util.NetUtil:<clinit>:149] - -Djava.net.preferIPv6Addresses: false
+2024-11-22 14:22:32,605 main DEBUG [io.netty.util.NetUtilInitializations:determineLoopback:145] - Loopback interface: lo (lo, 0:0:0:0:0:0:0:1%lo)
+2024-11-22 14:22:32,606 main DEBUG [io.netty.util.NetUtil:run:196] - /proc/sys/net/core/somaxconn: 4096
+2024-11-22 14:22:32,606 main DEBUG [io.netty.channel.DefaultChannelId:<clinit>:106] - -Dio.netty.machineId: dc:46:28:ff:fe:4e:d8:d8 (auto-detected)
+2024-11-22 14:22:32,611 main DEBUG [io.netty.util.ResourceLeakDetector:<clinit>:129] - -Dio.netty.leakDetection.level: simple
+2024-11-22 14:22:32,611 main DEBUG [io.netty.util.ResourceLeakDetector:<clinit>:130] - -Dio.netty.leakDetection.targetRecords: 4
+2024-11-22 14:22:32,622 main DEBUG [io.netty.buffer.PooledByteBufAllocator:<clinit>:161] - -Dio.netty.allocator.numHeapArenas: 48
+2024-11-22 14:22:32,622 main DEBUG [io.netty.buffer.PooledByteBufAllocator:<clinit>:162] - -Dio.netty.allocator.numDirectArenas: 48
+2024-11-22 14:22:32,622 main DEBUG [io.netty.buffer.PooledByteBufAllocator:<clinit>:164] - -Dio.netty.allocator.pageSize: 8192
+2024-11-22 14:22:32,622 main DEBUG [io.netty.buffer.PooledByteBufAllocator:<clinit>:169] - -Dio.netty.allocator.maxOrder: 9
+2024-11-22 14:22:32,622 main DEBUG [io.netty.buffer.PooledByteBufAllocator:<clinit>:173] - -Dio.netty.allocator.chunkSize: 4194304
+2024-11-22 14:22:32,623 main DEBUG [io.netty.buffer.PooledByteBufAllocator:<clinit>:174] - -Dio.netty.allocator.smallCacheSize: 256
+2024-11-22 14:22:32,623 main DEBUG [io.netty.buffer.PooledByteBufAllocator:<clinit>:175] - -Dio.netty.allocator.normalCacheSize: 64
+2024-11-22 14:22:32,623 main DEBUG [io.netty.buffer.PooledByteBufAllocator:<clinit>:176] - -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2024-11-22 14:22:32,623 main DEBUG [io.netty.buffer.PooledByteBufAllocator:<clinit>:177] - -Dio.netty.allocator.cacheTrimInterval: 8192
+2024-11-22 14:22:32,623 main DEBUG [io.netty.buffer.PooledByteBufAllocator:<clinit>:178] - -Dio.netty.allocator.cacheTrimIntervalMillis: 0
+2024-11-22 14:22:32,623 main DEBUG [io.netty.buffer.PooledByteBufAllocator:<clinit>:179] - -Dio.netty.allocator.useCacheForAllThreads: false
+2024-11-22 14:22:32,623 main DEBUG [io.netty.buffer.PooledByteBufAllocator:<clinit>:180] - -Dio.netty.allocator.maxCachedByteBuffersPerChunk: 1023
+2024-11-22 14:22:32,623 main DEBUG [io.netty.buffer.PooledByteBufAllocator:<clinit>:182] - -Dio.netty.allocator.disableCacheFinalizersForFastThreadLocalThreads: false
+2024-11-22 14:22:32,628 main DEBUG [io.netty.buffer.ByteBufUtil:<clinit>:89] - -Dio.netty.allocator.type: pooled
+2024-11-22 14:22:32,628 main DEBUG [io.netty.buffer.ByteBufUtil:<clinit>:101] - -Dio.netty.threadLocalDirectBufferSize: 0
+2024-11-22 14:22:32,628 main DEBUG [io.netty.buffer.ByteBufUtil:<clinit>:104] - -Dio.netty.maxThreadLocalCharBufferSize: 16384
+2024-11-22 14:22:32,628 main DEBUG [io.netty.bootstrap.ChannelInitializerExtensions:getExtensions:54] - -Dio.netty.bootstrap.extensions: null
+2024-11-22 14:22:32,633 main  INFO [cn.wjc.tool.netty.server.impl.ServerImpl:init:42] - 启动了一个Server，端口为：5000
+2024-11-22 14:22:32,637 nioEventLoopGroup-2-1  INFO [io.netty.handler.logging.LoggingHandler:log:148] - [id: 0x4c0f0cc0] REGISTERED
+2024-11-22 14:22:32,638 nioEventLoopGroup-2-1  INFO [io.netty.handler.logging.LoggingHandler:log:148] - [id: 0x4c0f0cc0] BIND: 0.0.0.0/0.0.0.0:5000
+2024-11-22 14:22:32,639 nioEventLoopGroup-2-1  INFO [io.netty.handler.logging.LoggingHandler:log:148] - [id: 0x4c0f0cc0, L:/[0:0:0:0:0:0:0:0]:5000] ACTIVE
+2024-11-22 14:22:32,675 main DEBUG [org.apache.ibatis.logging.LogFactory:setImplementation:112] - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+2024-11-22 14:22:32,683 main DEBUG [org.apache.ibatis.datasource.pooled.PooledDataSource:forceCloseAll:379] - PooledDataSource forcefully closed/removed all connections.
+2024-11-22 14:22:32,683 main DEBUG [org.apache.ibatis.datasource.pooled.PooledDataSource:forceCloseAll:379] - PooledDataSource forcefully closed/removed all connections.
+2024-11-22 14:22:32,683 main DEBUG [org.apache.ibatis.datasource.pooled.PooledDataSource:forceCloseAll:379] - PooledDataSource forcefully closed/removed all connections.
+2024-11-22 14:22:32,683 main DEBUG [org.apache.ibatis.datasource.pooled.PooledDataSource:forceCloseAll:379] - PooledDataSource forcefully closed/removed all connections.
+2024-11-22 14:22:32,684 main DEBUG [org.apache.ibatis.datasource.pooled.PooledDataSource:forceCloseAll:379] - PooledDataSource forcefully closed/removed all connections.
+2024-11-22 14:22:32,684 main DEBUG [org.apache.ibatis.datasource.pooled.PooledDataSource:forceCloseAll:379] - PooledDataSource forcefully closed/removed all connections.
+2024-11-22 14:22:32,728 main  INFO [cn.wjc.server.model.impl.NodeDefaultImpl:setConfig:35] - 开始初始化127.0.0.1:5001
+2024-11-22 14:22:32,741 main  INFO [cn.wjc.tool.netty.server.impl.ServerImpl:init:42] - 启动了一个Server，端口为：5001
+2024-11-22 14:22:32,741 main  INFO [cn.wjc.server.model.impl.NodeDefaultImpl:setConfig:35] - 开始初始化127.0.0.1:5003
+2024-11-22 14:22:32,741 nioEventLoopGroup-4-1  INFO [io.netty.handler.logging.LoggingHandler:log:148] - [id: 0x6b55d047] REGISTERED
+2024-11-22 14:22:32,742 nioEventLoopGroup-4-1  INFO [io.netty.handler.logging.LoggingHandler:log:148] - [id: 0x6b55d047] BIND: 0.0.0.0/0.0.0.0:5001
+2024-11-22 14:22:32,742 nioEventLoopGroup-4-1  INFO [io.netty.handler.logging.LoggingHandler:log:148] - [id: 0x6b55d047, L:/[0:0:0:0:0:0:0:0]:5001] ACTIVE
+2024-11-22 14:22:32,744 main  INFO [cn.wjc.tool.netty.server.impl.ServerImpl:init:42] - 启动了一个Server，端口为：5003
+2024-11-22 14:22:32,744 nioEventLoopGroup-6-1  INFO [io.netty.handler.logging.LoggingHandler:log:148] - [id: 0xe156c296] REGISTERED
+2024-11-22 14:22:32,744 nioEventLoopGroup-6-1  INFO [io.netty.handler.logging.LoggingHandler:log:148] - [id: 0xe156c296] BIND: 0.0.0.0/0.0.0.0:5003
+2024-11-22 14:22:32,745 nioEventLoopGroup-6-1  INFO [io.netty.handler.logging.LoggingHandler:log:148] - [id: 0xe156c296, L:/[0:0:0:0:0:0:0:0]:5003] ACTIVE
+2024-11-22 14:22:33,773 nioEventLoopGroup-8-1  INFO [cn.wjc.tool.netty.client.impl.ClientImpl:operationComplete:56] - 127.0.0.1:5000创建了一个Client，并成功连接:127.0.0.1:5001
+2024-11-22 14:22:33,781 nioEventLoopGroup-4-1  INFO [io.netty.handler.logging.LoggingHandler:log:148] - [id: 0x6b55d047, L:/[0:0:0:0:0:0:0:0]:5001] READ: [id: 0x781e1064, L:/127.0.0.1:5001 - R:/127.0.0.1:52084]
+2024-11-22 14:22:33,783 nioEventLoopGroup-4-1  INFO [io.netty.handler.logging.LoggingHandler:log:148] - [id: 0x6b55d047, L:/[0:0:0:0:0:0:0:0]:5001] READ COMPLETE
+2024-11-22 14:22:33,783 nioEventLoopGroup-9-1  INFO [cn.wjc.tool.netty.client.impl.ClientImpl:operationComplete:56] - 127.0.0.1:5000创建了一个Client，并成功连接:127.0.0.1:5003
+2024-11-22 14:22:33,784 nioEventLoopGroup-6-1  INFO [io.netty.handler.logging.LoggingHandler:log:148] - [id: 0xe156c296, L:/[0:0:0:0:0:0:0:0]:5003] READ: [id: 0xcf9e2130, L:/127.0.0.1:5003 - R:/127.0.0.1:60362]
+2024-11-22 14:22:33,785 nioEventLoopGroup-6-1  INFO [io.netty.handler.logging.LoggingHandler:log:148] - [id: 0xe156c296, L:/[0:0:0:0:0:0:0:0]:5003] READ COMPLETE
+2024-11-22 14:22:33,792 nioEventLoopGroup-2-1  INFO [io.netty.handler.logging.LoggingHandler:log:148] - [id: 0x4c0f0cc0, L:/[0:0:0:0:0:0:0:0]:5000] READ: [id: 0xb4052be7, L:/127.0.0.1:5000 - R:/127.0.0.1:45936]
+2024-11-22 14:22:33,792 nioEventLoopGroup-10-1  INFO [cn.wjc.tool.netty.client.impl.ClientImpl:operationComplete:56] - 127.0.0.1:5001创建了一个Client，并成功连接:127.0.0.1:5000
+2024-11-22 14:22:33,793 nioEventLoopGroup-2-1  INFO [io.netty.handler.logging.LoggingHandler:log:148] - [id: 0x4c0f0cc0, L:/[0:0:0:0:0:0:0:0]:5000] READ COMPLETE
+2024-11-22 14:22:33,795 nioEventLoopGroup-6-1  INFO [io.netty.handler.logging.LoggingHandler:log:148] - [id: 0xe156c296, L:/[0:0:0:0:0:0:0:0]:5003] READ: [id: 0xa43870d0, L:/127.0.0.1:5003 - R:/127.0.0.1:60370]
+2024-11-22 14:22:33,795 nioEventLoopGroup-11-1  INFO [cn.wjc.tool.netty.client.impl.ClientImpl:operationComplete:56] - 127.0.0.1:5001创建了一个Client，并成功连接:127.0.0.1:5003
+2024-11-22 14:22:33,796 nioEventLoopGroup-6-1  INFO [io.netty.handler.logging.LoggingHandler:log:148] - [id: 0xe156c296, L:/[0:0:0:0:0:0:0:0]:5003] READ COMPLETE
+2024-11-22 14:22:33,798 nioEventLoopGroup-2-1  INFO [io.netty.handler.logging.LoggingHandler:log:148] - [id: 0x4c0f0cc0, L:/[0:0:0:0:0:0:0:0]:5000] READ: [id: 0x324ee7e0, L:/127.0.0.1:5000 - R:/127.0.0.1:45940]
+2024-11-22 14:22:33,798 nioEventLoopGroup-12-1  INFO [cn.wjc.tool.netty.client.impl.ClientImpl:operationComplete:56] - 127.0.0.1:5003创建了一个Client，并成功连接:127.0.0.1:5000
+2024-11-22 14:22:33,799 nioEventLoopGroup-2-1  INFO [io.netty.handler.logging.LoggingHandler:log:148] - [id: 0x4c0f0cc0, L:/[0:0:0:0:0:0:0:0]:5000] READ COMPLETE
+2024-11-22 14:22:33,802 nioEventLoopGroup-4-1  INFO [io.netty.handler.logging.LoggingHandler:log:148] - [id: 0x6b55d047, L:/[0:0:0:0:0:0:0:0]:5001] READ: [id: 0xd71cdb42, L:/127.0.0.1:5001 - R:/127.0.0.1:52090]
+2024-11-22 14:22:33,802 nioEventLoopGroup-13-1  INFO [cn.wjc.tool.netty.client.impl.ClientImpl:operationComplete:56] - 127.0.0.1:5003创建了一个Client，并成功连接:127.0.0.1:5001
+2024-11-22 14:22:33,802 nioEventLoopGroup-4-1  INFO [io.netty.handler.logging.LoggingHandler:log:148] - [id: 0x6b55d047, L:/[0:0:0:0:0:0:0:0]:5001] READ COMPLETE
+2024-11-22 14:22:33,803 main  INFO [cn.wjc.tool.netty.client.impl.ClientImpl:send:85] - 发送请求到：127.0.0.1:5001
+2024-11-22 14:22:33,807 main DEBUG [io.netty.util.Recycler:<clinit>:96] - -Dio.netty.recycler.maxCapacityPerThread: 4096
+2024-11-22 14:22:33,808 main DEBUG [io.netty.util.Recycler:<clinit>:97] - -Dio.netty.recycler.ratio: 8
+2024-11-22 14:22:33,808 main DEBUG [io.netty.util.Recycler:<clinit>:98] - -Dio.netty.recycler.chunkSize: 32
+2024-11-22 14:22:33,808 main DEBUG [io.netty.util.Recycler:<clinit>:99] - -Dio.netty.recycler.blocking: false
+2024-11-22 14:22:33,808 main DEBUG [io.netty.util.Recycler:<clinit>:100] - -Dio.netty.recycler.batchFastThreadLocalOnly: true
+2024-11-22 14:22:33,814 nioEventLoopGroup-8-1 DEBUG [io.netty.buffer.AbstractByteBuf:<clinit>:63] - -Dio.netty.buffer.checkAccessible: true
+2024-11-22 14:22:33,814 nioEventLoopGroup-8-1 DEBUG [io.netty.buffer.AbstractByteBuf:<clinit>:64] - -Dio.netty.buffer.checkBounds: true
+2024-11-22 14:22:33,814 nioEventLoopGroup-8-1 DEBUG [io.netty.util.ResourceLeakDetectorFactory:newResourceLeakDetector:196] - Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@575a9d5c
+2024-11-22 14:22:33,835 nioEventLoopGroup-5-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recReq:56] - 接受到了请求的测试信息：Request(cmd=-1, obj=null, addr=127.0.0.1:5001, reqTerm=0)
+2024-11-22 14:22:34,810 main  INFO [cn.wjc.tool.netty.client.impl.ClientImpl:send:85] - 发送请求到：127.0.0.1:5000
+2024-11-22 14:22:34,819 nioEventLoopGroup-3-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recReq:56] - 接受到了请求的测试信息：Request(cmd=-1, obj=null, addr=127.0.0.1:5000, reqTerm=0)
+2024-11-22 14:22:35,812 main  INFO [cn.wjc.tool.netty.client.impl.ClientImpl:send:85] - 发送请求到：127.0.0.1:5000
+2024-11-22 14:22:35,824 nioEventLoopGroup-3-2  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recReq:56] - 接受到了请求的测试信息：Request(cmd=-1, obj=null, addr=127.0.0.1:5000, reqTerm=0)

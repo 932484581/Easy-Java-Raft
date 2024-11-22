@@ -65,10 +65,11 @@ public class mybatisTest {
     @Test
     public void LogStorageTest() throws Throwable {
 
-        LogStorageImpl logStorage = new LogStorageImpl("log1");
+        LogStorageImpl logStorage = new LogStorageImpl("log5");
         logStorage.init();
-        logStorage.appendEntry(LogEntry.builder().term(2L).command(Command.builder().command("这是测试样例").build())
+        logStorage.appendEntry(LogEntry.builder().index(1L).term(0).command(Command.builder().command("这是测试样例").build())
                 .build());
+
         long res = logStorage.getLastLogIndex();
         System.out.println(res);
 

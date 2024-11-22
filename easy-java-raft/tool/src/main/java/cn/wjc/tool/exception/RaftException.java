@@ -1,5 +1,8 @@
 package cn.wjc.tool.exception;
 
+import lombok.Data;
+
+@Data
 public class RaftException extends RuntimeException {
 
     public RaftException() {

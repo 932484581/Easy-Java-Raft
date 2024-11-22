@@ -25,10 +25,13 @@ public class Request implements Serializable {
     private Object obj;
     // 请求的地址
     private String addr;
+    // 请求者的任期
+    public long reqTerm;
 
-    public Request(int cmd, Object obj, String addr) {
+    public Request(int cmd, Object obj, String addr, long reqTerm) {
         this.cmd = cmd;
         this.obj = obj;
         this.addr = addr;
+        this.reqTerm = reqTerm;
     }
 }

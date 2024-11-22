@@ -2,6 +2,27 @@
   "configurations": [
     {
       "type": "java",
+      "name": "MultiServer",
+      "request": "launch",
+      "mainClass": "cn.wjc.server.MultiServer",
+      "projectName": "server"
+    },
+    {
+      "type": "java",
+      "name": "Server2",
+      "request": "launch",
+      "mainClass": "cn.wjc.server.Server2",
+      "projectName": "server"
+    },
+    {
+      "type": "java",
+      "name": "Server1",
+      "request": "launch",
+      "mainClass": "cn.wjc.server.Server1",
+      "projectName": "server"
+    },
+    {
+      "type": "java",
       "name": "server1",
       "request": "launch",
       "mainClass": "cn.wjc.server.server1",

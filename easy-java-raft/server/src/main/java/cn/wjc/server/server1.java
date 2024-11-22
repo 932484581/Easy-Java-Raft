@@ -11,10 +11,11 @@ public class server1 {
         System.out.println("测试");
         Node node = Node.builder().state(State.FOLLOWER).build();
         NodeDefaultImpl nodeDefaultImpl = new NodeDefaultImpl(node);
-        Peer selfpeer = new Peer("127.0.0.1:8000");
+        Peer selfpeer = new Peer("127.0.0.1:8001");
         PeerSet peerSet = new PeerSet();
         peerSet.setSelf(selfpeer);
         nodeDefaultImpl.setConfig(peerSet);
+        nodeDefaultImpl.setConfig2connectAndStart(peerSet);
 
         System.out.println("测试");
         try {

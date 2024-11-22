@@ -13,6 +13,14 @@ public interface NodeDefault {
     void setConfig(PeerSet peerSet) throws Throwable;
 
     /**
+     * 
+     *
+     * @param config
+     * @throws Throwable
+     */
+    void setConfig2connectAndStart(PeerSet peerSet) throws Throwable;
+
+    /**
      * 转发给 leader 节点.
      * 
      * @param request

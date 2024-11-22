@@ -2,7 +2,9 @@ package cn.wjc.tool.entity;
 
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
+import java.util.concurrent.ThreadLocalRandom;
 
+import cn.wjc.tool.netty.client.impl.ClientImpl;
 import cn.wjc.tool.storage.LogStorage;
 import lombok.Builder;
 import lombok.Data;
@@ -17,7 +19,7 @@ public class Node {
     public PeerSet peerSet;
     // 选举时间间隔基数
     @Builder.Default
-    public volatile long electionTime = 15000;
+    public volatile long electionTime = 15000 + ThreadLocalRandom.current().nextInt(10000);
     // 上一次选举时间
     @Builder.Default
     public volatile long preElectionTime = 0;
@@ -31,8 +33,13 @@ public class Node {
     // 服务器的任期号
     @Builder.Default
     public volatile long currentTerm = 0;
-    // 在当前获得选票的候选人的 Id
+    // 在当前投出给选票的候选人的 Id
     public volatile String votedFor;
+    // 投票相关，接收到的选票
+    @Builder.Default
+    public ConcurrentMap<String, Boolean> voteGetMap = new ConcurrentHashMap<>();
+
+    public ClientImpl client;
 
     /* ============日志============ */
     // 日志条目集
@@ -42,7 +49,5 @@ public class Node {
     // 最后被应用到状态机的日志条目索引值
     @Builder.Default
     public volatile long lastApplied = 0;
-    // 投票相关，接收到的选票
-    public ConcurrentMap<String, Boolean> leaderRequest = new ConcurrentHashMap();
 
 }

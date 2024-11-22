@@ -1,88 +1,67 @@
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Test;
 
+import cn.wjc.server.model.impl.NodeDefaultImpl;
+import cn.wjc.tool.entity.Node;
+import cn.wjc.tool.entity.Peer;
+import cn.wjc.tool.entity.PeerSet;
 import cn.wjc.tool.entity.Request;
-import cn.wjc.tool.netty.client.impl.ClientImpl;
-import cn.wjc.tool.netty.server.impl.ServerImpl;
+import cn.wjc.tool.entity.State;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class mynettytest {
     @Test
-    public void clientTest() throws Throwable {
-        log.info("begin test");
-        MyServerThread myServerThread = new MyServerThread(8899);
-        myServerThread.start(); // 启动第二个线程
-        MyServerThread myServerThread2 = new MyServerThread(8890);
-        myServerThread2.start(); // 启动第二个线程
-        Thread.sleep(1000);
-        MyClientThread myClientThread = new MyClientThread();
-        myClientThread.start();
-        myClientThread.join();
-        log.info("successful");
-    }
-
-    @Test
     public void finaltest() throws Throwable {
-        Request request = Request.builder().cmd(-1).addr("127.0.0.1:9988").build();
 
-        ServerImpl server = ServerImpl.builder().port(9988).build();
-        server.init();
+        List<Peer> list = new ArrayList<>();
+        // 节点1
+        Node node = Node.builder().state(State.FOLLOWER).build();
+        NodeDefaultImpl nodeDefaultImpl = new NodeDefaultImpl(node);
+        Peer selfpeer = new Peer("127.0.0.1:5000");
+        PeerSet peerSet = new PeerSet();
+        peerSet.setSelf(selfpeer);
 
-        ClientImpl client = new ClientImpl();
-        client.connectToServer("127.0.0.1:9988");
+        // 节点2
+        Node node2 = Node.builder().state(State.FOLLOWER).build();
+        NodeDefaultImpl nodeDefaultImpl2 = new NodeDefaultImpl(node2);
+        Peer selfpeer2 = new Peer("127.0.0.1:5001");
+        PeerSet peerSet2 = new PeerSet();
+        peerSet2.setSelf(selfpeer2);
+
+        // 节点3
+        Node node3 = Node.builder().state(State.FOLLOWER).build();
+        NodeDefaultImpl nodeDefaultImpl3 = new NodeDefaultImpl(node3);
+        Peer selfpeer3 = new Peer("127.0.0.1:5003");
+        PeerSet peerSet3 = new PeerSet();
+        peerSet3.setSelf(selfpeer3);
+
+        list.add(selfpeer);
+        list.add(selfpeer2);
+        list.add(selfpeer3);
+
+        peerSet.setList(list);
+        peerSet2.setList(list);
+        peerSet3.setList(list);
+
+        nodeDefaultImpl.setConfig(peerSet);
+        nodeDefaultImpl2.setConfig(peerSet2);
+        nodeDefaultImpl3.setConfig(peerSet3);
 
         Thread.sleep(1000);
 
-        client.send(request);
-        client.send(request);
-        client.send(request);
+        nodeDefaultImpl.setConfig2connectAndStart(peerSet);
+        nodeDefaultImpl2.setConfig2connectAndStart(peerSet2);
+        nodeDefaultImpl3.setConfig2connectAndStart(peerSet3);
 
+        node.client.send(Request.builder().cmd(-1).addr(node2.peerSet.getSelf().getAddr()).build());
+        Thread.sleep(1000);
+        node2.client.send(Request.builder().cmd(-1).addr(node.peerSet.getSelf().getAddr()).build());
+        Thread.sleep(1000);
+        node3.client.send(Request.builder().cmd(-1).addr(node.peerSet.getSelf().getAddr()).build());
         Thread.sleep(1000);
 
     }
-
-    public class MyClientThread extends Thread {
-        @Override
-        public void run() {
-            Request request = Request.builder().cmd(-1).addr("127.0.0.1").build();
-            ClientImpl client = new ClientImpl();
-            try {
-                client.init();
-                client.connectToServer("127.0.0.1:8899");
-                client.connectToServer("127.0.0.1:8890");
-                for (int i = 0; i < 10; i++) {
-                    Thread.sleep(1000);
-                    request.setAddr("127.0.0.1:8899");
-                    client.send(request);
-                    request.setAddr("127.0.0.1:8890");
-                    client.send(request);
-                }
-            } catch (Throwable e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-
-        }
-    }
-
-    public class MyServerThread extends Thread {
-        private int port;
-
-        public MyServerThread(int port) {
-            this.port = port;
-        }
-
-        @Override
-        public void run() {
-            // 线程执行的代码
-            try {
-                ServerImpl server = ServerImpl.builder().port(port).build();
-                server.init();
-            } catch (Throwable e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-        }
-    }
-
 }
