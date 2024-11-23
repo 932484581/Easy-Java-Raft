@@ -10,6 +10,7 @@ import org.junit.Test;
 import cn.wjc.tool.database.mapper.LogMapper;
 import cn.wjc.tool.entity.Command;
 import cn.wjc.tool.entity.LogEntry;
+import cn.wjc.tool.storage.impl.KVStorageImpl;
 import cn.wjc.tool.storage.impl.LogStorageImpl;
 
 public class mybatisTest {
@@ -38,14 +39,16 @@ public class mybatisTest {
             LogMapper testMapper = session.getMapper(LogMapper.class);
             try {
                 testMapper.insertLogEntity(
-                        LogEntry.builder().index(15L).term(2L).command(Command.builder().command("这是测试样例").build())
+                        LogEntry.builder().index(1L).term(2L).command(Command.builder().command("这是测试样例").build())
                                 .build(),
                         "log");
+                System.out.println("写入成功");
 
             } catch (Exception e) {
                 System.err.println(e.toString());
+                System.err.println("写入失败");
             }
-            LogEntry blog = testMapper.getLogEntryByIndex(5L, "log");
+            LogEntry blog = testMapper.getLogEntryByIndex(2L, "log");
             System.out.println(blog);
             // testMapper.deleteLogEntityLess(5L);
             session.commit();
@@ -72,6 +75,16 @@ public class mybatisTest {
 
         long res = logStorage.getLastLogIndex();
         System.out.println(res);
+    }
 
+    @Test
+    public void KVStorageTest() throws Throwable {
+
+        KVStorageImpl kvStorageImpl = new KVStorageImpl("kv_store");
+        kvStorageImpl.init();
+        kvStorageImpl.setString("test", "这是一个测试");
+
+        String res = kvStorageImpl.getString("test");
+        System.out.println(res);
     }
 }

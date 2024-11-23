@@ -18,7 +18,12 @@ public class KVStorageImpl implements KVStorage {
 
     private SqlSession session = null;
     private KVMapper kvMapper = null;
+    private String dabaseName;
     private final ReadWriteLock readWriteLock = new ReentrantReadWriteLock();
+
+    public KVStorageImpl(String dabaseName) {
+        this.dabaseName = dabaseName;
+    }
 
     @Override
     public void destroy() throws Throwable {
@@ -39,7 +44,7 @@ public class KVStorageImpl implements KVStorage {
         while (iterator.hasNext()) {
             try {
                 KVEntity entry = iterator.next();
-                kvMapper.insertKVEntity(entry);
+                kvMapper.insertKVEntity(entry, dabaseName);
                 result++;
             } catch (Exception e) {
                 log.error(e.toString());
@@ -52,14 +57,13 @@ public class KVStorageImpl implements KVStorage {
 
     @Override
     public String getString(String key) {
-        String result = kvMapper.getKVEntityByKey(key).getValue();
-        return result;
+        return kvMapper.getKVEntityByKey(key, dabaseName).getValue();
     }
 
     @Override
     public boolean setString(String key, String value) {
         try {
-            kvMapper.insertKVEntity(KVEntity.builder().key(key).value(value).build());
+            kvMapper.insertKVEntity(KVEntity.builder().key(key).value(value).build(), dabaseName);
             session.commit();
             return true;
         } catch (Exception e) {
@@ -72,7 +76,7 @@ public class KVStorageImpl implements KVStorage {
     public void delString(String... key) {
         try {
             for (String k : key) {
-                kvMapper.deleteKVEntityByKey(k);
+                kvMapper.deleteKVEntityByKey(k, dabaseName);
             }
         } catch (Exception e) {
             log.error(e.toString());

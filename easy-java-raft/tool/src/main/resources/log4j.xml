@@ -30,6 +30,7 @@
 
     <logger name="cn.wjc" level="DEBUG" additivity="true">
         <appender-ref ref="APP_FILE" />
+        <level value="DEBUG" />
     </logger>
 
 

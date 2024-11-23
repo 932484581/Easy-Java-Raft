@@ -3,10 +3,10 @@
 <mapper namespace="cn.wjc.tool.database.mapper.KVMapper">
 
     <select id="getKVEntityByKey" resultType="cn.wjc.tool.entity.KVEntity" parameterType="string">
-        SELECT * FROM kv_store WHERE `key` = #{key} </select>
+        SELECT * FROM ${name} WHERE `key` = #{key} </select>
 
-    <insert id="insertTest" parameterType="cn.wjc.tool.entity.KVEntity"> INSERT INTO kv_store
-        (`key`, value) VALUES (#{key}, #{key}) </insert>
+    <insert id="insertKVEntity" parameterType="cn.wjc.tool.entity.KVEntity"> INSERT INTO ${name}
+        (`key`, value) VALUES (#{data.key}, #{data.value}) </insert>
 
-    <delete id="deleteKVEntityByKey"> DELETE FROM kv_store WHERE `key` = #{key}; </delete>
+    <delete id="deleteKVEntityByKey"> DELETE FROM ${name} WHERE `key` = #{key}; </delete>
 </mapper>

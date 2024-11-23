@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 import cn.wjc.server.model.impl.NodeDefaultImpl;
+import cn.wjc.tool.entity.AentryParam;
 import cn.wjc.tool.entity.Node;
 import cn.wjc.tool.entity.Peer;
 import cn.wjc.tool.entity.Request;
@@ -39,17 +40,17 @@ public class TImeOutHeartBeatAction implements Runnable {
                 List<Peer> peers = node.peerSet.getPeersWithOutSelf();
                 for (Peer peer : peers) {
 
-                    // AentryParam param = AentryParam.builder()
-                    // .entries(null)// 心跳,空日志.
-                    // .leaderId(node.peerSet.getSelf().getAddr())
-                    // .serverId(peer.getAddr())
-                    // .term(node.currentTerm)
-                    // .leaderCommit(node.commitIndex) // 心跳时与跟随者同步 commit index
-                    // .build();
+                    AentryParam param = AentryParam.builder()
+                            .entries(null)// 心跳,空日志.
+                            .leaderId(node.peerSet.getSelf().getAddr())
+                            .serverId(peer.getAddr())
+                            .term(node.currentTerm)
+                            .leaderCommit(node.commitIndex) // 心跳时与跟随者同步 commit index
+                            .build();
 
                     Request request = Request.builder()
                             .cmd(Request.A_ENTRIES)
-                            .obj(null)
+                            .obj(param)
                             .addr(peer.getAddr())
                             .reqTerm(node.currentTerm)
                             .build();
