@@ -18,7 +18,7 @@ public interface MsgProcessing {
     // 接收到日志响应信息
     public void recAentryRes(Response response, Node node);
 
-    // 接收到日志请求信息，返回响应
+    // 接收到日志请求信息，返回响应 || 接收到心跳请求，应用日志
     public Response recAentryReq(Request request, Node node);
 
 }

@@ -16,6 +16,10 @@ public class AentryResult implements Serializable {
 
     /** 跟随者包含了匹配上 prevLogIndex 和 prevLogTerm 的日志时为真 */
     boolean success;
+    // 匹配的日志条目的最大索引
+    long MatchIndex;
+    // 匹配失败时候对应的日志Index
+    long ConflictIndex;
 
     public AentryResult(boolean success) {
         this.success = success;
@@ -24,6 +28,13 @@ public class AentryResult implements Serializable {
     public AentryResult(long term, boolean success) {
         this.term = term;
         this.success = success;
+    }
+
+    public AentryResult(long term, boolean success, long matchIndex, long conflictIndex) {
+        this.term = term;
+        this.success = success;
+        MatchIndex = matchIndex;
+        ConflictIndex = conflictIndex;
     }
 
     public static AentryResult fail() {

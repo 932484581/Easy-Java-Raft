@@ -58,7 +58,7 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
-        <!-- Reids -->
+
         <dependency>
             <groupId>redis.clients</groupId>
             <artifactId>jedis</artifactId>

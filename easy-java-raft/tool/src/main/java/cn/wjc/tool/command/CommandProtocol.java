@@ -10,4 +10,12 @@ public interface CommandProtocol {
      * @author: WJC
      */
     public CommandParam analysis(String command);
+
+    /**
+     * @description: 提交指令
+     * @param {CommandParam} commandParam
+     * @return {*}
+     * @author: WJC
+     */
+    public String commitCommand(CommandParam commandParam);
 }

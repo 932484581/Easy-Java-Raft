@@ -10,4 +10,6 @@ public interface KVMapper {
     void insertKVEntity(@Param("data") KVEntity kvEntity, @Param("name") String name);
 
     void deleteKVEntityByKey(@Param("key") String key, @Param("name") String name);
+
+    void updataKVEntityByKey(@Param("data") KVEntity kvEntity, @Param("name") String name);
 }

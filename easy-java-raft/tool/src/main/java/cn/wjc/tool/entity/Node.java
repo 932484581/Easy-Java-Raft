@@ -4,8 +4,10 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.ThreadLocalRandom;
 
+import cn.wjc.tool.command.impl.CommandProtocolImpl;
 import cn.wjc.tool.netty.client.impl.ClientImpl;
 import cn.wjc.tool.storage.LogStorage;
+import cn.wjc.tool.storage.impl.KVStorageImpl;
 import lombok.Builder;
 import lombok.Data;
 
@@ -35,9 +37,9 @@ public class Node {
     public volatile long currentTerm = 0;
     // 在当前投出给选票的候选人的 Id
     public volatile String votedFor;
-    // 投票相关，接收到的选票
+    // 投票相关，接收到的投票
     @Builder.Default
-    public ConcurrentMap<String, Boolean> voteGetMap = new ConcurrentHashMap<>();
+    public ConcurrentMap<String, Long> getResultMap = new ConcurrentHashMap<>();
 
     public ClientImpl client;
 
@@ -50,4 +52,19 @@ public class Node {
     @Builder.Default
     public volatile long lastApplied = 0;
 
+    /* ============指令============ */
+    CommandProtocolImpl commandProtocolImpl;
+
+    /* ============KV============ */
+    KVStorageImpl kvStorageImpl;
+
+    public void setCurrentTerm(long currentTerm) {
+        this.currentTerm = currentTerm;
+        kvStorageImpl.setString("currentTerm", String.valueOf(currentTerm));
+    }
+
+    public void setCommitIndex(long commitIndex) {
+        this.commitIndex = commitIndex;
+        kvStorageImpl.setString("commitIndex", String.valueOf(commitIndex));
+    }
 }

@@ -39,6 +39,11 @@ public class TImeOutHeartBeatAction implements Runnable {
             if (current - node.preHeartBeatTime > node.heartBeatTick) {
                 List<Peer> peers = node.peerSet.getPeersWithOutSelf();
                 for (Peer peer : peers) {
+                    long preLogIndex = node.getLogStorage().getLastLogIndex();
+                    long preLogTerm = 0;
+                    if (preLogIndex != 0) {
+                        preLogTerm = node.getLogStorage().getEntry(preLogIndex).getTerm();
+                    }
 
                     AentryParam param = AentryParam.builder()
                             .entries(null)// 心跳,空日志.
@@ -46,6 +51,8 @@ public class TImeOutHeartBeatAction implements Runnable {
                             .serverId(peer.getAddr())
                             .term(node.currentTerm)
                             .leaderCommit(node.commitIndex) // 心跳时与跟随者同步 commit index
+                            .preLogIndex(preLogIndex)
+                            .preLogTerm(preLogTerm)
                             .build();
 
                     Request request = Request.builder()
@@ -72,7 +79,7 @@ public class TImeOutHeartBeatAction implements Runnable {
             if (current - node.preElectionTime > node.electionTime) {
                 // raft随机超时时间
                 node.electionTime = 15000 + ThreadLocalRandom.current().nextInt(10000);
-                node.currentTerm = node.currentTerm + 1;
+                node.setCurrentTerm(node.currentTerm + 1);
                 nodeDefault.changeState(State.CANDIDATE);
                 node.preElectionTime = System.currentTimeMillis();
                 log.debug("节点(" + node.getPeerSet().getSelf().getAddr() + ")超时，进入新一轮的选举状态，当前Trem:" + node.currentTerm);

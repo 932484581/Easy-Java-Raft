@@ -13,6 +13,11 @@ public class CommandProtocolImpl implements CommandProtocol {
         this.kvStorageImpl.init();
     }
 
+    public CommandProtocolImpl(KVStorageImpl kvStorageImpl) throws Throwable {
+        this.kvStorageImpl = kvStorageImpl;
+        this.kvStorageImpl.init();
+    }
+
     @Override
     public CommandParam analysis(String command) {
         String[] parts = command.split(" ", 3); // 将指令分割为最多3部分
@@ -38,5 +43,23 @@ public class CommandProtocolImpl implements CommandProtocol {
                 System.err.println("Invalid command");
                 throw new CommandException("Invalid command");
         }
+    }
+
+    @Override
+    public String commitCommand(CommandParam commandParam) {
+        if (commandParam.getType() == 1) {
+            String res = kvStorageImpl.getString(commandParam.getKey());
+            return res;
+        } else if (commandParam.getType() == 1) {
+            String target = kvStorageImpl.getString(commandParam.getKey());
+            if (target != null) {
+                kvStorageImpl.updataString(commandParam.getKey(), commandParam.getVal());
+            } else {
+                kvStorageImpl.setString(commandParam.getKey(), commandParam.getVal());
+            }
+
+            return null;
+        }
+        return null;
     }
 }

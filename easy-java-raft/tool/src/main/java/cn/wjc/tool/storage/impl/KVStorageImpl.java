@@ -23,6 +23,9 @@ public class KVStorageImpl implements KVStorage {
 
     public KVStorageImpl(String dabaseName) {
         this.dabaseName = dabaseName;
+        SqlSessionFactory sqlSessionFactory = GetDataSource.getMybatisSessionFactory();
+        this.session = sqlSessionFactory.openSession();
+        this.kvMapper = session.getMapper(KVMapper.class);
     }
 
     @Override
@@ -32,9 +35,6 @@ public class KVStorageImpl implements KVStorage {
 
     @Override
     public void init() throws Throwable {
-        SqlSessionFactory sqlSessionFactory = GetDataSource.getMybatisSessionFactory();
-        session = sqlSessionFactory.openSession();
-        kvMapper = session.getMapper(KVMapper.class);
     }
 
     @Override
@@ -57,7 +57,13 @@ public class KVStorageImpl implements KVStorage {
 
     @Override
     public String getString(String key) {
-        return kvMapper.getKVEntityByKey(key, dabaseName).getValue();
+        String res = null;
+        try {
+            res = kvMapper.getKVEntityByKey(key, dabaseName).getValue();
+        } catch (Exception e) {
+
+        }
+        return res;
     }
 
     @Override
@@ -82,6 +88,17 @@ public class KVStorageImpl implements KVStorage {
             log.error(e.toString());
         }
         session.commit();
+    }
+
+    @Override
+    public boolean updataString(String key, String value) {
+        try {
+            kvMapper.updataKVEntityByKey(KVEntity.builder().key(key).value(value).build(), dabaseName);
+            return true;
+        } catch (Exception e) {
+            log.error(e.toString());
+            return false;
+        }
     }
 
 }

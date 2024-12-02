@@ -1,0 +1,15 @@
+2024-12-02 10:47:57,001 main DEBUG [cn.wjc.tool.database.mapper.KVMapper.insertKVEntity:debug:135] - ==>  Preparing: INSERT INTO kv_store (`key`, value) VALUES (?, ?)
+2024-12-02 10:47:57,018 main DEBUG [cn.wjc.tool.database.mapper.KVMapper.insertKVEntity:debug:135] - ==> Parameters: test(String), 这是一个测试(String)
+2024-12-02 10:47:57,024 main ERROR [cn.wjc.tool.storage.impl.KVStorageImpl:setString:76] - org.apache.ibatis.exceptions.PersistenceException: 
+### Error updating database.  Cause: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry 'test' for key 'kv_store.PRIMARY'
+### The error may exist in mybatis/kv-mapper.xml
+### The error may involve cn.wjc.tool.database.mapper.KVMapper.insertKVEntity-Inline
+### The error occurred while setting parameters
+### SQL: INSERT INTO kv_store         (`key`, value) VALUES (?, ?)
+### Cause: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry 'test' for key 'kv_store.PRIMARY'
+2024-12-02 10:47:57,025 main DEBUG [cn.wjc.tool.database.mapper.KVMapper.getKVEntityByKey:debug:135] - ==>  Preparing: SELECT * FROM kv_store WHERE `key` = ?
+2024-12-02 10:47:57,025 main DEBUG [cn.wjc.tool.database.mapper.KVMapper.getKVEntityByKey:debug:135] - ==> Parameters: test(String)
+2024-12-02 10:47:57,039 main DEBUG [cn.wjc.tool.database.mapper.KVMapper.getKVEntityByKey:debug:135] - <==      Total: 1
+2024-12-02 10:47:57,041 main DEBUG [cn.wjc.tool.database.mapper.KVMapper.getKVEntityByKey:debug:135] - ==>  Preparing: SELECT * FROM kv_store WHERE `key` = ?
+2024-12-02 10:47:57,041 main DEBUG [cn.wjc.tool.database.mapper.KVMapper.getKVEntityByKey:debug:135] - ==> Parameters: test2(String)
+2024-12-02 10:47:57,042 main DEBUG [cn.wjc.tool.database.mapper.KVMapper.getKVEntityByKey:debug:135] - <==      Total: 0

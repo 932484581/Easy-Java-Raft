@@ -19,7 +19,7 @@ public class AentryParam implements Serializable {
     private String leaderId;
 
     /** 前一个日志的日志号 */
-    private long prevLogIndex;
+    private long preLogIndex;
 
     /** 前一个日志的任期 */
     private long preLogTerm;
@@ -30,12 +30,12 @@ public class AentryParam implements Serializable {
     /** 领导人已经提交的日志号 */
     private long leaderCommit;
 
-    public AentryParam(long term, String serverId, String leaderId, long prevLogIndex, long preLogTerm,
+    public AentryParam(long term, String serverId, String leaderId, long preLogIndex, long preLogTerm,
             LogEntry[] entries, long leaderCommit) {
         this.term = term;
         this.serverId = serverId;
         this.leaderId = leaderId;
-        this.prevLogIndex = prevLogIndex;
+        this.preLogIndex = preLogIndex;
         this.preLogTerm = preLogTerm;
         this.entries = entries;
         this.leaderCommit = leaderCommit;

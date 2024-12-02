@@ -13,7 +13,7 @@ import lombok.Data;
 @Data
 public class Peer {
     // 节点地址 节点格式为"host:port"
-    private final String addr;
+    private String addr;
 
     public Peer(String addr) {
         this.addr = addr;

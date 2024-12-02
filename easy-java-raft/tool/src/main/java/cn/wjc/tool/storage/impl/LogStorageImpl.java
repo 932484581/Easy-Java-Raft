@@ -29,13 +29,21 @@ public class LogStorageImpl implements LogStorage {
 
     @Override
     public long getLastLogIndex() {
-        long result = LogMapper.getMaxIndex(dabaseName);
-        return result;
+        try {
+            long result = LogMapper.getMaxIndex(dabaseName);
+            return result;
+        } catch (Exception e) {
+            return 0;
+        }
+
     }
 
     @Override
     public LogEntry getEntry(long index) {
         LogEntry result = LogMapper.getLogEntryByIndex(index, dabaseName);
+        if (result == null) {
+            return LogEntry.builder().index(0L).term(0L).build();
+        }
         return result;
     }
 

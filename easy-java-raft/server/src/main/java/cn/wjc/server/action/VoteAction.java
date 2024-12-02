@@ -36,7 +36,7 @@ public class VoteAction implements Runnable {
 
             for (Peer peer : peers) {
                 // 向还没有投票的节点发送投票请求
-                if (!node.voteGetMap.containsKey(peer.getAddr())) {
+                if (!node.getResultMap.containsKey(peer.getAddr())) {
                     LogEntry last = node.logStorage.getEntry(node.logStorage.getLastLogIndex());
                     long lastTerm = 0L;
                     if (last != null) {

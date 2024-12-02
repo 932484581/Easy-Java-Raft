@@ -70,11 +70,14 @@ public class mybatisTest {
 
         LogStorageImpl logStorage = new LogStorageImpl("log5");
         logStorage.init();
-        logStorage.appendEntry(LogEntry.builder().index(1L).term(0).command(Command.builder().command("这是测试样例").build())
-                .build());
+        // logStorage.appendEntry(LogEntry.builder().index(1L).term(0).command(Command.builder().command("这是测试样例").build())
+        // .build());
 
         long res = logStorage.getLastLogIndex();
         System.out.println(res);
+        LogEntry logEntry = logStorage.getEntry(2);
+        System.out.println(logEntry);
+
     }
 
     @Test
@@ -85,6 +88,8 @@ public class mybatisTest {
         kvStorageImpl.setString("test", "这是一个测试");
 
         String res = kvStorageImpl.getString("test");
+        String res2 = kvStorageImpl.getString("test2");
         System.out.println(res);
+        System.out.println(res2);
     }
 }

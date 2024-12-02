@@ -6,6 +6,7 @@ import java.util.concurrent.ScheduledFuture;
 import cn.wjc.server.action.TImeOutHeartBeatAction;
 import cn.wjc.server.action.VoteAction;
 import cn.wjc.server.model.NodeDefault;
+import cn.wjc.tool.command.impl.CommandProtocolImpl;
 import cn.wjc.tool.entity.Node;
 import cn.wjc.tool.entity.Peer;
 import cn.wjc.tool.entity.PeerSet;
@@ -14,6 +15,7 @@ import cn.wjc.tool.entity.State;
 import cn.wjc.tool.exception.NettyException;
 import cn.wjc.tool.netty.client.impl.ClientImpl;
 import cn.wjc.tool.netty.server.impl.ServerImpl;
+import cn.wjc.tool.storage.impl.KVStorageImpl;
 import cn.wjc.tool.storage.impl.LogStorageImpl;
 import cn.wjc.tool.util.pool.RaftThreadPool;
 import lombok.Data;
@@ -43,6 +45,24 @@ public class NodeDefaultImpl implements NodeDefault {
         LogStorageImpl logStorage = new LogStorageImpl("log" + String.valueOf(port % 10));
         logStorage.init();
         node.logStorage = logStorage;
+        node.setCommandProtocolImpl(new CommandProtocolImpl("log" + String.valueOf(port % 10)));
+        node.setKvStorageImpl(new KVStorageImpl("log" + String.valueOf(port % 10)));
+        // 初始化commitIndex
+        String initcommitIndex = node.getKvStorageImpl().getString("commitIndex");
+        if (initcommitIndex == null) {
+            node.getKvStorageImpl().setString("commitIndex", "0");
+            node.setCommitIndex(0);
+        } else {
+            node.setCommitIndex(Long.valueOf(initcommitIndex));
+        }
+        // 初始化currentTerm
+        String initCurrentTerm = node.getKvStorageImpl().getString("currentTerm");
+        if (initCurrentTerm == null) {
+            node.getKvStorageImpl().setString("commitIndex", "0");
+            node.setCurrentTerm(0L);
+        } else {
+            node.currentTerm = Long.valueOf(initCurrentTerm);
+        }
     }
 
     @Override
@@ -64,7 +84,7 @@ public class NodeDefaultImpl implements NodeDefault {
         List<Peer> peers = node.peerSet.getPeersWithOutSelf();
         for (Peer peer : peers) {
             // 向还没有投票的节点发送投票请求
-            if (!node.voteGetMap.containsKey(peer.getAddr())) {
+            if (!node.getResultMap.containsKey(peer.getAddr())) {
                 Request request = Request.builder()
                         .cmd(-1)
                         .obj("这是一次通信测试")
@@ -92,7 +112,7 @@ public class NodeDefaultImpl implements NodeDefault {
 
     @Override
     public void changeState(int state) {
-        node.voteGetMap.clear();
+        node.getResultMap.clear();
         if (state == State.FOLLOWER) {
             node.setState(State.FOLLOWER);
             node.votedFor = null;
@@ -100,11 +120,17 @@ public class NodeDefaultImpl implements NodeDefault {
         } else if (state == State.CANDIDATE) {
             node.setState(State.CANDIDATE);
             // 给自己投票
-            node.voteGetMap.put(node.getPeerSet().getSelf().getAddr(), true);
+            node.getResultMap.put(node.getPeerSet().getSelf().getAddr(), 1L);
             node.votedFor = node.getPeerSet().getSelf().getAddr();
             getVotefuture = RaftThreadPool.scheduleAtFixedRate(new VoteAction(node), 0, 50000);
             log.debug("节点" + node.peerSet.getSelf() + "转变为了CANDIDATE");
         } else if (state == State.LEADER) {
+
+            List<Peer> peers = node.peerSet.getPeersWithOutSelf();
+            for (Peer peer : peers) {
+                node.getResultMap.put(peer.getAddr(), 0L);
+            }
+
             if (getVotefuture != null) {
                 getVotefuture.cancel(true); // true表示如果任务正在执行，则尝试中断任务
             }

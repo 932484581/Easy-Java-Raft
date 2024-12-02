@@ -13,5 +13,7 @@ public interface KVStorage extends LifeCycle {
 
     boolean setString(String key, String value);
 
+    boolean updataString(String key, String value);
+
     void delString(String... key);
 }

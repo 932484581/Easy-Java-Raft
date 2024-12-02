@@ -1,11 +1,14 @@
 package cn.wjc.server.msg.impl;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
 import java.util.concurrent.locks.ReentrantLock;
+import java.util.stream.Collectors;
 
 import cn.wjc.server.model.impl.NodeDefaultImpl;
 import cn.wjc.server.msg.MsgProcessing;
+import cn.wjc.tool.entity.AentryParam;
 import cn.wjc.tool.entity.AentryResult;
 import cn.wjc.tool.entity.LogEntry;
 import cn.wjc.tool.entity.Node;
@@ -15,12 +18,14 @@ import cn.wjc.tool.entity.Response;
 import cn.wjc.tool.entity.RvoteParam;
 import cn.wjc.tool.entity.RvoteResult;
 import cn.wjc.tool.entity.State;
+import cn.wjc.tool.exception.NettyException;
 import io.netty.util.internal.StringUtil;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class MsgProcessingImpl implements MsgProcessing {
     public final ReentrantLock voteLock = new ReentrantLock();
+    public final ReentrantLock aentryLock = new ReentrantLock();
 
     @Override
     public void recRes(Response response, Node node) {
@@ -39,6 +44,11 @@ public class MsgProcessingImpl implements MsgProcessing {
         }
 
         if (response.type == Request.R_VOTE) {
+            // 更新领导者
+            if ((node.getPeerSet().getLeader() == null)
+                    || (!node.getPeerSet().getLeader().equals(response.getAddr()))) {
+                node.getPeerSet().setLeader(response.getAddr());
+            }
             recVoteRes(response, node);
         } else if (response.type == Request.A_ENTRIES) {
 
@@ -48,7 +58,7 @@ public class MsgProcessingImpl implements MsgProcessing {
 
     @Override
     public Response recReq(Request request, Node node) {
-        node.preElectionTime = System.currentTimeMillis();
+        // node.preElectionTime = System.currentTimeMillis();
         if (request.getCmd() == -1) {
             System.out.println("接受到了请求的测试信息：" + request);
             log.info("接受到了请求的测试信息：" + request);
@@ -57,7 +67,7 @@ public class MsgProcessingImpl implements MsgProcessing {
             response.setType(-1);
             return response;
         }
-        System.out.println(node.peerSet.getSelf().getAddr() + "接收到请求");
+        // System.out.println(node.peerSet.getSelf().getAddr() + "接收到请求");
         // 任期比自己的新，退回follower
         if (request.reqTerm > node.currentTerm) {
             node.setCurrentTerm(request.reqTerm);
@@ -100,20 +110,20 @@ public class MsgProcessingImpl implements MsgProcessing {
         else {
             if (rvoResult.getResult().isVoteGranted()) {
                 log.info("接收到赞同票，来自" + rvoResult.addr);
-                node.voteGetMap.put(rvoResult.addr, true);
+                node.getResultMap.put(rvoResult.addr, 1L);
             } else {
                 log.info("接收到拒绝票，来自" + rvoResult.addr);
-                node.voteGetMap.put(rvoResult.addr, false);
+                node.getResultMap.put(rvoResult.addr, 0L);
             }
             // 判断接收到的选票数是否超过一半
             List<Peer> peers = node.peerSet.getPeersWithOutSelf();
             int voteSucessNums = 0;
             NodeDefaultImpl nodeDefault = new NodeDefaultImpl(node);
             for (Peer peer : peers) {
-                if (!node.voteGetMap.containsKey(peer.getAddr()) || (node.voteGetMap.get(peer.getAddr()) == null)) {
+                if (!node.getResultMap.containsKey(peer.getAddr()) || (node.getResultMap.get(peer.getAddr()) == null)) {
                     continue;
                 }
-                voteSucessNums += node.voteGetMap.get(peer.getAddr()) ? 1 : 0;
+                voteSucessNums += node.getResultMap.get(peer.getAddr()) == 1L ? 1 : 0;
             }
             log.info("当前收到的赞成票:" + voteSucessNums);
             // 收到的赞同票超过半数节点，转变为LEADER
@@ -154,6 +164,7 @@ public class MsgProcessingImpl implements MsgProcessing {
                     return response;
                 }
                 // 投赞同票
+                node.preElectionTime = System.currentTimeMillis();
                 response.getResult().setVoteGranted(true);
                 return response;
             } else {
@@ -172,25 +183,141 @@ public class MsgProcessingImpl implements MsgProcessing {
         AentryResult result = new AentryResult(node.currentTerm, false);
         Response<AentryResult> response = new Response<>(Request.A_ENTRIES, node.peerSet.getSelf().getAddr(),
                 request.reqTerm, node.getCurrentTerm());
-        // 心跳请求
-        if (Objects.isNull(request.getObj())) {
-            log.info(node.peerSet.getSelf().getAddr() + "接收到心跳请求");
-            result.setSuccess(true);
-            response.setResult(result);
-            return response;
-        } else {
+        response.setResult(result);
+        AentryParam aentryParam = (AentryParam) request.getObj();
+        // 更新从超时时间
+        node.preElectionTime = System.currentTimeMillis();
+        try {
+            if (!aentryLock.tryLock()) {
+                return response;
+            }
+            // 心跳请求
+            if (aentryParam.getEntries() == null) {
+                log.info(node.peerSet.getSelf().getAddr() + "接收到心跳请求");
+                result.setSuccess(true);
+                // 同步未提交的日志
+                if (node.commitIndex < aentryParam.getLeaderCommit()) {
+                    // 应用日志
+                    for (long i = node.commitIndex + 1; i <= node.getLogStorage().getLastLogIndex(); i++) {
+                        if (i > aentryParam.getLeaderCommit()) {
+                            break;
+                        }
+                        node.getCommandProtocolImpl().commitCommand(node.getCommandProtocolImpl()
+                                .analysis(node.getLogStorage().getEntry(i).getCommand().getCommand()));
+                    }
+                    node.setCommitIndex(aentryParam.getLeaderCommit());
+                }
+                return response;
+            }
+
+            // 日志请求
             log.info(node.peerSet.getSelf().getAddr() + "接收到日志请求");
+            LogEntry nodeLog = node.getLogStorage().getEntry(aentryParam.getPreLogIndex());
+
+            // 找到最新的相同的日志
+            if (nodeLog.getTerm() == aentryParam.getPreLogTerm()) {
+                // 删除与LEADER不相同的日志
+                if (node.getLogStorage().getLastLogIndex() > nodeLog.getIndex()) {
+                    node.getLogStorage().truncateSuffix(nodeLog.getIndex() + 1);
+                }
+                // 追加日志
+                int succesWriteNum = node.getLogStorage().appendEntries(Arrays.asList(aentryParam.getEntries()));
+                result.setSuccess(true);
+                result.setMatchIndex(aentryParam.getPreLogIndex() + succesWriteNum);
+            } else {
+                result.setConflictIndex(aentryParam.getPreLogIndex());
+            }
+            return response;
+
+        } finally {
+            aentryLock.unlock();
         }
-        return response;
     }
 
     @Override
     public void recAentryRes(Response response, Node node) {
-        response = (Response<AentryResult>) response;
-        if (response.getResult().equals(null)) {
-            return;
+        Response<AentryResult> getresponse = (Response<AentryResult>) response;
+        Long median = 0L;
+        // 获取到的是成功的日志
+        if (getresponse.getResult().isSuccess() && getresponse.getResult().getMatchIndex() != 0) {
+            // 判断当前过半日志接收到哪里,提交日志
+            log.info(node.peerSet.getSelf().getAddr() + "接收到日志请求的结果");
+            node.getResultMap.put(getresponse.getAddr(), getresponse.getResult().getMatchIndex());
+            // 判断一半的选票接收到的日志位置
+            List<Long> valuesList = node.getResultMap.values().stream().collect(Collectors.toList());
+            Collections.sort(valuesList);
+            median = valuesList.get(valuesList.size() / 2);
+            // 超过半数的节点接收到日志
+            if (median > node.commitIndex) {
+                // 应用日志
+                for (long i = node.commitIndex + 1; i <= median; i++) {
+                    node.getCommandProtocolImpl().commitCommand(node.getCommandProtocolImpl()
+                            .analysis(node.getLogStorage().getEntry(i).getCommand().getCommand()));
+                }
+            }
+            node.setCommitIndex(median);
+            node.getKvStorageImpl().setString("commitIndex", String.valueOf(median));
+
+            // 判断日志是否同步到最新的日志,没有则继续发送后续日志
+            if (getresponse.getResult().getMatchIndex() < node.getLogStorage().getLastLogIndex()) {
+                LogEntry susseswsPreLog = node.getLogStorage().getEntry(getresponse.getResult().getMatchIndex());
+                AentryParam aentryParam = new AentryParam(node.currentTerm, getresponse.getAddr(),
+                        node.getPeerSet().getSelf().getAddr(), susseswsPreLog.getIndex(), susseswsPreLog.getTerm(),
+                        null, node.getCommitIndex());
+                LogEntry[] wait2SentEntries = new LogEntry[(int) (Math.min(node.getLogStorage().getLastLogIndex(),
+                        5L))];
+                for (int i = (int) (getresponse.getResult().getMatchIndex())
+                        + 1; i <= (int) (Math.min(node.getLogStorage().getLastLogIndex(), 5L)); i++) {
+                    wait2SentEntries[i - ((int) (getresponse.getResult().getMatchIndex()) + 1)] = node.getLogStorage()
+                            .getEntry(i);
+                }
+                aentryParam.setEntries(wait2SentEntries);
+                Request request = Request.builder()
+                        .cmd(Request.R_VOTE)
+                        .addr(getresponse.getAddr())
+                        .obj(aentryParam)
+                        .reqTerm(node.currentTerm)
+                        .build();
+                try {
+                    node.client.send(request);
+                } catch (Exception e) {
+                    log.error("发送投票到：" + getresponse.getAddr() + "失败 ");
+                    e.printStackTrace();
+                } catch (NettyException e) {
+                    log.error("发送投票到：" + getresponse.getAddr() + "失败 " + e);
+                    e.printStackTrace();
+                }
+            }
         }
-        log.info(node.peerSet.getSelf().getAddr() + "接收到日志请求的结果");
+        // 接收到了失败的日志
+        else if (!getresponse.getResult().isSuccess()) {
+            LogEntry waitToSendPreLog = node.getLogStorage().getEntry(getresponse.getResult().getConflictIndex() - 1);
+            LogEntry[] wait2SentEntries = new LogEntry[1];
+            wait2SentEntries[0] = node.getLogStorage().getEntry(getresponse.getResult().getConflictIndex());
+            AentryParam aentryParam = AentryParam.builder()
+                    .term(node.currentTerm)
+                    .preLogIndex(waitToSendPreLog.getIndex())
+                    .preLogTerm(waitToSendPreLog.getTerm())
+                    .leaderId(node.getPeerSet().getSelf().getAddr())
+                    .serverId(getresponse.getAddr())
+                    .entries(wait2SentEntries)
+                    .build();
+            Request request = Request.builder()
+                    .cmd(Request.R_VOTE)
+                    .addr(getresponse.getAddr())
+                    .obj(aentryParam)
+                    .reqTerm(node.currentTerm)
+                    .build();
+            try {
+                node.client.send(request);
+            } catch (Exception e) {
+                log.error("发送投票到：" + getresponse.getAddr() + "失败 ");
+                e.printStackTrace();
+            } catch (NettyException e) {
+                log.error("发送投票到：" + getresponse.getAddr() + "失败 " + e);
+                e.printStackTrace();
+            }
+        }
     }
 
 }
