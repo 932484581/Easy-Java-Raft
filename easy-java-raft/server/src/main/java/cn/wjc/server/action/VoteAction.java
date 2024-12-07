@@ -29,8 +29,8 @@ public class VoteAction implements Runnable {
 
     @Override
     public void run() {
-        log.info(node.peerSet.getSelf().getAddr() + "开始发起投票请求");
         if (node.getState() == State.CANDIDATE) {
+            log.info(node.peerSet.getSelf().getAddr() + "开始发起投票请求");
             // 请求投票
             List<Peer> peers = node.peerSet.getPeersWithOutSelf();
 

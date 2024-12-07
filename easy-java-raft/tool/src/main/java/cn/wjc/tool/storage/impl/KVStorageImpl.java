@@ -68,14 +68,27 @@ public class KVStorageImpl implements KVStorage {
 
     @Override
     public boolean setString(String key, String value) {
-        try {
-            kvMapper.insertKVEntity(KVEntity.builder().key(key).value(value).build(), dabaseName);
-            session.commit();
-            return true;
-        } catch (Exception e) {
-            log.error(e.toString());
-            return false;
+        String gets = getString(key);
+        if (gets == null) {
+            try {
+                kvMapper.insertKVEntity(KVEntity.builder().key(key).value(value).build(), dabaseName);
+                session.commit();
+                return true;
+            } catch (Exception e) {
+                log.error(e.toString());
+                return false;
+            }
+        } else {
+            try {
+                kvMapper.updataKVEntityByKey(KVEntity.builder().key(key).value(value).build(), dabaseName);
+                session.commit();
+                return true;
+            } catch (Exception e) {
+                log.error(e.toString());
+                return false;
+            }
         }
+
     }
 
     @Override
@@ -94,6 +107,7 @@ public class KVStorageImpl implements KVStorage {
     public boolean updataString(String key, String value) {
         try {
             kvMapper.updataKVEntityByKey(KVEntity.builder().key(key).value(value).build(), dabaseName);
+            session.commit();
             return true;
         } catch (Exception e) {
             log.error(e.toString());

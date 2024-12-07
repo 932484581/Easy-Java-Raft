@@ -21,12 +21,12 @@ public interface NodeDefault {
     void setConfig2connectAndStart(PeerSet peerSet) throws Throwable;
 
     /**
-     * 转发给 leader 节点.
-     * 
-     * @param request
-     * @return
+     * @description: 配置客户端节点
+     * @param {PeerSet} peerSet
+     * @return {*}
+     * @author: WJC
      */
-    String redirect();
+    void setCLientConfig(PeerSet peerSet) throws Throwable;
 
     /**
      * @description: 转变角色

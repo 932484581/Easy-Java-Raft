@@ -82,7 +82,7 @@ public class ClientImpl implements Client {
 
     @Override
     public void send(Request request) throws Exception, NettyException {
-        log.info("发送请求到：" + request.getAddr());
+        // log.info("发送请求到：" + request.getAddr());
         Channel channel = channels.get(request.getAddr());
 
         if (channel != null) {

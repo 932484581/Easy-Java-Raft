@@ -10,6 +10,8 @@ import cn.wjc.server.model.impl.NodeDefaultImpl;
 import cn.wjc.server.msg.MsgProcessing;
 import cn.wjc.tool.entity.AentryParam;
 import cn.wjc.tool.entity.AentryResult;
+import cn.wjc.tool.entity.Command;
+import cn.wjc.tool.entity.CommandResult;
 import cn.wjc.tool.entity.LogEntry;
 import cn.wjc.tool.entity.Node;
 import cn.wjc.tool.entity.Peer;
@@ -35,20 +37,20 @@ public class MsgProcessingImpl implements MsgProcessing {
             System.out.println("接收到了返回的消息" + (Response<String>) response);
             return;
         }
+        if (response.type == Request.COMMAND_REQ) {
+            recCommandRes(response, node);
+            return;
+        }
 
         // 对方的任期比自己的新，更新任期，并降级为候选者
         if (response.resTerm > node.currentTerm) {
             node.setCurrentTerm(response.resTerm);
             NodeDefaultImpl nodeDefaultImpl = new NodeDefaultImpl(node);
             nodeDefaultImpl.changeState(State.FOLLOWER);
+            return;
         }
 
         if (response.type == Request.R_VOTE) {
-            // 更新领导者
-            if ((node.getPeerSet().getLeader() == null)
-                    || (!node.getPeerSet().getLeader().equals(response.getAddr()))) {
-                node.getPeerSet().setLeader(response.getAddr());
-            }
             recVoteRes(response, node);
         } else if (response.type == Request.A_ENTRIES) {
 
@@ -58,7 +60,6 @@ public class MsgProcessingImpl implements MsgProcessing {
 
     @Override
     public Response recReq(Request request, Node node) {
-        // node.preElectionTime = System.currentTimeMillis();
         if (request.getCmd() == -1) {
             System.out.println("接受到了请求的测试信息：" + request);
             log.info("接受到了请求的测试信息：" + request);
@@ -66,6 +67,10 @@ public class MsgProcessingImpl implements MsgProcessing {
             response.setResult("已经接收到了测试数据" + request);
             response.setType(-1);
             return response;
+        }
+        if (request.getCmd() == Request.COMMAND_REQ) {
+            Response res = recCommandReq(request, node);
+            return res;
         }
         // System.out.println(node.peerSet.getSelf().getAddr() + "接收到请求");
         // 任期比自己的新，退回follower
@@ -83,18 +88,12 @@ public class MsgProcessingImpl implements MsgProcessing {
             System.out.println(node.peerSet.getSelf().getAddr() + "接收到投票请求");
             Response res = recVoteReq(request, node);
             return res;
-            // Response<String> response = new Response<>();
-            // response.setResult("已经接收到了测试数据" + request);
-            // response.setType(-1);
-            // return response;
 
         } else if (request.getCmd() == Request.A_ENTRIES) {
             Response res = recAentryReq(request, node);
             return res;
         }
-
         return null;
-
     }
 
     @Override
@@ -185,6 +184,8 @@ public class MsgProcessingImpl implements MsgProcessing {
                 request.reqTerm, node.getCurrentTerm());
         response.setResult(result);
         AentryParam aentryParam = (AentryParam) request.getObj();
+
+        node.getPeerSet().setLeader(aentryParam.getLeaderId());
         // 更新从超时时间
         node.preElectionTime = System.currentTimeMillis();
         try {
@@ -193,7 +194,7 @@ public class MsgProcessingImpl implements MsgProcessing {
             }
             // 心跳请求
             if (aentryParam.getEntries() == null) {
-                log.info(node.peerSet.getSelf().getAddr() + "接收到心跳请求");
+                // log.info(node.peerSet.getSelf().getAddr() + "接收到心跳请求");
                 result.setSuccess(true);
                 // 同步未提交的日志
                 if (node.commitIndex < aentryParam.getLeaderCommit()) {
@@ -318,6 +319,71 @@ public class MsgProcessingImpl implements MsgProcessing {
                 e.printStackTrace();
             }
         }
+    }
+
+    @Override
+    public void recCommandRes(Response response, Node node) {
+        Response<CommandResult> getresponse = (Response<CommandResult>) response;
+        if (!getresponse.getResult().isResult()) {
+            log.warn("请求发送失败,应该发往:" + getresponse.getResult().getAddr());
+            System.err.println("请求发送失败,应该发往:" + getresponse.getResult().getAddr());
+            Request request = Request.builder()
+                    .cmd(Request.COMMAND_REQ)
+                    .addr(getresponse.getResult().getAddr())
+                    .obj(getresponse.getResult().getCommand())
+                    .reqTerm(node.currentTerm)
+                    .build();
+            try {
+                node.client.send(request);
+            } catch (Exception e) {
+                log.error("发送投票到：" + getresponse.getAddr() + "失败 ");
+                e.printStackTrace();
+            } catch (NettyException e) {
+                log.error("发送投票到：" + getresponse.getAddr() + "失败 " + e);
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @Override
+    public Response recCommandReq(Request request, Node node) {
+        Command command = (Command) request.getObj();
+        log.info("节点:" + node.getPeerSet().getSelf().getAddr() + "  接收到指令:" + command.getCommand());
+        System.out.println("节点:" + node.getPeerSet().getSelf().getAddr() + "  接收到指令:" + command.getCommand());
+        Response<CommandResult> response = new Response<>(Request.COMMAND_REQ, node.peerSet.getSelf().getAddr(),
+                request.reqTerm, node.getCurrentTerm());
+        CommandResult commandResult = CommandResult.builder().command(command).result(true).build();
+        response.setResult(commandResult);
+
+        // 判断节点是否为LEADER，不是则返回失败并转发
+        if (node.getState() != State.LEADER) {
+            // 可能当时领导者还未选举出来，因此等待
+            while (true) {
+                if (node.getPeerSet().getLeader() != null) {
+                    break;
+                }
+                try {
+                    Thread.sleep(200);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } // 让线程休眠0.2s
+            }
+            commandResult.setResult(false);
+            commandResult.setAddr(node.getPeerSet().getLeader());
+            log.info("节点不是LEADER, LEADER地址为：" + node.getPeerSet().getLeader());
+            return response;
+        }
+        log.info("节点" + node.getPeerSet().getSelf().getAddr() + ",接收该指令");
+
+        // 将指令追加到日志中
+        LogEntry logEntry = LogEntry.builder()
+                .command(command)
+                .index(node.getLogStorage().getLastLogIndex() + 1)
+                .term(node.getCurrentTerm())
+                .build();
+        node.getLogStorage().appendEntry(logEntry);
+
+        return response;
     }
 
 }

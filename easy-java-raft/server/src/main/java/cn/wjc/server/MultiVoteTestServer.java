@@ -9,7 +9,7 @@ import cn.wjc.tool.entity.Peer;
 import cn.wjc.tool.entity.PeerSet;
 import cn.wjc.tool.entity.State;
 
-public class MultiServer {
+public class MultiVoteTestServer {
     public static void main(String[] args) throws Throwable {
         System.out.println("测试");
         List<Peer> list = new ArrayList<>();

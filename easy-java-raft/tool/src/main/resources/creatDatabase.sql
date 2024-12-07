@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS `log0` (
     `command` VARCHAR(50) COMMENT '输入的指令'
 );
 
-CREATE TABLE IF NOT EXISTS kv_store (
+CREATE TABLE IF NOT EXISTS kv_store5 (
     `key` VARCHAR(255) NOT NULL,
     `value` VARCHAR(255),
     PRIMARY KEY (`key`)

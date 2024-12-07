@@ -18,6 +18,8 @@ public class Request implements Serializable {
     public static final int CHANGE_CONFIG_ADD = 3;
     /** 配置变更. remove */
     public static final int CHANGE_CONFIG_REMOVE = 4;
+    /** 指令请求 */
+    public static final int COMMAND_REQ = 5;
 
     // 请求类型
     private int cmd = -1;

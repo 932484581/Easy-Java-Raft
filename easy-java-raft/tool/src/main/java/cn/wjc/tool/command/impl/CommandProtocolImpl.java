@@ -50,7 +50,7 @@ public class CommandProtocolImpl implements CommandProtocol {
         if (commandParam.getType() == 1) {
             String res = kvStorageImpl.getString(commandParam.getKey());
             return res;
-        } else if (commandParam.getType() == 1) {
+        } else if (commandParam.getType() == 0) {
             String target = kvStorageImpl.getString(commandParam.getKey());
             if (target != null) {
                 kvStorageImpl.updataString(commandParam.getKey(), commandParam.getVal());

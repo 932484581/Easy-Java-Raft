@@ -45,8 +45,8 @@ public class NodeDefaultImpl implements NodeDefault {
         LogStorageImpl logStorage = new LogStorageImpl("log" + String.valueOf(port % 10));
         logStorage.init();
         node.logStorage = logStorage;
-        node.setCommandProtocolImpl(new CommandProtocolImpl("log" + String.valueOf(port % 10)));
-        node.setKvStorageImpl(new KVStorageImpl("log" + String.valueOf(port % 10)));
+        node.setCommandProtocolImpl(new CommandProtocolImpl("kv_store" + String.valueOf(port % 10)));
+        node.setKvStorageImpl(new KVStorageImpl("kv_store" + String.valueOf(port % 10)));
         // 初始化commitIndex
         String initcommitIndex = node.getKvStorageImpl().getString("commitIndex");
         if (initcommitIndex == null) {
@@ -105,12 +105,6 @@ public class NodeDefaultImpl implements NodeDefault {
     }
 
     @Override
-    public String redirect() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'redirect'");
-    }
-
-    @Override
     public void changeState(int state) {
         node.getResultMap.clear();
         if (state == State.FOLLOWER) {
@@ -138,6 +132,21 @@ public class NodeDefaultImpl implements NodeDefault {
             log.debug("节点" + node.peerSet.getSelf() + "转变为了LEADER");
         }
 
+    }
+
+    @Override
+    public void setCLientConfig(PeerSet peerSet) throws Throwable {
+        node.peerSet = peerSet;
+        // 初始化netty的server和client
+        String[] parts = node.peerSet.getSelf().getAddr().split(":", 2);
+        int port = Integer.parseInt(parts[1]);
+        ServerImpl server = new ServerImpl(node);
+        server.init();
+        ClientImpl client = new ClientImpl(node);
+        for (Peer peer : node.peerSet.getPeersWithOutSelf()) {
+            client.connectToServer(peer.getAddr());
+        }
+        node.client = client;
     }
 
 }

@@ -4,6 +4,7 @@ import java.util.List;
 import org.junit.Test;
 
 import cn.wjc.server.model.impl.NodeDefaultImpl;
+import cn.wjc.tool.entity.Command;
 import cn.wjc.tool.entity.Node;
 import cn.wjc.tool.entity.Peer;
 import cn.wjc.tool.entity.PeerSet;
@@ -56,11 +57,21 @@ public class mynettytest {
         nodeDefaultImpl2.setConfig2connectAndStart(peerSet2);
         nodeDefaultImpl3.setConfig2connectAndStart(peerSet3);
 
-        node.client.send(Request.builder().cmd(-1).addr(node2.peerSet.getSelf().getAddr()).build());
+        Request cmdrequest = Request.builder()
+                .cmd(-1)
+                .addr("127.0.0.1:5002")
+                .build();
+        // cmdrequest.setObj("SET test323 323");
+        cmdrequest.setObj(Command.builder().command("SET test323 323").build());
+        // cmdrequest.setObj(RvoteParam.builder().build());
+        cmdrequest.setAddr(node2.peerSet.getSelf().getAddr());
+        node.client.send(cmdrequest);
         Thread.sleep(1000);
-        node2.client.send(Request.builder().cmd(-1).addr(node.peerSet.getSelf().getAddr()).build());
+        cmdrequest.setAddr(node.peerSet.getSelf().getAddr());
+        node2.client.send(cmdrequest);
         Thread.sleep(1000);
-        node3.client.send(Request.builder().cmd(-1).addr(node.peerSet.getSelf().getAddr()).build());
+        cmdrequest.setAddr(node.peerSet.getSelf().getAddr());
+        node3.client.send(cmdrequest);
         Thread.sleep(1000);
 
     }

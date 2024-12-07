@@ -9,4 +9,7 @@
         (`key`, value) VALUES (#{data.key}, #{data.value}) </insert>
 
     <delete id="deleteKVEntityByKey"> DELETE FROM ${name} WHERE `key` = #{key}; </delete>
+
+    <update id="updataKVEntityByKey"> UPDATE ${name} SET `value` = #{data.value} WHERE (`key` =
+        #{data.key});</update>
 </mapper>

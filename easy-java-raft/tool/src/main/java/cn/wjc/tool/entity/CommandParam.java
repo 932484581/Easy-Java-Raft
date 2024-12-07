@@ -1,11 +1,13 @@
 package cn.wjc.tool.entity;
 
+import java.io.Serializable;
+
 import lombok.Builder;
 import lombok.Data;
 
 @Data
 @Builder
-public class CommandParam {
+public class CommandParam implements Serializable {
     /** 指令类型 */
     public static final int GETCOMMAND = 0;
     public static final int SETCOMMAND = 1;

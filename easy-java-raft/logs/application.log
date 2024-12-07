@@ -1,53 +1,42 @@
-2024-12-02 10:43:12,271 main  INFO [cn.wjc.server.model.impl.NodeDefaultImpl:setConfig:37] - 开始初始化127.0.0.1:5000
-2024-12-02 10:43:12,456 main  INFO [cn.wjc.server.model.impl.NodeDefaultImpl:setConfig:37] - 开始初始化127.0.0.1:5001
-2024-12-02 10:43:12,467 main  INFO [cn.wjc.server.model.impl.NodeDefaultImpl:setConfig:37] - 开始初始化127.0.0.1:5002
-2024-12-02 10:43:12,469 main  INFO [cn.wjc.server.model.impl.NodeDefaultImpl:setConfig:37] - 开始初始化127.0.0.1:5003
-2024-12-02 10:43:33,608 Raft thread  INFO [cn.wjc.server.action.VoteAction:run:32] - 127.0.0.1:5000开始发起投票请求
-2024-12-02 10:43:33,611 Raft thread DEBUG [cn.wjc.server.model.impl.NodeDefaultImpl:changeState:110] - 节点Peer(addr=127.0.0.1:5000)转变为了CANDIDATE
-2024-12-02 10:43:33,616 Raft thread DEBUG [cn.wjc.server.action.TImeOutHeartBeatAction:run:85] - 节点(127.0.0.1:5000)超时，进入新一轮的选举状态，当前Trem:1
-2024-12-02 10:43:33,911 nioEventLoopGroup-5-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recReq:81] - 127.0.0.1:5001接收到投票请求
-2024-12-02 10:43:33,911 nioEventLoopGroup-7-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recReq:81] - 127.0.0.1:5002接收到投票请求
-2024-12-02 10:43:33,911 nioEventLoopGroup-9-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recReq:81] - 127.0.0.1:5003接收到投票请求
-2024-12-02 10:43:33,937 nioEventLoopGroup-12-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recVoteRes:101] - 127.0.0.1:5000接收到投票请求的结果
-2024-12-02 10:43:33,938 nioEventLoopGroup-12-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recVoteRes:111] - 接收到赞同票，来自127.0.0.1:5001
-2024-12-02 10:43:33,938 nioEventLoopGroup-12-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recVoteRes:127] - 当前收到的赞成票:1
-2024-12-02 10:43:33,946 nioEventLoopGroup-10-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recVoteRes:101] - 127.0.0.1:5000接收到投票请求的结果
-2024-12-02 10:43:33,946 nioEventLoopGroup-10-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recVoteRes:111] - 接收到赞同票，来自127.0.0.1:5003
-2024-12-02 10:43:33,946 nioEventLoopGroup-10-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recVoteRes:127] - 当前收到的赞成票:2
-2024-12-02 10:43:33,965 nioEventLoopGroup-11-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recVoteRes:101] - 127.0.0.1:5000接收到投票请求的结果
-2024-12-02 10:43:33,965 nioEventLoopGroup-11-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recVoteRes:111] - 接收到赞同票，来自127.0.0.1:5002
-2024-12-02 10:43:33,965 nioEventLoopGroup-11-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recVoteRes:127] - 当前收到的赞成票:3
-2024-12-02 10:43:33,965 nioEventLoopGroup-11-1 DEBUG [cn.wjc.server.model.impl.NodeDefaultImpl:changeState:122] - 节点Peer(addr=127.0.0.1:5000)转变为了LEADER
-2024-12-02 10:43:34,214 nioEventLoopGroup-9-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:195] - 127.0.0.1:5003接收到心跳请求
-2024-12-02 10:43:34,214 nioEventLoopGroup-7-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:195] - 127.0.0.1:5002接收到心跳请求
-2024-12-02 10:43:34,214 nioEventLoopGroup-5-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:195] - 127.0.0.1:5001接收到心跳请求
-2024-12-02 10:43:34,511 nioEventLoopGroup-9-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:195] - 127.0.0.1:5003接收到心跳请求
-2024-12-02 10:43:34,511 nioEventLoopGroup-7-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:195] - 127.0.0.1:5002接收到心跳请求
-2024-12-02 10:43:34,512 nioEventLoopGroup-5-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:195] - 127.0.0.1:5001接收到心跳请求
-2024-12-02 10:43:34,810 nioEventLoopGroup-9-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:195] - 127.0.0.1:5003接收到心跳请求
-2024-12-02 10:43:34,810 nioEventLoopGroup-7-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:195] - 127.0.0.1:5002接收到心跳请求
-2024-12-02 10:43:34,811 nioEventLoopGroup-5-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:195] - 127.0.0.1:5001接收到心跳请求
-2024-12-02 10:43:35,110 nioEventLoopGroup-9-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:195] - 127.0.0.1:5003接收到心跳请求
-2024-12-02 10:43:35,110 nioEventLoopGroup-7-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:195] - 127.0.0.1:5002接收到心跳请求
-2024-12-02 10:43:35,111 nioEventLoopGroup-5-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:195] - 127.0.0.1:5001接收到心跳请求
-2024-12-02 10:43:35,409 nioEventLoopGroup-9-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:195] - 127.0.0.1:5003接收到心跳请求
-2024-12-02 10:43:35,410 nioEventLoopGroup-7-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:195] - 127.0.0.1:5002接收到心跳请求
-2024-12-02 10:43:35,410 nioEventLoopGroup-5-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:195] - 127.0.0.1:5001接收到心跳请求
-2024-12-02 10:43:35,710 nioEventLoopGroup-9-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:195] - 127.0.0.1:5003接收到心跳请求
-2024-12-02 10:43:35,711 nioEventLoopGroup-7-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:195] - 127.0.0.1:5002接收到心跳请求
-2024-12-02 10:43:35,712 nioEventLoopGroup-5-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:195] - 127.0.0.1:5001接收到心跳请求
-2024-12-02 10:43:36,010 nioEventLoopGroup-9-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:195] - 127.0.0.1:5003接收到心跳请求
-2024-12-02 10:43:36,011 nioEventLoopGroup-7-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:195] - 127.0.0.1:5002接收到心跳请求
-2024-12-02 10:43:36,011 nioEventLoopGroup-5-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:195] - 127.0.0.1:5001接收到心跳请求
-2024-12-02 10:43:36,308 nioEventLoopGroup-9-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:195] - 127.0.0.1:5003接收到心跳请求
-2024-12-02 10:43:36,309 nioEventLoopGroup-7-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:195] - 127.0.0.1:5002接收到心跳请求
-2024-12-02 10:43:36,309 nioEventLoopGroup-5-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:195] - 127.0.0.1:5001接收到心跳请求
-2024-12-02 10:43:36,610 nioEventLoopGroup-9-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:195] - 127.0.0.1:5003接收到心跳请求
-2024-12-02 10:43:36,611 nioEventLoopGroup-7-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:195] - 127.0.0.1:5002接收到心跳请求
-2024-12-02 10:43:36,611 nioEventLoopGroup-5-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:195] - 127.0.0.1:5001接收到心跳请求
-2024-12-02 10:43:36,910 nioEventLoopGroup-9-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:195] - 127.0.0.1:5003接收到心跳请求
-2024-12-02 10:43:36,910 nioEventLoopGroup-7-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:195] - 127.0.0.1:5002接收到心跳请求
-2024-12-02 10:43:36,911 nioEventLoopGroup-5-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:195] - 127.0.0.1:5001接收到心跳请求
-2024-12-02 10:43:37,210 nioEventLoopGroup-9-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:195] - 127.0.0.1:5003接收到心跳请求
-2024-12-02 10:43:37,211 nioEventLoopGroup-7-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:195] - 127.0.0.1:5002接收到心跳请求
-2024-12-02 10:43:37,212 nioEventLoopGroup-5-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:195] - 127.0.0.1:5001接收到心跳请求
+2024-12-07 19:06:03,361 main  INFO [cn.wjc.server.model.impl.NodeDefaultImpl:setConfig:37] - 开始初始化127.0.0.1:5000
+2024-12-07 19:06:03,786 main  INFO [cn.wjc.server.model.impl.NodeDefaultImpl:setConfig:37] - 开始初始化127.0.0.1:5001
+2024-12-07 19:06:03,817 main  INFO [cn.wjc.server.model.impl.NodeDefaultImpl:setConfig:37] - 开始初始化127.0.0.1:5002
+2024-12-07 19:06:03,835 main  INFO [cn.wjc.server.model.impl.NodeDefaultImpl:setConfig:37] - 开始初始化127.0.0.1:5003
+2024-12-07 19:06:20,243 Raft thread DEBUG [cn.wjc.server.model.impl.NodeDefaultImpl:changeState:120] - 节点Peer(addr=127.0.0.1:5001)转变为了CANDIDATE
+2024-12-07 19:06:20,243 Raft thread  INFO [cn.wjc.server.action.VoteAction:run:33] - 127.0.0.1:5001开始发起投票请求
+2024-12-07 19:06:20,245 Raft thread DEBUG [cn.wjc.server.action.TImeOutHeartBeatAction:run:85] - 节点(127.0.0.1:5001)超时，进入新一轮的选举状态，当前Trem:71
+2024-12-07 19:06:20,292 nioEventLoopGroup-9-2  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recReq:87] - 127.0.0.1:5003接收到投票请求
+2024-12-07 19:06:20,293 nioEventLoopGroup-3-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recReq:87] - 127.0.0.1:5000接收到投票请求
+2024-12-07 19:06:20,293 nioEventLoopGroup-7-2  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recReq:87] - 127.0.0.1:5002接收到投票请求
+2024-12-07 19:06:20,311 nioEventLoopGroup-13-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recVoteRes:101] - 127.0.0.1:5001接收到投票请求的结果
+2024-12-07 19:06:20,311 nioEventLoopGroup-13-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recVoteRes:111] - 接收到赞同票，来自127.0.0.1:5003
+2024-12-07 19:06:20,312 nioEventLoopGroup-13-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recVoteRes:127] - 当前收到的赞成票:1
+2024-12-07 19:06:20,318 nioEventLoopGroup-14-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recVoteRes:101] - 127.0.0.1:5001接收到投票请求的结果
+2024-12-07 19:06:20,318 nioEventLoopGroup-14-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recVoteRes:111] - 接收到赞同票，来自127.0.0.1:5002
+2024-12-07 19:06:20,318 nioEventLoopGroup-14-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recVoteRes:127] - 当前收到的赞成票:2
+2024-12-07 19:06:20,333 nioEventLoopGroup-3-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recVoteReq:159] - 对方日志没有自己新，请求节点：00自身节点term：11
+2024-12-07 19:06:20,334 nioEventLoopGroup-15-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recVoteRes:101] - 127.0.0.1:5001接收到投票请求的结果
+2024-12-07 19:06:20,334 nioEventLoopGroup-15-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recVoteRes:114] - 接收到拒绝票，来自127.0.0.1:5000
+2024-12-07 19:06:20,334 nioEventLoopGroup-15-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recVoteRes:127] - 当前收到的赞成票:2
+2024-12-07 19:06:23,217 Raft thread DEBUG [cn.wjc.server.model.impl.NodeDefaultImpl:changeState:120] - 节点Peer(addr=127.0.0.1:5000)转变为了CANDIDATE
+2024-12-07 19:06:23,218 Raft thread DEBUG [cn.wjc.server.action.TImeOutHeartBeatAction:run:85] - 节点(127.0.0.1:5000)超时，进入新一轮的选举状态，当前Trem:72
+2024-12-07 19:06:23,218 Raft thread  INFO [cn.wjc.server.action.VoteAction:run:33] - 127.0.0.1:5000开始发起投票请求
+2024-12-07 19:06:23,226 nioEventLoopGroup-9-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recReq:87] - 127.0.0.1:5003接收到投票请求
+2024-12-07 19:06:23,227 nioEventLoopGroup-7-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recReq:87] - 127.0.0.1:5002接收到投票请求
+2024-12-07 19:06:23,227 nioEventLoopGroup-5-1 DEBUG [cn.wjc.server.model.impl.NodeDefaultImpl:changeState:113] - 节点Peer(addr=127.0.0.1:5001)转变为了FOLLOWER
+2024-12-07 19:06:23,227 nioEventLoopGroup-5-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recReq:87] - 127.0.0.1:5001接收到投票请求
+2024-12-07 19:06:23,229 nioEventLoopGroup-10-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recVoteRes:101] - 127.0.0.1:5000接收到投票请求的结果
+2024-12-07 19:06:23,229 nioEventLoopGroup-12-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recVoteRes:101] - 127.0.0.1:5000接收到投票请求的结果
+2024-12-07 19:06:23,229 nioEventLoopGroup-10-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recVoteRes:111] - 接收到赞同票，来自127.0.0.1:5003
+2024-12-07 19:06:23,229 nioEventLoopGroup-12-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recVoteRes:111] - 接收到赞同票，来自127.0.0.1:5001
+2024-12-07 19:06:23,229 nioEventLoopGroup-10-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recVoteRes:127] - 当前收到的赞成票:1
+2024-12-07 19:06:23,229 nioEventLoopGroup-12-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recVoteRes:127] - 当前收到的赞成票:2
+2024-12-07 19:06:23,229 nioEventLoopGroup-11-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recVoteRes:101] - 127.0.0.1:5000接收到投票请求的结果
+2024-12-07 19:06:23,229 nioEventLoopGroup-11-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recVoteRes:111] - 接收到赞同票，来自127.0.0.1:5002
+2024-12-07 19:06:23,229 nioEventLoopGroup-11-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recVoteRes:127] - 当前收到的赞成票:3
+2024-12-07 19:06:23,230 nioEventLoopGroup-11-1 DEBUG [cn.wjc.server.model.impl.NodeDefaultImpl:changeState:132] - 节点Peer(addr=127.0.0.1:5000)转变为了LEADER
+2024-12-07 19:06:23,233 nioEventLoopGroup-7-4  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recCommandReq:351] - 节点:127.0.0.1:5002  接收到指令:SET test323 323
+2024-12-07 19:06:23,634 nioEventLoopGroup-7-4  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recCommandReq:373] - 节点不是LEADER, LEADER地址为：127.0.0.1:5000
+2024-12-07 19:06:23,636 nioEventLoopGroup-25-1  WARN [cn.wjc.server.msg.impl.MsgProcessingImpl:recCommandRes:328] - 请求发送失败,应该发往:127.0.0.1:5000
+2024-12-07 19:06:23,642 nioEventLoopGroup-3-4  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recCommandReq:351] - 节点:127.0.0.1:5000  接收到指令:SET test323 323
+2024-12-07 19:06:23,642 nioEventLoopGroup-3-4  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recCommandReq:376] - 节点127.0.0.1:5000,接收该指令

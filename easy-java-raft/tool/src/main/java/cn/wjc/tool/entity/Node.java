@@ -60,11 +60,11 @@ public class Node {
 
     public void setCurrentTerm(long currentTerm) {
         this.currentTerm = currentTerm;
-        kvStorageImpl.setString("currentTerm", String.valueOf(currentTerm));
+        kvStorageImpl.updataString("currentTerm", String.valueOf(currentTerm));
     }
 
     public void setCommitIndex(long commitIndex) {
         this.commitIndex = commitIndex;
-        kvStorageImpl.setString("commitIndex", String.valueOf(commitIndex));
+        kvStorageImpl.updataString("commitIndex", String.valueOf(commitIndex));
     }
 }

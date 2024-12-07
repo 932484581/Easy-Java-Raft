@@ -68,10 +68,11 @@ public class mybatisTest {
     @Test
     public void LogStorageTest() throws Throwable {
 
-        LogStorageImpl logStorage = new LogStorageImpl("log5");
+        LogStorageImpl logStorage = new LogStorageImpl("log");
         logStorage.init();
-        // logStorage.appendEntry(LogEntry.builder().index(1L).term(0).command(Command.builder().command("这是测试样例").build())
-        // .build());
+        logStorage
+                .appendEntry(LogEntry.builder().index(2L).term(0).command(Command.builder().command("这是测试样例22").build())
+                        .build());
 
         long res = logStorage.getLastLogIndex();
         System.out.println(res);
@@ -85,7 +86,7 @@ public class mybatisTest {
 
         KVStorageImpl kvStorageImpl = new KVStorageImpl("kv_store");
         kvStorageImpl.init();
-        kvStorageImpl.setString("test", "这是一个测试");
+        kvStorageImpl.setString("test2", "这是一个测试33");
 
         String res = kvStorageImpl.getString("test");
         String res2 = kvStorageImpl.getString("test2");

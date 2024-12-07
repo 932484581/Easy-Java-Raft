@@ -1,25 +1,17 @@
-2024-12-02 10:47:56,751 main DEBUG [org.apache.ibatis.logging.LogFactory:setImplementation:112] - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
-2024-12-02 10:47:56,760 main DEBUG [org.apache.ibatis.datasource.pooled.PooledDataSource:forceCloseAll:379] - PooledDataSource forcefully closed/removed all connections.
-2024-12-02 10:47:56,760 main DEBUG [org.apache.ibatis.datasource.pooled.PooledDataSource:forceCloseAll:379] - PooledDataSource forcefully closed/removed all connections.
-2024-12-02 10:47:56,760 main DEBUG [org.apache.ibatis.datasource.pooled.PooledDataSource:forceCloseAll:379] - PooledDataSource forcefully closed/removed all connections.
-2024-12-02 10:47:56,760 main DEBUG [org.apache.ibatis.datasource.pooled.PooledDataSource:forceCloseAll:379] - PooledDataSource forcefully closed/removed all connections.
-2024-12-02 10:47:56,761 main DEBUG [org.apache.ibatis.datasource.pooled.PooledDataSource:forceCloseAll:379] - PooledDataSource forcefully closed/removed all connections.
-2024-12-02 10:47:56,761 main DEBUG [org.apache.ibatis.datasource.pooled.PooledDataSource:forceCloseAll:379] - PooledDataSource forcefully closed/removed all connections.
-2024-12-02 10:47:56,818 main DEBUG [org.apache.ibatis.transaction.jdbc.JdbcTransaction:openConnection:143] - Opening JDBC Connection
-2024-12-02 10:47:56,998 main DEBUG [org.apache.ibatis.datasource.pooled.PooledDataSource:popConnection:454] - Created connection 1152606315.
-2024-12-02 10:47:56,999 main DEBUG [org.apache.ibatis.transaction.jdbc.JdbcTransaction:setDesiredAutoCommit:107] - Setting autocommit to false on JDBC Connection [com.mysql.cj.jdbc.ConnectionImpl@44b3606b]
-2024-12-02 10:47:57,001 main DEBUG [cn.wjc.tool.database.mapper.KVMapper.insertKVEntity:debug:135] - ==>  Preparing: INSERT INTO kv_store (`key`, value) VALUES (?, ?)
-2024-12-02 10:47:57,018 main DEBUG [cn.wjc.tool.database.mapper.KVMapper.insertKVEntity:debug:135] - ==> Parameters: test(String), 这是一个测试(String)
-2024-12-02 10:47:57,024 main ERROR [cn.wjc.tool.storage.impl.KVStorageImpl:setString:76] - org.apache.ibatis.exceptions.PersistenceException: 
-### Error updating database.  Cause: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry 'test' for key 'kv_store.PRIMARY'
-### The error may exist in mybatis/kv-mapper.xml
-### The error may involve cn.wjc.tool.database.mapper.KVMapper.insertKVEntity-Inline
-### The error occurred while setting parameters
-### SQL: INSERT INTO kv_store         (`key`, value) VALUES (?, ?)
-### Cause: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry 'test' for key 'kv_store.PRIMARY'
-2024-12-02 10:47:57,025 main DEBUG [cn.wjc.tool.database.mapper.KVMapper.getKVEntityByKey:debug:135] - ==>  Preparing: SELECT * FROM kv_store WHERE `key` = ?
-2024-12-02 10:47:57,025 main DEBUG [cn.wjc.tool.database.mapper.KVMapper.getKVEntityByKey:debug:135] - ==> Parameters: test(String)
-2024-12-02 10:47:57,039 main DEBUG [cn.wjc.tool.database.mapper.KVMapper.getKVEntityByKey:debug:135] - <==      Total: 1
-2024-12-02 10:47:57,041 main DEBUG [cn.wjc.tool.database.mapper.KVMapper.getKVEntityByKey:debug:135] - ==>  Preparing: SELECT * FROM kv_store WHERE `key` = ?
-2024-12-02 10:47:57,041 main DEBUG [cn.wjc.tool.database.mapper.KVMapper.getKVEntityByKey:debug:135] - ==> Parameters: test2(String)
-2024-12-02 10:47:57,042 main DEBUG [cn.wjc.tool.database.mapper.KVMapper.getKVEntityByKey:debug:135] - <==      Total: 0
+2024-12-07 18:57:26,954 main DEBUG [org.apache.ibatis.logging.LogFactory:setImplementation:112] - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+2024-12-07 18:57:26,963 main DEBUG [org.apache.ibatis.datasource.pooled.PooledDataSource:forceCloseAll:379] - PooledDataSource forcefully closed/removed all connections.
+2024-12-07 18:57:26,963 main DEBUG [org.apache.ibatis.datasource.pooled.PooledDataSource:forceCloseAll:379] - PooledDataSource forcefully closed/removed all connections.
+2024-12-07 18:57:26,963 main DEBUG [org.apache.ibatis.datasource.pooled.PooledDataSource:forceCloseAll:379] - PooledDataSource forcefully closed/removed all connections.
+2024-12-07 18:57:26,964 main DEBUG [org.apache.ibatis.datasource.pooled.PooledDataSource:forceCloseAll:379] - PooledDataSource forcefully closed/removed all connections.
+2024-12-07 18:57:26,964 main DEBUG [org.apache.ibatis.datasource.pooled.PooledDataSource:forceCloseAll:379] - PooledDataSource forcefully closed/removed all connections.
+2024-12-07 18:57:26,964 main DEBUG [org.apache.ibatis.datasource.pooled.PooledDataSource:forceCloseAll:379] - PooledDataSource forcefully closed/removed all connections.
+2024-12-07 18:57:27,024 main DEBUG [org.apache.ibatis.transaction.jdbc.JdbcTransaction:openConnection:143] - Opening JDBC Connection
+2024-12-07 18:57:27,201 main DEBUG [org.apache.ibatis.datasource.pooled.PooledDataSource:popConnection:454] - Created connection 1831010686.
+2024-12-07 18:57:27,202 main DEBUG [org.apache.ibatis.transaction.jdbc.JdbcTransaction:setDesiredAutoCommit:107] - Setting autocommit to false on JDBC Connection [com.mysql.cj.jdbc.ConnectionImpl@6d23017e]
+2024-12-07 18:57:27,205 main DEBUG [cn.wjc.tool.database.mapper.KVMapper.getKVEntityByKey:debug:135] - ==>  Preparing: SELECT * FROM kv_store WHERE `key` = ?
+2024-12-07 18:57:27,222 main DEBUG [cn.wjc.tool.database.mapper.KVMapper.getKVEntityByKey:debug:135] - ==> Parameters: test3(String)
+2024-12-07 18:57:27,235 main DEBUG [cn.wjc.tool.database.mapper.KVMapper.getKVEntityByKey:debug:135] - <==      Total: 0
+2024-12-07 18:57:27,237 main DEBUG [cn.wjc.tool.database.mapper.KVMapper.insertKVEntity:debug:135] - ==>  Preparing: INSERT INTO kv_store (`key`, value) VALUES (?, ?)
+2024-12-07 18:57:27,237 main DEBUG [cn.wjc.tool.database.mapper.KVMapper.insertKVEntity:debug:135] - ==> Parameters: test3(String), 测试信息(String)
+2024-12-07 18:57:27,239 main DEBUG [cn.wjc.tool.database.mapper.KVMapper.insertKVEntity:debug:135] - <==    Updates: 1
+2024-12-07 18:57:27,240 main DEBUG [org.apache.ibatis.transaction.jdbc.JdbcTransaction:commit:76] - Committing JDBC Connection [com.mysql.cj.jdbc.ConnectionImpl@6d23017e]

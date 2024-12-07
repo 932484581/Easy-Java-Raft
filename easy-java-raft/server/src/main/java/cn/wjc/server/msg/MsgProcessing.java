@@ -9,6 +9,12 @@ public interface MsgProcessing {
 
     public Response recReq(Request request, Node node);
 
+    // 接收到指令
+    public void recCommandRes(Response response, Node node);
+
+    // 接收到指令响应,返回结果
+    public Response recCommandReq(Request request, Node node);
+
     // 接收到投票响应信息
     public void recVoteRes(Response response, Node node);
 
