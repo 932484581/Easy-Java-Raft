@@ -28,7 +28,9 @@ public class ServerHandler extends SimpleChannelInboundHandler<Request> {
     @Override
     public void channelRead0(ChannelHandlerContext ctx, Request request) throws Exception {
         Response response = msgProcessingImpl.recReq(request, node);
-        ctx.writeAndFlush(response);
+        if (response != null) {
+            ctx.writeAndFlush(response);
+        }
     }
 
     @Override

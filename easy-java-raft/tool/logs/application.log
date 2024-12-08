@@ -1,6 +1,183 @@
-2024-12-07 18:57:27,205 main DEBUG [cn.wjc.tool.database.mapper.KVMapper.getKVEntityByKey:debug:135] - ==>  Preparing: SELECT * FROM kv_store WHERE `key` = ?
-2024-12-07 18:57:27,222 main DEBUG [cn.wjc.tool.database.mapper.KVMapper.getKVEntityByKey:debug:135] - ==> Parameters: test3(String)
-2024-12-07 18:57:27,235 main DEBUG [cn.wjc.tool.database.mapper.KVMapper.getKVEntityByKey:debug:135] - <==      Total: 0
-2024-12-07 18:57:27,237 main DEBUG [cn.wjc.tool.database.mapper.KVMapper.insertKVEntity:debug:135] - ==>  Preparing: INSERT INTO kv_store (`key`, value) VALUES (?, ?)
-2024-12-07 18:57:27,237 main DEBUG [cn.wjc.tool.database.mapper.KVMapper.insertKVEntity:debug:135] - ==> Parameters: test3(String), 测试信息(String)
-2024-12-07 18:57:27,239 main DEBUG [cn.wjc.tool.database.mapper.KVMapper.insertKVEntity:debug:135] - <==    Updates: 1
+2024-12-08 15:44:52,109 main DEBUG [cn.wjc.tool.database.mapper.LogMapper.getMaxIndex:debug:135] - ==>  Preparing: SELECT MAX(log_index) FROM log0;
+2024-12-08 15:44:52,124 main DEBUG [cn.wjc.tool.database.mapper.LogMapper.getMaxIndex:debug:135] - ==> Parameters: 
+2024-12-08 15:44:52,141 main DEBUG [cn.wjc.tool.database.mapper.LogMapper.getMaxIndex:debug:135] - <==      Total: 1
+2024-12-08 15:44:52,148 Thread-1 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==>  Preparing: SELECT * FROM log0 WHERE log_index= ?
+2024-12-08 15:44:52,149 Thread-1 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==> Parameters: 1(Long)
+2024-12-08 15:44:52,151 Thread-1 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - <==      Total: 1
+2024-12-08 15:44:52,167 Thread-0 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==>  Preparing: SELECT * FROM log0 WHERE log_index= ?
+2024-12-08 15:44:52,168 Thread-0 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==> Parameters: 1(Long)
+2024-12-08 15:44:52,169 Thread-0 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - <==      Total: 1
+2024-12-08 15:44:52,179 Thread-2 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==>  Preparing: SELECT * FROM log0 WHERE log_index= ?
+2024-12-08 15:44:52,180 Thread-2 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==> Parameters: 1(Long)
+2024-12-08 15:44:52,181 Thread-2 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - <==      Total: 1
+2024-12-08 15:44:52,183 Thread-0 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==>  Preparing: SELECT * FROM log0 WHERE log_index= ?
+2024-12-08 15:44:52,183 Thread-1 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==>  Preparing: SELECT * FROM log0 WHERE log_index= ?
+2024-12-08 15:44:52,183 Thread-2 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==>  Preparing: SELECT * FROM log0 WHERE log_index= ?
+2024-12-08 15:44:52,183 Thread-1 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==> Parameters: 1(Long)
+2024-12-08 15:44:52,183 Thread-0 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==> Parameters: 1(Long)
+2024-12-08 15:44:52,184 Thread-2 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==> Parameters: 1(Long)
+2024-12-08 15:44:52,184 Thread-0 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - <==      Total: 1
+2024-12-08 15:44:52,185 Thread-2 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - <==      Total: 1
+2024-12-08 15:44:52,185 Thread-1 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - <==      Total: 1
+2024-12-08 15:44:52,187 Thread-2 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==>  Preparing: SELECT * FROM log0 WHERE log_index= ?
+2024-12-08 15:44:52,187 Thread-2 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==> Parameters: 1(Long)
+2024-12-08 15:44:52,187 Thread-0 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==>  Preparing: SELECT * FROM log0 WHERE log_index= ?
+2024-12-08 15:44:52,188 Thread-1 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==>  Preparing: SELECT * FROM log0 WHERE log_index= ?
+2024-12-08 15:44:52,188 Thread-0 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==> Parameters: 1(Long)
+2024-12-08 15:44:52,188 Thread-1 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==> Parameters: 1(Long)
+2024-12-08 15:44:52,188 Thread-2 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - <==      Total: 1
+2024-12-08 15:44:52,189 Thread-0 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - <==      Total: 1
+2024-12-08 15:44:52,189 Thread-1 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - <==      Total: 1
+2024-12-08 15:44:52,191 Thread-2 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==>  Preparing: SELECT * FROM log0 WHERE log_index= ?
+2024-12-08 15:44:52,191 Thread-2 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==> Parameters: 1(Long)
+2024-12-08 15:44:52,191 Thread-1 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==>  Preparing: SELECT * FROM log0 WHERE log_index= ?
+2024-12-08 15:44:52,192 Thread-0 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==>  Preparing: SELECT * FROM log0 WHERE log_index= ?
+2024-12-08 15:44:52,192 Thread-1 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==> Parameters: 1(Long)
+2024-12-08 15:44:52,192 Thread-0 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==> Parameters: 1(Long)
+2024-12-08 15:44:52,192 Thread-2 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - <==      Total: 1
+2024-12-08 15:44:52,193 Thread-1 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - <==      Total: 1
+2024-12-08 15:44:52,193 Thread-0 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - <==      Total: 1
+2024-12-08 15:44:52,194 Thread-2 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==>  Preparing: SELECT * FROM log0 WHERE log_index= ?
+2024-12-08 15:44:52,195 Thread-1 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==>  Preparing: SELECT * FROM log0 WHERE log_index= ?
+2024-12-08 15:44:52,195 Thread-2 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==> Parameters: 1(Long)
+2024-12-08 15:44:52,195 Thread-1 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==> Parameters: 1(Long)
+2024-12-08 15:44:52,195 Thread-0 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==>  Preparing: SELECT * FROM log0 WHERE log_index= ?
+2024-12-08 15:44:52,196 Thread-0 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==> Parameters: 1(Long)
+2024-12-08 15:44:52,196 Thread-2 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - <==      Total: 1
+2024-12-08 15:44:52,196 Thread-1 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - <==      Total: 1
+2024-12-08 15:44:52,198 Thread-1 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==>  Preparing: SELECT * FROM log0 WHERE log_index= ?
+2024-12-08 15:44:52,198 Thread-2 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==>  Preparing: SELECT * FROM log0 WHERE log_index= ?
+2024-12-08 15:44:52,198 Thread-2 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==> Parameters: 1(Long)
+2024-12-08 15:44:52,198 Thread-0 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - <==      Total: 1
+2024-12-08 15:44:52,199 Thread-1 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==> Parameters: 1(Long)
+2024-12-08 15:44:52,200 Thread-2 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - <==      Total: 1
+2024-12-08 15:44:52,200 Thread-1 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - <==      Total: 1
+2024-12-08 15:44:52,201 Thread-0 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==>  Preparing: SELECT * FROM log0 WHERE log_index= ?
+2024-12-08 15:44:52,201 Thread-0 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==> Parameters: 1(Long)
+2024-12-08 15:44:52,201 Thread-1 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==>  Preparing: SELECT * FROM log0 WHERE log_index= ?
+2024-12-08 15:44:52,201 Thread-2 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==>  Preparing: SELECT * FROM log0 WHERE log_index= ?
+2024-12-08 15:44:52,201 Thread-1 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==> Parameters: 1(Long)
+2024-12-08 15:44:52,201 Thread-2 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==> Parameters: 1(Long)
+2024-12-08 15:44:52,202 Thread-0 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - <==      Total: 1
+2024-12-08 15:44:52,202 Thread-2 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - <==      Total: 1
+2024-12-08 15:44:52,202 Thread-1 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - <==      Total: 1
+2024-12-08 15:44:52,203 Thread-2 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==>  Preparing: SELECT * FROM log0 WHERE log_index= ?
+2024-12-08 15:44:52,203 Thread-0 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==>  Preparing: SELECT * FROM log0 WHERE log_index= ?
+2024-12-08 15:44:52,203 Thread-2 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==> Parameters: 1(Long)
+2024-12-08 15:44:52,204 Thread-0 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==> Parameters: 1(Long)
+2024-12-08 15:44:52,203 Thread-1 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==>  Preparing: SELECT * FROM log0 WHERE log_index= ?
+2024-12-08 15:44:52,204 Thread-1 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==> Parameters: 1(Long)
+2024-12-08 15:44:52,204 Thread-2 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - <==      Total: 1
+2024-12-08 15:44:52,204 Thread-0 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - <==      Total: 1
+2024-12-08 15:44:52,205 Thread-1 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - <==      Total: 1
+2024-12-08 15:44:52,206 Thread-2 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==>  Preparing: SELECT * FROM log0 WHERE log_index= ?
+2024-12-08 15:44:52,206 Thread-2 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==> Parameters: 1(Long)
+2024-12-08 15:44:52,206 Thread-1 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==>  Preparing: SELECT * FROM log0 WHERE log_index= ?
+2024-12-08 15:44:52,206 Thread-0 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==>  Preparing: SELECT * FROM log0 WHERE log_index= ?
+2024-12-08 15:44:52,206 Thread-1 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==> Parameters: 1(Long)
+2024-12-08 15:44:52,206 Thread-0 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==> Parameters: 1(Long)
+2024-12-08 15:44:52,206 Thread-2 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - <==      Total: 1
+2024-12-08 15:44:52,207 Thread-1 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - <==      Total: 1
+2024-12-08 15:44:52,207 Thread-0 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - <==      Total: 1
+2024-12-08 15:44:52,207 Thread-2 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==>  Preparing: SELECT * FROM log0 WHERE log_index= ?
+2024-12-08 15:44:52,208 Thread-2 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==> Parameters: 1(Long)
+2024-12-08 15:44:52,208 Thread-1 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==>  Preparing: SELECT * FROM log0 WHERE log_index= ?
+2024-12-08 15:44:52,208 Thread-1 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==> Parameters: 1(Long)
+2024-12-08 15:44:52,208 Thread-0 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==>  Preparing: SELECT * FROM log0 WHERE log_index= ?
+2024-12-08 15:44:52,208 Thread-2 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - <==      Total: 1
+2024-12-08 15:44:52,209 Thread-0 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==> Parameters: 1(Long)
+2024-12-08 15:44:52,209 Thread-1 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - <==      Total: 1
+2024-12-08 15:44:52,209 Thread-2 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==>  Preparing: SELECT * FROM log0 WHERE log_index= ?
+2024-12-08 15:44:52,210 Thread-1 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==>  Preparing: SELECT * FROM log0 WHERE log_index= ?
+2024-12-08 15:44:52,210 Thread-2 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==> Parameters: 1(Long)
+2024-12-08 15:44:52,210 Thread-0 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - <==      Total: 1
+2024-12-08 15:44:52,210 Thread-1 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==> Parameters: 1(Long)
+2024-12-08 15:44:52,211 Thread-2 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - <==      Total: 1
+2024-12-08 15:44:52,211 Thread-1 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - <==      Total: 1
+2024-12-08 15:44:52,211 Thread-0 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==>  Preparing: SELECT * FROM log0 WHERE log_index= ?
+2024-12-08 15:44:52,212 Thread-2 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==>  Preparing: SELECT * FROM log0 WHERE log_index= ?
+2024-12-08 15:44:52,212 Thread-0 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==> Parameters: 1(Long)
+2024-12-08 15:44:52,212 Thread-2 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==> Parameters: 1(Long)
+2024-12-08 15:44:52,212 Thread-1 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==>  Preparing: SELECT * FROM log0 WHERE log_index= ?
+2024-12-08 15:44:52,213 Thread-2 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - <==      Total: 1
+2024-12-08 15:44:52,213 Thread-1 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==> Parameters: 1(Long)
+2024-12-08 15:44:52,213 Thread-0 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - <==      Total: 1
+2024-12-08 15:44:52,214 Thread-1 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - <==      Total: 1
+2024-12-08 15:44:52,214 Thread-2 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==>  Preparing: SELECT * FROM log0 WHERE log_index= ?
+2024-12-08 15:44:52,215 Thread-1 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==>  Preparing: SELECT * FROM log0 WHERE log_index= ?
+2024-12-08 15:44:52,215 Thread-0 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==>  Preparing: SELECT * FROM log0 WHERE log_index= ?
+2024-12-08 15:44:52,215 Thread-2 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==> Parameters: 1(Long)
+2024-12-08 15:44:52,215 Thread-1 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==> Parameters: 1(Long)
+2024-12-08 15:44:52,215 Thread-0 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==> Parameters: 1(Long)
+2024-12-08 15:44:52,216 Thread-2 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - <==      Total: 1
+2024-12-08 15:44:52,216 Thread-1 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - <==      Total: 1
+2024-12-08 15:44:52,216 Thread-0 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - <==      Total: 1
+2024-12-08 15:44:52,217 Thread-2 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==>  Preparing: SELECT * FROM log0 WHERE log_index= ?
+2024-12-08 15:44:52,217 Thread-2 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==> Parameters: 1(Long)
+2024-12-08 15:44:52,217 Thread-1 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==>  Preparing: SELECT * FROM log0 WHERE log_index= ?
+2024-12-08 15:44:52,217 Thread-1 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==> Parameters: 1(Long)
+2024-12-08 15:44:52,217 Thread-0 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==>  Preparing: SELECT * FROM log0 WHERE log_index= ?
+2024-12-08 15:44:52,218 Thread-0 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==> Parameters: 1(Long)
+2024-12-08 15:44:52,218 Thread-2 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - <==      Total: 1
+2024-12-08 15:44:52,218 Thread-0 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - <==      Total: 1
+2024-12-08 15:44:52,218 Thread-1 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - <==      Total: 1
+2024-12-08 15:44:52,219 Thread-2 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==>  Preparing: SELECT * FROM log0 WHERE log_index= ?
+2024-12-08 15:44:52,220 Thread-0 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==>  Preparing: SELECT * FROM log0 WHERE log_index= ?
+2024-12-08 15:44:52,220 Thread-2 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==> Parameters: 1(Long)
+2024-12-08 15:44:52,220 Thread-0 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==> Parameters: 1(Long)
+2024-12-08 15:44:52,220 Thread-1 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==>  Preparing: SELECT * FROM log0 WHERE log_index= ?
+2024-12-08 15:44:52,220 Thread-1 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==> Parameters: 1(Long)
+2024-12-08 15:44:52,220 Thread-2 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - <==      Total: 1
+2024-12-08 15:44:52,220 Thread-0 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - <==      Total: 1
+2024-12-08 15:44:52,221 Thread-0 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==>  Preparing: SELECT * FROM log0 WHERE log_index= ?
+2024-12-08 15:44:52,221 Thread-1 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - <==      Total: 1
+2024-12-08 15:44:52,221 Thread-2 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==>  Preparing: SELECT * FROM log0 WHERE log_index= ?
+2024-12-08 15:44:52,222 Thread-0 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==> Parameters: 1(Long)
+2024-12-08 15:44:52,222 Thread-2 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==> Parameters: 1(Long)
+2024-12-08 15:44:52,222 Thread-0 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - <==      Total: 1
+2024-12-08 15:44:52,222 Thread-2 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - <==      Total: 1
+2024-12-08 15:44:52,223 Thread-1 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==>  Preparing: SELECT * FROM log0 WHERE log_index= ?
+2024-12-08 15:44:52,223 Thread-0 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==>  Preparing: SELECT * FROM log0 WHERE log_index= ?
+2024-12-08 15:44:52,223 Thread-1 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==> Parameters: 1(Long)
+2024-12-08 15:44:52,223 Thread-0 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==> Parameters: 1(Long)
+2024-12-08 15:44:52,223 Thread-1 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - <==      Total: 1
+2024-12-08 15:44:52,224 Thread-0 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - <==      Total: 1
+2024-12-08 15:44:52,224 Thread-2 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==>  Preparing: SELECT * FROM log0 WHERE log_index= ?
+2024-12-08 15:44:52,224 Thread-2 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==> Parameters: 1(Long)
+2024-12-08 15:44:52,224 Thread-1 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==>  Preparing: SELECT * FROM log0 WHERE log_index= ?
+2024-12-08 15:44:52,224 Thread-1 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==> Parameters: 1(Long)
+2024-12-08 15:44:52,224 Thread-0 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==>  Preparing: SELECT * FROM log0 WHERE log_index= ?
+2024-12-08 15:44:52,224 Thread-0 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==> Parameters: 1(Long)
+2024-12-08 15:44:52,225 Thread-2 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - <==      Total: 1
+2024-12-08 15:44:52,225 Thread-1 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - <==      Total: 1
+2024-12-08 15:44:52,225 Thread-0 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - <==      Total: 1
+2024-12-08 15:44:52,226 Thread-2 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==>  Preparing: SELECT * FROM log0 WHERE log_index= ?
+2024-12-08 15:44:52,226 Thread-1 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==>  Preparing: SELECT * FROM log0 WHERE log_index= ?
+2024-12-08 15:44:52,226 Thread-0 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==>  Preparing: SELECT * FROM log0 WHERE log_index= ?
+2024-12-08 15:44:52,226 Thread-2 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==> Parameters: 1(Long)
+2024-12-08 15:44:52,226 Thread-1 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==> Parameters: 1(Long)
+2024-12-08 15:44:52,226 Thread-0 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==> Parameters: 1(Long)
+2024-12-08 15:44:52,227 Thread-2 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - <==      Total: 1
+2024-12-08 15:44:52,227 Thread-0 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - <==      Total: 1
+2024-12-08 15:44:52,227 Thread-1 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - <==      Total: 1
+2024-12-08 15:44:52,228 Thread-0 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==>  Preparing: SELECT * FROM log0 WHERE log_index= ?
+2024-12-08 15:44:52,228 Thread-2 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==>  Preparing: SELECT * FROM log0 WHERE log_index= ?
+2024-12-08 15:44:52,228 Thread-0 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==> Parameters: 1(Long)
+2024-12-08 15:44:52,228 Thread-2 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==> Parameters: 1(Long)
+2024-12-08 15:44:52,229 Thread-1 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==>  Preparing: SELECT * FROM log0 WHERE log_index= ?
+2024-12-08 15:44:52,229 Thread-0 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - <==      Total: 1
+2024-12-08 15:44:52,229 Thread-1 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==> Parameters: 1(Long)
+2024-12-08 15:44:52,229 Thread-2 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - <==      Total: 1
+2024-12-08 15:44:52,229 Thread-0 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==>  Preparing: SELECT * FROM log0 WHERE log_index= ?
+2024-12-08 15:44:52,229 Thread-0 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==> Parameters: 1(Long)
+2024-12-08 15:44:52,230 Thread-1 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - <==      Total: 1
+2024-12-08 15:44:52,230 Thread-0 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - <==      Total: 1
+2024-12-08 15:44:52,230 Thread-2 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==>  Preparing: SELECT * FROM log0 WHERE log_index= ?
+2024-12-08 15:44:52,230 Thread-2 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==> Parameters: 1(Long)
+2024-12-08 15:44:52,230 Thread-2 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - <==      Total: 1
+2024-12-08 15:44:52,231 Thread-0 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==>  Preparing: SELECT * FROM log0 WHERE log_index= ?
+2024-12-08 15:44:52,231 Thread-0 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==> Parameters: 1(Long)
+2024-12-08 15:44:52,231 Thread-1 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==>  Preparing: SELECT * FROM log0 WHERE log_index= ?
+2024-12-08 15:44:52,231 Thread-1 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - ==> Parameters: 1(Long)
+2024-12-08 15:44:52,231 Thread-0 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - <==      Total: 1
+2024-12-08 15:44:52,232 Thread-1 DEBUG [cn.wjc.tool.database.mapper.LogMapper.getLogEntryByIndex:debug:135] - <==      Total: 1

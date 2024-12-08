@@ -29,12 +29,12 @@ public class KVStorageImpl implements KVStorage {
     }
 
     @Override
-    public void destroy() throws Throwable {
+    public void destroy() {
         session.close();
     }
 
     @Override
-    public void init() throws Throwable {
+    public void init() {
     }
 
     @Override

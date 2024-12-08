@@ -1,8 +1,10 @@
 package cn.wjc.server.model.impl;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.ScheduledFuture;
 
+import cn.wjc.server.action.AppendAentryAction;
 import cn.wjc.server.action.TImeOutHeartBeatAction;
 import cn.wjc.server.action.VoteAction;
 import cn.wjc.server.model.NodeDefault;
@@ -25,7 +27,9 @@ import lombok.extern.slf4j.Slf4j;
 @Data
 public class NodeDefaultImpl implements NodeDefault {
     private Node node;
-    private ScheduledFuture<?> getVotefuture;
+    private LinkedList<ScheduledFuture<?>> futureList = new LinkedList<>();
+    // private ScheduledFuture<?> getVotefuture;
+    // private ScheduledFuture<?> appendAentryfuture;
 
     public NodeDefaultImpl(Node node) {
         this.node = node;
@@ -107,6 +111,11 @@ public class NodeDefaultImpl implements NodeDefault {
     @Override
     public void changeState(int state) {
         node.getResultMap.clear();
+        // 取消所有ScheduledFuture任务
+        for (ScheduledFuture<?> future : futureList) {
+            future.cancel(true);
+        }
+
         if (state == State.FOLLOWER) {
             node.setState(State.FOLLOWER);
             node.votedFor = null;
@@ -116,19 +125,15 @@ public class NodeDefaultImpl implements NodeDefault {
             // 给自己投票
             node.getResultMap.put(node.getPeerSet().getSelf().getAddr(), 1L);
             node.votedFor = node.getPeerSet().getSelf().getAddr();
-            getVotefuture = RaftThreadPool.scheduleAtFixedRate(new VoteAction(node), 0, 50000);
+            futureList.add(RaftThreadPool.scheduleAtFixedRate(new VoteAction(node), 0, 50000));
             log.debug("节点" + node.peerSet.getSelf() + "转变为了CANDIDATE");
         } else if (state == State.LEADER) {
-
             List<Peer> peers = node.peerSet.getPeersWithOutSelf();
             for (Peer peer : peers) {
                 node.getResultMap.put(peer.getAddr(), 0L);
             }
-
-            if (getVotefuture != null) {
-                getVotefuture.cancel(true); // true表示如果任务正在执行，则尝试中断任务
-            }
             node.setState(State.LEADER);
+            futureList.add(RaftThreadPool.scheduleAtFixedRate(new AppendAentryAction(node), 0, 50000));
             log.debug("节点" + node.peerSet.getSelf() + "转变为了LEADER");
         }
 

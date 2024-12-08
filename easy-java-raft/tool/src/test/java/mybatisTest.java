@@ -68,7 +68,7 @@ public class mybatisTest {
     @Test
     public void LogStorageTest() throws Throwable {
 
-        LogStorageImpl logStorage = new LogStorageImpl("log");
+        LogStorageImpl logStorage = new LogStorageImpl("log0");
         logStorage.init();
         logStorage
                 .appendEntry(LogEntry.builder().index(2L).term(0).command(Command.builder().command("这是测试样例22").build())
@@ -77,7 +77,14 @@ public class mybatisTest {
         long res = logStorage.getLastLogIndex();
         System.out.println(res);
         LogEntry logEntry = logStorage.getEntry(2);
+        LogEntry logEntry2 = logStorage.getEntry(1);
+        LogEntry logEntry3 = logStorage.getEntry(0);
+        logEntry = logStorage.getEntry(2);
+        logEntry2 = logStorage.getEntry(1);
+        logEntry3 = logStorage.getEntry(0);
         System.out.println(logEntry);
+        System.out.println(logEntry2);
+        System.out.println(logEntry3);
 
     }
 
@@ -92,5 +99,42 @@ public class mybatisTest {
         String res2 = kvStorageImpl.getString("test2");
         System.out.println(res);
         System.out.println(res2);
+    }
+
+    @Test
+    public void LogStorageTest2() throws Throwable {
+        LogStorageImpl logStorage = new LogStorageImpl("log0");
+
+        LogStorageImpl logStorage2 = new LogStorageImpl("log0");
+
+        LogStorageImpl logStorage3 = new LogStorageImpl("log0");
+
+        long res = logStorage.getLastLogIndex();
+        System.out.println(res);
+
+        Thread thread1 = new Thread(new SelectTask(logStorage));
+        Thread thread2 = new Thread(new SelectTask(logStorage));
+        Thread thread3 = new Thread(new SelectTask(logStorage));
+
+        thread1.start();
+        thread2.start();
+        thread3.start();
+        Thread.sleep(600);
+    }
+
+    static class SelectTask implements Runnable {
+        LogStorageImpl logStorage;
+
+        public SelectTask(LogStorageImpl logStorage) {
+            this.logStorage = logStorage;
+        }
+
+        @Override
+        public void run() {
+            for (int i = 0; i < 20; i++) {
+                LogEntry logEntry = logStorage.getEntry(1);
+                System.out.println(logEntry);
+            }
+        }
     }
 }

@@ -28,7 +28,7 @@
         </layout>
     </appender>
 
-    <logger name="cn.wjc.server" level="DEBUG" additivity="false">
+    <logger name="cn.wjc.server" level="ERROR" additivity="false">
         <appender-ref ref="APP_FILE" />
     </logger>
 

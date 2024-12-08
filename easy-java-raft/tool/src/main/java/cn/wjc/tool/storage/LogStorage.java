@@ -19,7 +19,7 @@ public interface LogStorage extends LifeCycle {
     /**
      * 根据index获取日志
      */
-    LogEntry getEntry(final long index);
+    LogEntry getEntry(long index);
 
     /**
      * 使用前请先调用getEntry
@@ -27,12 +27,12 @@ public interface LogStorage extends LifeCycle {
      * @deprecated
      */
     @Deprecated
-    long getTerm(final long index);
+    long getTerm(long index);
 
     /**
      * 追加日志
      */
-    boolean appendEntry(final LogEntry entry);
+    boolean appendEntry(LogEntry entry);
 
     /**
      * @description: 追加多个日志
@@ -40,7 +40,7 @@ public interface LogStorage extends LifeCycle {
      * @return 写入成功的数量
      * @author: WJC
      */
-    int appendEntries(final List<LogEntry> entries);
+    int appendEntries(List<LogEntry> entries);
 
     /**
      * @description: 日志将会删除日志(1~firstIndexKept)
@@ -48,7 +48,7 @@ public interface LogStorage extends LifeCycle {
      * @return {*}
      * @author: WJC
      */
-    boolean truncatePrefix(final long firstIndexKept);
+    boolean truncatePrefix(long firstIndexKept);
 
     /**
      * @description: 删除lastIndexKept以及之后的日志
@@ -56,6 +56,6 @@ public interface LogStorage extends LifeCycle {
      * @return {*}
      * @author: WJC
      */
-    boolean truncateSuffix(final long lastIndexKept);
+    boolean truncateSuffix(long lastIndexKept);
 
 }
