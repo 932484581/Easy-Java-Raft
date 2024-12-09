@@ -33,7 +33,11 @@ public class TImeOutHeartBeatAction implements Runnable {
     public void run() {
 
         long current = System.currentTimeMillis();
-
+        // 节点是待加入节点,不参与操作
+        if (!node.getCanJoin()) {
+            return;
+        }
+        // 领导者发送心跳
         if (node.getState() == State.LEADER) {
             // 发送心跳
             if (current - node.preHeartBeatTime > node.heartBeatTick) {
@@ -73,7 +77,7 @@ public class TImeOutHeartBeatAction implements Runnable {
                 }
             }
         }
-
+        // 超时就进入CANDIDATE
         else {
             // 超时处理
             if (current - node.preElectionTime > node.electionTime) {

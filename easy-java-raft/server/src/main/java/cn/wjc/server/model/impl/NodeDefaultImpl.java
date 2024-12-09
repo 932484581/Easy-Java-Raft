@@ -9,6 +9,8 @@ import cn.wjc.server.action.TImeOutHeartBeatAction;
 import cn.wjc.server.action.VoteAction;
 import cn.wjc.server.model.NodeDefault;
 import cn.wjc.tool.command.impl.CommandProtocolImpl;
+import cn.wjc.tool.entity.AentryParam;
+import cn.wjc.tool.entity.LogEntry;
 import cn.wjc.tool.entity.Node;
 import cn.wjc.tool.entity.Peer;
 import cn.wjc.tool.entity.PeerSet;
@@ -49,7 +51,7 @@ public class NodeDefaultImpl implements NodeDefault {
         LogStorageImpl logStorage = new LogStorageImpl("log" + String.valueOf(port % 10));
         logStorage.init();
         node.logStorage = logStorage;
-        node.setCommandProtocolImpl(new CommandProtocolImpl("kv_store" + String.valueOf(port % 10)));
+        node.setCommandProtocolImpl(new CommandProtocolImpl("kv_store" + String.valueOf(port % 10), node));
         node.setKvStorageImpl(new KVStorageImpl("kv_store" + String.valueOf(port % 10)));
         // 初始化commitIndex
         String initcommitIndex = node.getKvStorageImpl().getString("commitIndex");
@@ -62,7 +64,7 @@ public class NodeDefaultImpl implements NodeDefault {
         // 初始化currentTerm
         String initCurrentTerm = node.getKvStorageImpl().getString("currentTerm");
         if (initCurrentTerm == null) {
-            node.getKvStorageImpl().setString("commitIndex", "0");
+            node.getKvStorageImpl().setString("currentTerm", "0");
             node.setCurrentTerm(0L);
         } else {
             node.currentTerm = Long.valueOf(initCurrentTerm);
@@ -117,10 +119,12 @@ public class NodeDefaultImpl implements NodeDefault {
         }
 
         if (state == State.FOLLOWER) {
+            log.info(node.getPeerSet().getSelf().getAddr() + ": 改变角色为FOLLOWER");
             node.setState(State.FOLLOWER);
             node.votedFor = null;
             log.debug("节点" + node.peerSet.getSelf() + "转变为了FOLLOWER");
         } else if (state == State.CANDIDATE) {
+            log.info(node.getPeerSet().getSelf().getAddr() + ": 改变角色为CANDIDATE");
             node.setState(State.CANDIDATE);
             // 给自己投票
             node.getResultMap.put(node.getPeerSet().getSelf().getAddr(), 1L);
@@ -128,6 +132,7 @@ public class NodeDefaultImpl implements NodeDefault {
             futureList.add(RaftThreadPool.scheduleAtFixedRate(new VoteAction(node), 0, 5000));
             log.debug("节点" + node.peerSet.getSelf() + "转变为了CANDIDATE");
         } else if (state == State.LEADER) {
+            log.info(node.getPeerSet().getSelf().getAddr() + ": 改变角色为LEADER");
             List<Peer> peers = node.peerSet.getPeersWithOutSelf();
             for (Peer peer : peers) {
                 node.getResultMap.put(peer.getAddr(), 0L);
@@ -148,10 +153,41 @@ public class NodeDefaultImpl implements NodeDefault {
         ServerImpl server = new ServerImpl(node);
         server.init();
         ClientImpl client = new ClientImpl(node);
-        for (Peer peer : node.peerSet.getPeersWithOutSelf()) {
+        for (Peer peer : node.peerSet.getList()) {
             client.connectToServer(peer.getAddr());
         }
         node.client = client;
+    }
+
+    @Override
+    public void sendUpdateLog(String addr) {
+        log.info("节点" + node.getPeerSet().getSelf().getAddr() + ",!!接收到同步日志指令,当前节点commitindex："
+                + String.valueOf(node.getCommitIndex()));
+        Long lastLogIndex = node.getLogStorage().getLastLogIndex();
+        LogEntry lastLogEntry = node.getLogStorage().getEntry(lastLogIndex);
+        LogEntry preLogEntry = node.getLogStorage().getEntry(lastLogIndex - 1);
+        LogEntry[] wait2SentEntries = { lastLogEntry };
+        AentryParam aentryParam = AentryParam.builder()
+                .term(node.currentTerm)
+                .preLogIndex(preLogEntry.getIndex())
+                .preLogTerm(preLogEntry.getTerm())
+                .leaderId(node.getPeerSet().getSelf().getAddr())
+                .entries(wait2SentEntries)
+                .leaderCommit(node.commitIndex)
+                .build();
+        Request request2 = Request.builder()
+                .cmd(Request.A_ENTRIES)
+                .obj(aentryParam)
+                .reqTerm(node.currentTerm)
+                .addr(addr)
+                .build();
+        try {
+            node.getClient().send(request2);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } catch (NettyException e) {
+            e.printStackTrace();
+        }
     }
 
 }

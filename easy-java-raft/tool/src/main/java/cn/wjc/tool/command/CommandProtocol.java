@@ -6,7 +6,7 @@ public interface CommandProtocol {
     /**
      * @description: 判断输入的指令是GET还是SET类型
      * @param {String} command
-     * @return GET:1, SET:0
+     * @return SET:0, GET:1, COldNew_add:2, COldNew_remove:3
      * @author: WJC
      */
     public CommandParam analysis(String command);

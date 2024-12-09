@@ -32,7 +32,12 @@ public class ClientImpl implements Client {
         this.node = node;
     }
 
+    @Override
     public void connectToServer(String addr) throws Throwable {
+        if (channels.get(addr) != null) {
+            log.warn("已经连接过了");
+            return;
+        }
         String[] parts = addr.split(":", 2);
         String host = parts[0];
         int port = Integer.parseInt(parts[1]);
@@ -88,8 +93,19 @@ public class ClientImpl implements Client {
         if (channel != null) {
             channel.writeAndFlush(request);
         } else {
+            log.warn("channel未连接");
             // 处理无法找到Channel或Channel不活跃的情况
             throw new NettyException("发送消息到(" + request.getAddr() + ")节点失败");
+        }
+    }
+
+    @Override
+    public void disconnectAddr(String addr) throws InterruptedException {
+        Channel channel = channels.get(addr);
+        if (channel != null) {
+            if (channel.isActive()) {
+                channel.close().sync();
+            }
         }
     }
 }

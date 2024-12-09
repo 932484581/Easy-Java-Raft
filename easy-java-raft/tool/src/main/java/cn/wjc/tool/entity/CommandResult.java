@@ -12,6 +12,8 @@ public class CommandResult implements Serializable {
     private boolean result;
     // 如果请求的不是LEADER,返回LEADER的地址
     private String addr;
-    // 请求的指令
-    private Command command;
+    // 请求的指令类型
+    private int type;
+    // 请求的结果
+    private String resultmsg;
 }

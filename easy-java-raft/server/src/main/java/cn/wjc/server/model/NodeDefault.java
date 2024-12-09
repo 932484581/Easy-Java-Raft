@@ -35,4 +35,6 @@ public interface NodeDefault {
      * @author: WJC
      */
     void changeState(int state);
+
+    void sendUpdateLog(String addr);
 }

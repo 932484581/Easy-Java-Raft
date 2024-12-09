@@ -1,348 +1,179 @@
-2024-12-08 15:58:38,245 main  INFO [cn.wjc.server.model.impl.NodeDefaultImpl:setConfig:41] - 开始初始化127.0.0.1:5000
-2024-12-08 15:58:38,706 main  INFO [cn.wjc.server.model.impl.NodeDefaultImpl:setConfig:41] - 开始初始化127.0.0.1:5001
-2024-12-08 15:58:38,745 main  INFO [cn.wjc.server.model.impl.NodeDefaultImpl:setConfig:41] - 开始初始化127.0.0.1:5002
-2024-12-08 15:58:38,773 main  INFO [cn.wjc.server.model.impl.NodeDefaultImpl:setConfig:41] - 开始初始化127.0.0.1:5003
-2024-12-08 15:58:56,059 Raft thread  INFO [cn.wjc.server.action.VoteAction:run:33] - 127.0.0.1:5003开始发起投票请求
-2024-12-08 15:58:56,059 Raft thread DEBUG [cn.wjc.server.model.impl.NodeDefaultImpl:changeState:129] - 节点Peer(addr=127.0.0.1:5003)转变为了CANDIDATE
-2024-12-08 15:58:56,061 Raft thread DEBUG [cn.wjc.server.action.TImeOutHeartBeatAction:run:85] - 节点(127.0.0.1:5003)超时，进入新一轮的选举状态，当前Trem:1
-2024-12-08 15:58:56,112 nioEventLoopGroup-5-3  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recReq:93] - 127.0.0.1:5001接收到投票请求
-2024-12-08 15:58:56,112 nioEventLoopGroup-7-3  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recReq:93] - 127.0.0.1:5002接收到投票请求
-2024-12-08 15:58:56,113 nioEventLoopGroup-3-3  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recReq:93] - 127.0.0.1:5000接收到投票请求
-2024-12-08 15:58:56,142 nioEventLoopGroup-19-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recVoteRes:107] - 127.0.0.1:5003接收到投票请求的结果
-2024-12-08 15:58:56,142 nioEventLoopGroup-20-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recVoteRes:107] - 127.0.0.1:5003接收到投票请求的结果
-2024-12-08 15:58:56,142 nioEventLoopGroup-19-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recVoteRes:117] - 接收到赞同票，来自127.0.0.1:5002
-2024-12-08 15:58:56,142 nioEventLoopGroup-20-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recVoteRes:117] - 接收到赞同票，来自127.0.0.1:5001
-2024-12-08 15:58:56,142 nioEventLoopGroup-19-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recVoteRes:133] - 当前收到的赞成票:1
-2024-12-08 15:58:56,142 nioEventLoopGroup-20-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recVoteRes:133] - 当前收到的赞成票:2
-2024-12-08 15:58:56,142 nioEventLoopGroup-3-3  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recVoteReq:171] - 对方日志没有自己新，请求节点：22自身节点term：210
-2024-12-08 15:58:56,143 nioEventLoopGroup-21-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recVoteRes:107] - 127.0.0.1:5003接收到投票请求的结果
-2024-12-08 15:58:56,143 nioEventLoopGroup-21-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recVoteRes:120] - 接收到拒绝票，来自127.0.0.1:5000
-2024-12-08 15:58:56,143 nioEventLoopGroup-21-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recVoteRes:133] - 当前收到的赞成票:2
-2024-12-08 15:58:57,836 Raft thread DEBUG [cn.wjc.server.model.impl.NodeDefaultImpl:changeState:129] - 节点Peer(addr=127.0.0.1:5000)转变为了CANDIDATE
-2024-12-08 15:58:57,836 Raft thread DEBUG [cn.wjc.server.action.TImeOutHeartBeatAction:run:85] - 节点(127.0.0.1:5000)超时，进入新一轮的选举状态，当前Trem:2
-2024-12-08 15:58:57,836 Raft thread  INFO [cn.wjc.server.action.VoteAction:run:33] - 127.0.0.1:5000开始发起投票请求
-2024-12-08 15:58:57,847 nioEventLoopGroup-9-1 DEBUG [cn.wjc.server.model.impl.NodeDefaultImpl:changeState:122] - 节点Peer(addr=127.0.0.1:5003)转变为了FOLLOWER
-2024-12-08 15:58:57,847 nioEventLoopGroup-9-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recReq:93] - 127.0.0.1:5003接收到投票请求
-2024-12-08 15:58:57,852 nioEventLoopGroup-10-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recVoteRes:107] - 127.0.0.1:5000接收到投票请求的结果
-2024-12-08 15:58:57,852 nioEventLoopGroup-10-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recVoteRes:117] - 接收到赞同票，来自127.0.0.1:5003
-2024-12-08 15:58:57,852 nioEventLoopGroup-10-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recVoteRes:133] - 当前收到的赞成票:1
-2024-12-08 15:58:57,853 nioEventLoopGroup-7-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recReq:93] - 127.0.0.1:5002接收到投票请求
-2024-12-08 15:58:57,860 nioEventLoopGroup-11-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recVoteRes:107] - 127.0.0.1:5000接收到投票请求的结果
-2024-12-08 15:58:57,860 nioEventLoopGroup-11-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recVoteRes:117] - 接收到赞同票，来自127.0.0.1:5002
-2024-12-08 15:58:57,860 nioEventLoopGroup-11-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recVoteRes:133] - 当前收到的赞成票:2
-2024-12-08 15:58:57,861 nioEventLoopGroup-5-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recReq:93] - 127.0.0.1:5001接收到投票请求
-2024-12-08 15:58:57,865 nioEventLoopGroup-12-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recVoteRes:107] - 127.0.0.1:5000接收到投票请求的结果
-2024-12-08 15:58:57,865 nioEventLoopGroup-12-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recVoteRes:117] - 接收到赞同票，来自127.0.0.1:5001
-2024-12-08 15:58:57,866 nioEventLoopGroup-12-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recVoteRes:133] - 当前收到的赞成票:3
-2024-12-08 15:58:57,866 Raft thread  INFO [cn.wjc.server.action.AppendAentryAction:run:28] - 进行一次同步检查
-2024-12-08 15:58:57,866 nioEventLoopGroup-12-1 DEBUG [cn.wjc.server.model.impl.NodeDefaultImpl:changeState:137] - 节点Peer(addr=127.0.0.1:5000)转变为了LEADER
-2024-12-08 15:58:57,875 nioEventLoopGroup-9-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:227] - 127.0.0.1:5003接收到日志请求
-2024-12-08 15:58:57,875 nioEventLoopGroup-5-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:227] - 127.0.0.1:5001接收到日志请求
-2024-12-08 15:58:57,875 nioEventLoopGroup-7-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:227] - 127.0.0.1:5002接收到日志请求
-2024-12-08 15:58:57,880 nioEventLoopGroup-5-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:249] - 127.0.0.1:5001日志不一致，追溯前一个日志9
-2024-12-08 15:58:57,880 nioEventLoopGroup-9-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:249] - 127.0.0.1:5003日志不一致，追溯前一个日志9
-2024-12-08 15:58:57,881 nioEventLoopGroup-7-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:249] - 127.0.0.1:5002日志不一致，追溯前一个日志9
-2024-12-08 15:58:57,886 nioEventLoopGroup-10-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:266] - 127.0.0.1:5000:接收到127.0.0.1:5003的日志回应
-2024-12-08 15:58:57,886 nioEventLoopGroup-11-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:266] - 127.0.0.1:5000:接收到127.0.0.1:5002的日志回应
-2024-12-08 15:58:57,886 nioEventLoopGroup-12-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:266] - 127.0.0.1:5000:接收到127.0.0.1:5001的日志回应
-2024-12-08 15:58:57,888 nioEventLoopGroup-12-1  WARN [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:328] - 127.0.0.1:5000:127.0.0.1:5001接收失败，追溯前一个日志8 : AentryResult(term=2, success=false, MatchIndex=0, ConflictIndex=9)
-2024-12-08 15:58:57,888 nioEventLoopGroup-10-1  WARN [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:328] - 127.0.0.1:5000:127.0.0.1:5003接收失败，追溯前一个日志8 : AentryResult(term=2, success=false, MatchIndex=0, ConflictIndex=9)
-2024-12-08 15:58:57,888 nioEventLoopGroup-11-1  WARN [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:328] - 127.0.0.1:5000:127.0.0.1:5002接收失败，追溯前一个日志8 : AentryResult(term=2, success=false, MatchIndex=0, ConflictIndex=9)
-2024-12-08 15:58:57,894 nioEventLoopGroup-5-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:227] - 127.0.0.1:5001接收到日志请求
-2024-12-08 15:58:57,896 nioEventLoopGroup-9-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:227] - 127.0.0.1:5003接收到日志请求
-2024-12-08 15:58:57,896 nioEventLoopGroup-7-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:227] - 127.0.0.1:5002接收到日志请求
-2024-12-08 15:58:57,898 nioEventLoopGroup-5-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:249] - 127.0.0.1:5001日志不一致，追溯前一个日志8
-2024-12-08 15:58:57,898 nioEventLoopGroup-12-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:266] - 127.0.0.1:5000:接收到127.0.0.1:5001的日志回应
-2024-12-08 15:58:57,898 nioEventLoopGroup-12-1  WARN [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:328] - 127.0.0.1:5000:127.0.0.1:5001接收失败，追溯前一个日志7 : AentryResult(term=2, success=false, MatchIndex=0, ConflictIndex=8)
-2024-12-08 15:58:57,901 nioEventLoopGroup-7-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:249] - 127.0.0.1:5002日志不一致，追溯前一个日志8
-2024-12-08 15:58:57,901 nioEventLoopGroup-9-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:249] - 127.0.0.1:5003日志不一致，追溯前一个日志8
-2024-12-08 15:58:57,901 nioEventLoopGroup-11-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:266] - 127.0.0.1:5000:接收到127.0.0.1:5002的日志回应
-2024-12-08 15:58:57,902 nioEventLoopGroup-11-1  WARN [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:328] - 127.0.0.1:5000:127.0.0.1:5002接收失败，追溯前一个日志7 : AentryResult(term=2, success=false, MatchIndex=0, ConflictIndex=8)
-2024-12-08 15:58:57,902 nioEventLoopGroup-10-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:266] - 127.0.0.1:5000:接收到127.0.0.1:5003的日志回应
-2024-12-08 15:58:57,902 nioEventLoopGroup-10-1  WARN [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:328] - 127.0.0.1:5000:127.0.0.1:5003接收失败，追溯前一个日志7 : AentryResult(term=2, success=false, MatchIndex=0, ConflictIndex=8)
-2024-12-08 15:58:57,905 nioEventLoopGroup-5-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:227] - 127.0.0.1:5001接收到日志请求
-2024-12-08 15:58:57,907 nioEventLoopGroup-7-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:227] - 127.0.0.1:5002接收到日志请求
-2024-12-08 15:58:57,908 nioEventLoopGroup-9-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:227] - 127.0.0.1:5003接收到日志请求
-2024-12-08 15:58:57,910 nioEventLoopGroup-5-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:249] - 127.0.0.1:5001日志不一致，追溯前一个日志7
-2024-12-08 15:58:57,910 nioEventLoopGroup-12-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:266] - 127.0.0.1:5000:接收到127.0.0.1:5001的日志回应
-2024-12-08 15:58:57,910 nioEventLoopGroup-12-1  WARN [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:328] - 127.0.0.1:5000:127.0.0.1:5001接收失败，追溯前一个日志6 : AentryResult(term=2, success=false, MatchIndex=0, ConflictIndex=7)
-2024-12-08 15:58:57,911 nioEventLoopGroup-7-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:249] - 127.0.0.1:5002日志不一致，追溯前一个日志7
-2024-12-08 15:58:57,912 nioEventLoopGroup-11-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:266] - 127.0.0.1:5000:接收到127.0.0.1:5002的日志回应
-2024-12-08 15:58:57,912 nioEventLoopGroup-9-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:249] - 127.0.0.1:5003日志不一致，追溯前一个日志7
-2024-12-08 15:58:57,912 nioEventLoopGroup-11-1  WARN [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:328] - 127.0.0.1:5000:127.0.0.1:5002接收失败，追溯前一个日志6 : AentryResult(term=2, success=false, MatchIndex=0, ConflictIndex=7)
-2024-12-08 15:58:57,912 nioEventLoopGroup-10-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:266] - 127.0.0.1:5000:接收到127.0.0.1:5003的日志回应
-2024-12-08 15:58:57,913 nioEventLoopGroup-10-1  WARN [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:328] - 127.0.0.1:5000:127.0.0.1:5003接收失败，追溯前一个日志6 : AentryResult(term=2, success=false, MatchIndex=0, ConflictIndex=7)
-2024-12-08 15:58:57,916 nioEventLoopGroup-5-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:227] - 127.0.0.1:5001接收到日志请求
-2024-12-08 15:58:57,917 nioEventLoopGroup-7-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:227] - 127.0.0.1:5002接收到日志请求
-2024-12-08 15:58:57,919 nioEventLoopGroup-9-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:227] - 127.0.0.1:5003接收到日志请求
-2024-12-08 15:58:57,920 nioEventLoopGroup-5-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:249] - 127.0.0.1:5001日志不一致，追溯前一个日志6
-2024-12-08 15:58:57,921 nioEventLoopGroup-12-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:266] - 127.0.0.1:5000:接收到127.0.0.1:5001的日志回应
-2024-12-08 15:58:57,921 nioEventLoopGroup-12-1  WARN [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:328] - 127.0.0.1:5000:127.0.0.1:5001接收失败，追溯前一个日志5 : AentryResult(term=2, success=false, MatchIndex=0, ConflictIndex=6)
-2024-12-08 15:58:57,922 nioEventLoopGroup-7-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:249] - 127.0.0.1:5002日志不一致，追溯前一个日志6
-2024-12-08 15:58:57,922 nioEventLoopGroup-11-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:266] - 127.0.0.1:5000:接收到127.0.0.1:5002的日志回应
-2024-12-08 15:58:57,922 nioEventLoopGroup-11-1  WARN [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:328] - 127.0.0.1:5000:127.0.0.1:5002接收失败，追溯前一个日志5 : AentryResult(term=2, success=false, MatchIndex=0, ConflictIndex=6)
-2024-12-08 15:58:57,924 nioEventLoopGroup-9-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:249] - 127.0.0.1:5003日志不一致，追溯前一个日志6
-2024-12-08 15:58:57,924 nioEventLoopGroup-10-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:266] - 127.0.0.1:5000:接收到127.0.0.1:5003的日志回应
-2024-12-08 15:58:57,924 nioEventLoopGroup-10-1  WARN [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:328] - 127.0.0.1:5000:127.0.0.1:5003接收失败，追溯前一个日志5 : AentryResult(term=2, success=false, MatchIndex=0, ConflictIndex=6)
-2024-12-08 15:58:57,926 nioEventLoopGroup-7-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:227] - 127.0.0.1:5002接收到日志请求
-2024-12-08 15:58:57,927 nioEventLoopGroup-5-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:227] - 127.0.0.1:5001接收到日志请求
-2024-12-08 15:58:57,929 nioEventLoopGroup-9-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:227] - 127.0.0.1:5003接收到日志请求
-2024-12-08 15:58:57,931 nioEventLoopGroup-5-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:249] - 127.0.0.1:5001日志不一致，追溯前一个日志5
-2024-12-08 15:58:57,931 nioEventLoopGroup-7-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:249] - 127.0.0.1:5002日志不一致，追溯前一个日志5
-2024-12-08 15:58:57,932 nioEventLoopGroup-12-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:266] - 127.0.0.1:5000:接收到127.0.0.1:5001的日志回应
-2024-12-08 15:58:57,932 nioEventLoopGroup-12-1  WARN [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:328] - 127.0.0.1:5000:127.0.0.1:5001接收失败，追溯前一个日志4 : AentryResult(term=2, success=false, MatchIndex=0, ConflictIndex=5)
-2024-12-08 15:58:57,932 nioEventLoopGroup-11-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:266] - 127.0.0.1:5000:接收到127.0.0.1:5002的日志回应
-2024-12-08 15:58:57,932 nioEventLoopGroup-11-1  WARN [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:328] - 127.0.0.1:5000:127.0.0.1:5002接收失败，追溯前一个日志4 : AentryResult(term=2, success=false, MatchIndex=0, ConflictIndex=5)
-2024-12-08 15:58:57,933 nioEventLoopGroup-9-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:249] - 127.0.0.1:5003日志不一致，追溯前一个日志5
-2024-12-08 15:58:57,933 nioEventLoopGroup-10-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:266] - 127.0.0.1:5000:接收到127.0.0.1:5003的日志回应
-2024-12-08 15:58:57,933 nioEventLoopGroup-10-1  WARN [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:328] - 127.0.0.1:5000:127.0.0.1:5003接收失败，追溯前一个日志4 : AentryResult(term=2, success=false, MatchIndex=0, ConflictIndex=5)
-2024-12-08 15:58:57,937 nioEventLoopGroup-7-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:227] - 127.0.0.1:5002接收到日志请求
-2024-12-08 15:58:57,938 nioEventLoopGroup-5-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:227] - 127.0.0.1:5001接收到日志请求
-2024-12-08 15:58:57,938 nioEventLoopGroup-9-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:227] - 127.0.0.1:5003接收到日志请求
-2024-12-08 15:58:57,943 nioEventLoopGroup-7-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:249] - 127.0.0.1:5002日志不一致，追溯前一个日志4
-2024-12-08 15:58:57,943 nioEventLoopGroup-5-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:249] - 127.0.0.1:5001日志不一致，追溯前一个日志4
-2024-12-08 15:58:57,943 nioEventLoopGroup-9-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:249] - 127.0.0.1:5003日志不一致，追溯前一个日志4
-2024-12-08 15:58:57,943 nioEventLoopGroup-12-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:266] - 127.0.0.1:5000:接收到127.0.0.1:5001的日志回应
-2024-12-08 15:58:57,943 nioEventLoopGroup-11-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:266] - 127.0.0.1:5000:接收到127.0.0.1:5002的日志回应
-2024-12-08 15:58:57,943 nioEventLoopGroup-10-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:266] - 127.0.0.1:5000:接收到127.0.0.1:5003的日志回应
-2024-12-08 15:58:57,943 nioEventLoopGroup-12-1  WARN [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:328] - 127.0.0.1:5000:127.0.0.1:5001接收失败，追溯前一个日志3 : AentryResult(term=2, success=false, MatchIndex=0, ConflictIndex=4)
-2024-12-08 15:58:57,944 nioEventLoopGroup-10-1  WARN [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:328] - 127.0.0.1:5000:127.0.0.1:5003接收失败，追溯前一个日志3 : AentryResult(term=2, success=false, MatchIndex=0, ConflictIndex=4)
-2024-12-08 15:58:57,944 nioEventLoopGroup-11-1  WARN [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:328] - 127.0.0.1:5000:127.0.0.1:5002接收失败，追溯前一个日志3 : AentryResult(term=2, success=false, MatchIndex=0, ConflictIndex=4)
-2024-12-08 15:58:57,948 nioEventLoopGroup-5-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:227] - 127.0.0.1:5001接收到日志请求
-2024-12-08 15:58:57,948 nioEventLoopGroup-7-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:227] - 127.0.0.1:5002接收到日志请求
-2024-12-08 15:58:57,949 nioEventLoopGroup-9-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:227] - 127.0.0.1:5003接收到日志请求
-2024-12-08 15:58:57,950 nioEventLoopGroup-5-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:249] - 127.0.0.1:5001日志不一致，追溯前一个日志3
-2024-12-08 15:58:57,951 nioEventLoopGroup-12-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:266] - 127.0.0.1:5000:接收到127.0.0.1:5001的日志回应
-2024-12-08 15:58:57,951 nioEventLoopGroup-12-1  WARN [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:328] - 127.0.0.1:5000:127.0.0.1:5001接收失败，追溯前一个日志2 : AentryResult(term=2, success=false, MatchIndex=0, ConflictIndex=3)
-2024-12-08 15:58:57,952 nioEventLoopGroup-9-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:249] - 127.0.0.1:5003日志不一致，追溯前一个日志3
-2024-12-08 15:58:57,952 nioEventLoopGroup-7-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:249] - 127.0.0.1:5002日志不一致，追溯前一个日志3
-2024-12-08 15:58:57,953 nioEventLoopGroup-10-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:266] - 127.0.0.1:5000:接收到127.0.0.1:5003的日志回应
-2024-12-08 15:58:57,953 nioEventLoopGroup-11-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:266] - 127.0.0.1:5000:接收到127.0.0.1:5002的日志回应
-2024-12-08 15:58:57,953 nioEventLoopGroup-10-1  WARN [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:328] - 127.0.0.1:5000:127.0.0.1:5003接收失败，追溯前一个日志2 : AentryResult(term=2, success=false, MatchIndex=0, ConflictIndex=3)
-2024-12-08 15:58:57,953 nioEventLoopGroup-11-1  WARN [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:328] - 127.0.0.1:5000:127.0.0.1:5002接收失败，追溯前一个日志2 : AentryResult(term=2, success=false, MatchIndex=0, ConflictIndex=3)
-2024-12-08 15:58:57,956 nioEventLoopGroup-5-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:227] - 127.0.0.1:5001接收到日志请求
-2024-12-08 15:58:57,959 nioEventLoopGroup-9-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:227] - 127.0.0.1:5003接收到日志请求
-2024-12-08 15:58:57,959 nioEventLoopGroup-7-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:227] - 127.0.0.1:5002接收到日志请求
-2024-12-08 15:58:57,960 nioEventLoopGroup-5-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:239] - 127.0.0.1:5001追加日志
-2024-12-08 15:58:57,962 nioEventLoopGroup-9-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:239] - 127.0.0.1:5003追加日志
-2024-12-08 15:58:57,963 nioEventLoopGroup-7-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:239] - 127.0.0.1:5002追加日志
-2024-12-08 15:58:57,973 nioEventLoopGroup-10-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:266] - 127.0.0.1:5000:接收到127.0.0.1:5003的日志回应
-2024-12-08 15:58:57,973 nioEventLoopGroup-10-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:272] - 127.0.0.1:5000:127.0.0.1:5003接收成功
-2024-12-08 15:58:57,973 nioEventLoopGroup-11-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:266] - 127.0.0.1:5000:接收到127.0.0.1:5002的日志回应
-2024-12-08 15:58:57,973 nioEventLoopGroup-11-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:272] - 127.0.0.1:5000:127.0.0.1:5002接收成功
-2024-12-08 15:58:57,973 nioEventLoopGroup-12-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:266] - 127.0.0.1:5000:接收到127.0.0.1:5001的日志回应
-2024-12-08 15:58:57,973 nioEventLoopGroup-12-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:272] - 127.0.0.1:5000:127.0.0.1:5001接收成功
-2024-12-08 15:58:57,973 nioEventLoopGroup-12-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:281] - 127.0.0.1:5000:超过半数接收日志成功，提交日志到3
-2024-12-08 15:58:57,973 nioEventLoopGroup-10-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:281] - 127.0.0.1:5000:超过半数接收日志成功，提交日志到3
-2024-12-08 15:58:57,973 nioEventLoopGroup-11-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:281] - 127.0.0.1:5000:超过半数接收日志成功，提交日志到3
-2024-12-08 15:58:58,015 nioEventLoopGroup-10-1  WARN [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:292] - 127.0.0.1:5000:127.0.0.1:5003还未同步到最新的日志
-2024-12-08 15:58:58,017 nioEventLoopGroup-12-1  WARN [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:292] - 127.0.0.1:5000:127.0.0.1:5001还未同步到最新的日志
-2024-12-08 15:58:58,018 nioEventLoopGroup-11-1  WARN [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:292] - 127.0.0.1:5000:127.0.0.1:5002还未同步到最新的日志
-2024-12-08 15:58:58,034 nioEventLoopGroup-9-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:227] - 127.0.0.1:5003接收到日志请求
-2024-12-08 15:58:58,038 nioEventLoopGroup-9-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:239] - 127.0.0.1:5003追加日志
-2024-12-08 15:58:58,042 nioEventLoopGroup-7-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:227] - 127.0.0.1:5002接收到日志请求
-2024-12-08 15:58:58,044 nioEventLoopGroup-5-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:227] - 127.0.0.1:5001接收到日志请求
-2024-12-08 15:58:58,046 nioEventLoopGroup-7-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:239] - 127.0.0.1:5002追加日志
-2024-12-08 15:58:58,047 nioEventLoopGroup-5-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:239] - 127.0.0.1:5001追加日志
-2024-12-08 15:58:58,052 nioEventLoopGroup-10-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:266] - 127.0.0.1:5000:接收到127.0.0.1:5003的日志回应
-2024-12-08 15:58:58,052 nioEventLoopGroup-10-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:272] - 127.0.0.1:5000:127.0.0.1:5003接收成功
-2024-12-08 15:58:58,055 nioEventLoopGroup-11-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:266] - 127.0.0.1:5000:接收到127.0.0.1:5002的日志回应
-2024-12-08 15:58:58,055 nioEventLoopGroup-11-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:272] - 127.0.0.1:5000:127.0.0.1:5002接收成功
-2024-12-08 15:58:58,055 nioEventLoopGroup-11-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:281] - 127.0.0.1:5000:超过半数接收日志成功，提交日志到8
-2024-12-08 15:58:58,056 nioEventLoopGroup-10-1  WARN [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:292] - 127.0.0.1:5000:127.0.0.1:5003还未同步到最新的日志
-2024-12-08 15:58:58,059 nioEventLoopGroup-12-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:266] - 127.0.0.1:5000:接收到127.0.0.1:5001的日志回应
-2024-12-08 15:58:58,059 nioEventLoopGroup-12-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:272] - 127.0.0.1:5000:127.0.0.1:5001接收成功
-2024-12-08 15:58:58,059 nioEventLoopGroup-12-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:281] - 127.0.0.1:5000:超过半数接收日志成功，提交日志到8
-2024-12-08 15:58:58,066 nioEventLoopGroup-9-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:227] - 127.0.0.1:5003接收到日志请求
-2024-12-08 15:58:58,069 nioEventLoopGroup-9-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:239] - 127.0.0.1:5003追加日志
-2024-12-08 15:58:58,075 nioEventLoopGroup-10-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:266] - 127.0.0.1:5000:接收到127.0.0.1:5003的日志回应
-2024-12-08 15:58:58,075 nioEventLoopGroup-10-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:272] - 127.0.0.1:5000:127.0.0.1:5003接收成功
-2024-12-08 15:58:58,080 nioEventLoopGroup-11-1  WARN [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:292] - 127.0.0.1:5000:127.0.0.1:5002还未同步到最新的日志
-2024-12-08 15:58:58,081 nioEventLoopGroup-12-1  WARN [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:292] - 127.0.0.1:5000:127.0.0.1:5001还未同步到最新的日志
-2024-12-08 15:58:58,092 nioEventLoopGroup-7-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:227] - 127.0.0.1:5002接收到日志请求
-2024-12-08 15:58:58,092 nioEventLoopGroup-5-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:227] - 127.0.0.1:5001接收到日志请求
-2024-12-08 15:58:58,094 nioEventLoopGroup-7-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:239] - 127.0.0.1:5002追加日志
-2024-12-08 15:58:58,094 nioEventLoopGroup-5-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:239] - 127.0.0.1:5001追加日志
-2024-12-08 15:58:58,101 nioEventLoopGroup-11-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:266] - 127.0.0.1:5000:接收到127.0.0.1:5002的日志回应
-2024-12-08 15:58:58,101 nioEventLoopGroup-11-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:272] - 127.0.0.1:5000:127.0.0.1:5002接收成功
-2024-12-08 15:58:58,101 nioEventLoopGroup-11-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:281] - 127.0.0.1:5000:超过半数接收日志成功，提交日志到10
-2024-12-08 15:58:58,103 nioEventLoopGroup-12-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:266] - 127.0.0.1:5000:接收到127.0.0.1:5001的日志回应
-2024-12-08 15:58:58,103 nioEventLoopGroup-12-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:272] - 127.0.0.1:5000:127.0.0.1:5001接收成功
-2024-12-08 15:58:58,103 nioEventLoopGroup-12-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:281] - 127.0.0.1:5000:超过半数接收日志成功，提交日志到10
-2024-12-08 15:59:02,866 Raft thread  INFO [cn.wjc.server.action.AppendAentryAction:run:28] - 进行一次同步检查
-2024-12-08 15:59:02,871 nioEventLoopGroup-7-4  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recCommandReq:391] - 节点:127.0.0.1:5002  接收到指令:SET test394 191
-2024-12-08 15:59:02,871 nioEventLoopGroup-7-4  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recCommandReq:413] - 节点不是LEADER, LEADER地址为：127.0.0.1:5000
-2024-12-08 15:59:02,873 nioEventLoopGroup-25-1  WARN [cn.wjc.server.msg.impl.MsgProcessingImpl:recCommandRes:368] - 请求发送失败,应该发往:127.0.0.1:5000
-2024-12-08 15:59:02,877 nioEventLoopGroup-3-4  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recCommandReq:391] - 节点:127.0.0.1:5000  接收到指令:SET test394 191
-2024-12-08 15:59:02,877 nioEventLoopGroup-3-4  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recCommandReq:416] - 节点127.0.0.1:5000,接收该指令
-2024-12-08 15:59:07,866 Raft thread  INFO [cn.wjc.server.action.AppendAentryAction:run:28] - 进行一次同步检查
-2024-12-08 15:59:07,868 nioEventLoopGroup-7-4  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recCommandReq:391] - 节点:127.0.0.1:5002  接收到指令:SET test325 774
-2024-12-08 15:59:07,868 nioEventLoopGroup-7-4  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recCommandReq:413] - 节点不是LEADER, LEADER地址为：127.0.0.1:5000
-2024-12-08 15:59:07,868 nioEventLoopGroup-25-1  WARN [cn.wjc.server.msg.impl.MsgProcessingImpl:recCommandRes:368] - 请求发送失败,应该发往:127.0.0.1:5000
-2024-12-08 15:59:07,868 nioEventLoopGroup-3-4  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recCommandReq:391] - 节点:127.0.0.1:5000  接收到指令:SET test325 774
-2024-12-08 15:59:07,868 nioEventLoopGroup-3-4  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recCommandReq:416] - 节点127.0.0.1:5000,接收该指令
-2024-12-08 15:59:07,870 nioEventLoopGroup-5-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:227] - 127.0.0.1:5001接收到日志请求
-2024-12-08 15:59:07,870 nioEventLoopGroup-7-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:227] - 127.0.0.1:5002接收到日志请求
-2024-12-08 15:59:07,870 nioEventLoopGroup-9-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:227] - 127.0.0.1:5003接收到日志请求
-2024-12-08 15:59:07,879 nioEventLoopGroup-5-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:239] - 127.0.0.1:5001追加日志
-2024-12-08 15:59:07,879 nioEventLoopGroup-7-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:239] - 127.0.0.1:5002追加日志
-2024-12-08 15:59:07,880 nioEventLoopGroup-9-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:239] - 127.0.0.1:5003追加日志
-2024-12-08 15:59:07,886 nioEventLoopGroup-10-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:266] - 127.0.0.1:5000:接收到127.0.0.1:5003的日志回应
-2024-12-08 15:59:07,887 nioEventLoopGroup-10-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:272] - 127.0.0.1:5000:127.0.0.1:5003接收成功
-2024-12-08 15:59:07,888 nioEventLoopGroup-11-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:266] - 127.0.0.1:5000:接收到127.0.0.1:5002的日志回应
-2024-12-08 15:59:07,888 nioEventLoopGroup-11-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:272] - 127.0.0.1:5000:127.0.0.1:5002接收成功
-2024-12-08 15:59:07,888 nioEventLoopGroup-12-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:266] - 127.0.0.1:5000:接收到127.0.0.1:5001的日志回应
-2024-12-08 15:59:07,888 nioEventLoopGroup-12-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:272] - 127.0.0.1:5000:127.0.0.1:5001接收成功
-2024-12-08 15:59:07,888 nioEventLoopGroup-11-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:281] - 127.0.0.1:5000:超过半数接收日志成功，提交日志到11
-2024-12-08 15:59:07,888 nioEventLoopGroup-12-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:281] - 127.0.0.1:5000:超过半数接收日志成功，提交日志到11
-2024-12-08 15:59:07,890 nioEventLoopGroup-10-1  WARN [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:292] - 127.0.0.1:5000:127.0.0.1:5003还未同步到最新的日志
-2024-12-08 15:59:07,893 nioEventLoopGroup-9-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:227] - 127.0.0.1:5003接收到日志请求
-2024-12-08 15:59:07,895 nioEventLoopGroup-9-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:239] - 127.0.0.1:5003追加日志
-2024-12-08 15:59:07,898 nioEventLoopGroup-11-1  WARN [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:292] - 127.0.0.1:5000:127.0.0.1:5002还未同步到最新的日志
-2024-12-08 15:59:07,898 nioEventLoopGroup-12-1  WARN [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:292] - 127.0.0.1:5000:127.0.0.1:5001还未同步到最新的日志
-2024-12-08 15:59:07,900 nioEventLoopGroup-10-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:266] - 127.0.0.1:5000:接收到127.0.0.1:5003的日志回应
-2024-12-08 15:59:07,900 nioEventLoopGroup-10-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:272] - 127.0.0.1:5000:127.0.0.1:5003接收成功
-2024-12-08 15:59:07,904 nioEventLoopGroup-7-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:227] - 127.0.0.1:5002接收到日志请求
-2024-12-08 15:59:07,905 nioEventLoopGroup-5-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:227] - 127.0.0.1:5001接收到日志请求
-2024-12-08 15:59:07,908 nioEventLoopGroup-7-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:239] - 127.0.0.1:5002追加日志
-2024-12-08 15:59:07,909 nioEventLoopGroup-5-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:239] - 127.0.0.1:5001追加日志
-2024-12-08 15:59:07,918 nioEventLoopGroup-12-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:266] - 127.0.0.1:5000:接收到127.0.0.1:5001的日志回应
-2024-12-08 15:59:07,918 nioEventLoopGroup-12-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:272] - 127.0.0.1:5000:127.0.0.1:5001接收成功
-2024-12-08 15:59:07,918 nioEventLoopGroup-12-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:281] - 127.0.0.1:5000:超过半数接收日志成功，提交日志到12
-2024-12-08 15:59:07,918 nioEventLoopGroup-11-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:266] - 127.0.0.1:5000:接收到127.0.0.1:5002的日志回应
-2024-12-08 15:59:07,918 nioEventLoopGroup-11-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:272] - 127.0.0.1:5000:127.0.0.1:5002接收成功
-2024-12-08 15:59:07,918 nioEventLoopGroup-11-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:281] - 127.0.0.1:5000:超过半数接收日志成功，提交日志到12
-2024-12-08 15:59:12,866 Raft thread  INFO [cn.wjc.server.action.AppendAentryAction:run:28] - 进行一次同步检查
-2024-12-08 15:59:12,868 nioEventLoopGroup-7-4  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recCommandReq:391] - 节点:127.0.0.1:5002  接收到指令:SET test273 630
-2024-12-08 15:59:12,868 nioEventLoopGroup-7-4  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recCommandReq:413] - 节点不是LEADER, LEADER地址为：127.0.0.1:5000
-2024-12-08 15:59:12,868 nioEventLoopGroup-25-1  WARN [cn.wjc.server.msg.impl.MsgProcessingImpl:recCommandRes:368] - 请求发送失败,应该发往:127.0.0.1:5000
-2024-12-08 15:59:12,869 nioEventLoopGroup-3-4  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recCommandReq:391] - 节点:127.0.0.1:5000  接收到指令:SET test273 630
-2024-12-08 15:59:12,869 nioEventLoopGroup-3-4  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recCommandReq:416] - 节点127.0.0.1:5000,接收该指令
-2024-12-08 15:59:17,866 Raft thread  INFO [cn.wjc.server.action.AppendAentryAction:run:28] - 进行一次同步检查
-2024-12-08 15:59:17,868 nioEventLoopGroup-7-4  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recCommandReq:391] - 节点:127.0.0.1:5002  接收到指令:SET test863 629
-2024-12-08 15:59:17,868 nioEventLoopGroup-7-4  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recCommandReq:413] - 节点不是LEADER, LEADER地址为：127.0.0.1:5000
-2024-12-08 15:59:17,868 nioEventLoopGroup-25-1  WARN [cn.wjc.server.msg.impl.MsgProcessingImpl:recCommandRes:368] - 请求发送失败,应该发往:127.0.0.1:5000
-2024-12-08 15:59:17,869 nioEventLoopGroup-3-4  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recCommandReq:391] - 节点:127.0.0.1:5000  接收到指令:SET test863 629
-2024-12-08 15:59:17,869 nioEventLoopGroup-3-4  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recCommandReq:416] - 节点127.0.0.1:5000,接收该指令
-2024-12-08 15:59:17,871 nioEventLoopGroup-5-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:227] - 127.0.0.1:5001接收到日志请求
-2024-12-08 15:59:17,871 nioEventLoopGroup-9-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:227] - 127.0.0.1:5003接收到日志请求
-2024-12-08 15:59:17,871 nioEventLoopGroup-7-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:227] - 127.0.0.1:5002接收到日志请求
-2024-12-08 15:59:17,873 nioEventLoopGroup-5-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:239] - 127.0.0.1:5001追加日志
-2024-12-08 15:59:17,873 nioEventLoopGroup-7-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:239] - 127.0.0.1:5002追加日志
-2024-12-08 15:59:17,873 nioEventLoopGroup-9-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:239] - 127.0.0.1:5003追加日志
-2024-12-08 15:59:17,880 nioEventLoopGroup-10-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:266] - 127.0.0.1:5000:接收到127.0.0.1:5003的日志回应
-2024-12-08 15:59:17,880 nioEventLoopGroup-10-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:272] - 127.0.0.1:5000:127.0.0.1:5003接收成功
-2024-12-08 15:59:17,880 nioEventLoopGroup-11-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:266] - 127.0.0.1:5000:接收到127.0.0.1:5002的日志回应
-2024-12-08 15:59:17,880 nioEventLoopGroup-12-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:266] - 127.0.0.1:5000:接收到127.0.0.1:5001的日志回应
-2024-12-08 15:59:17,880 nioEventLoopGroup-11-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:272] - 127.0.0.1:5000:127.0.0.1:5002接收成功
-2024-12-08 15:59:17,881 nioEventLoopGroup-12-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:272] - 127.0.0.1:5000:127.0.0.1:5001接收成功
-2024-12-08 15:59:17,881 nioEventLoopGroup-11-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:281] - 127.0.0.1:5000:超过半数接收日志成功，提交日志到13
-2024-12-08 15:59:17,881 nioEventLoopGroup-12-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:281] - 127.0.0.1:5000:超过半数接收日志成功，提交日志到13
-2024-12-08 15:59:17,886 nioEventLoopGroup-10-1  WARN [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:292] - 127.0.0.1:5000:127.0.0.1:5003还未同步到最新的日志
-2024-12-08 15:59:17,888 nioEventLoopGroup-12-1  WARN [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:292] - 127.0.0.1:5000:127.0.0.1:5001还未同步到最新的日志
-2024-12-08 15:59:17,888 nioEventLoopGroup-11-1  WARN [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:292] - 127.0.0.1:5000:127.0.0.1:5002还未同步到最新的日志
-2024-12-08 15:59:17,892 nioEventLoopGroup-9-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:227] - 127.0.0.1:5003接收到日志请求
-2024-12-08 15:59:17,893 nioEventLoopGroup-5-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:227] - 127.0.0.1:5001接收到日志请求
-2024-12-08 15:59:17,894 nioEventLoopGroup-9-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:239] - 127.0.0.1:5003追加日志
-2024-12-08 15:59:17,895 nioEventLoopGroup-7-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:227] - 127.0.0.1:5002接收到日志请求
-2024-12-08 15:59:17,895 nioEventLoopGroup-5-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:239] - 127.0.0.1:5001追加日志
-2024-12-08 15:59:17,898 nioEventLoopGroup-7-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:239] - 127.0.0.1:5002追加日志
-2024-12-08 15:59:17,898 nioEventLoopGroup-10-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:266] - 127.0.0.1:5000:接收到127.0.0.1:5003的日志回应
-2024-12-08 15:59:17,898 nioEventLoopGroup-10-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:272] - 127.0.0.1:5000:127.0.0.1:5003接收成功
-2024-12-08 15:59:17,901 nioEventLoopGroup-12-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:266] - 127.0.0.1:5000:接收到127.0.0.1:5001的日志回应
-2024-12-08 15:59:17,901 nioEventLoopGroup-12-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:272] - 127.0.0.1:5000:127.0.0.1:5001接收成功
-2024-12-08 15:59:17,901 nioEventLoopGroup-12-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:281] - 127.0.0.1:5000:超过半数接收日志成功，提交日志到14
-2024-12-08 15:59:17,903 nioEventLoopGroup-11-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:266] - 127.0.0.1:5000:接收到127.0.0.1:5002的日志回应
-2024-12-08 15:59:17,904 nioEventLoopGroup-11-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:272] - 127.0.0.1:5000:127.0.0.1:5002接收成功
-2024-12-08 15:59:22,866 Raft thread  INFO [cn.wjc.server.action.AppendAentryAction:run:28] - 进行一次同步检查
-2024-12-08 15:59:22,868 nioEventLoopGroup-7-4  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recCommandReq:391] - 节点:127.0.0.1:5002  接收到指令:SET test87 746
-2024-12-08 15:59:22,869 nioEventLoopGroup-7-4  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recCommandReq:413] - 节点不是LEADER, LEADER地址为：127.0.0.1:5000
-2024-12-08 15:59:22,869 nioEventLoopGroup-25-1  WARN [cn.wjc.server.msg.impl.MsgProcessingImpl:recCommandRes:368] - 请求发送失败,应该发往:127.0.0.1:5000
-2024-12-08 15:59:22,870 nioEventLoopGroup-3-4  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recCommandReq:391] - 节点:127.0.0.1:5000  接收到指令:SET test87 746
-2024-12-08 15:59:22,870 nioEventLoopGroup-3-4  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recCommandReq:416] - 节点127.0.0.1:5000,接收该指令
-2024-12-08 15:59:27,866 Raft thread  INFO [cn.wjc.server.action.AppendAentryAction:run:28] - 进行一次同步检查
-2024-12-08 15:59:27,868 nioEventLoopGroup-7-4  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recCommandReq:391] - 节点:127.0.0.1:5002  接收到指令:SET test848 80
-2024-12-08 15:59:27,868 nioEventLoopGroup-7-4  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recCommandReq:413] - 节点不是LEADER, LEADER地址为：127.0.0.1:5000
-2024-12-08 15:59:27,868 nioEventLoopGroup-25-1  WARN [cn.wjc.server.msg.impl.MsgProcessingImpl:recCommandRes:368] - 请求发送失败,应该发往:127.0.0.1:5000
-2024-12-08 15:59:27,869 nioEventLoopGroup-3-4  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recCommandReq:391] - 节点:127.0.0.1:5000  接收到指令:SET test848 80
-2024-12-08 15:59:27,869 nioEventLoopGroup-3-4  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recCommandReq:416] - 节点127.0.0.1:5000,接收该指令
-2024-12-08 15:59:27,869 nioEventLoopGroup-5-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:227] - 127.0.0.1:5001接收到日志请求
-2024-12-08 15:59:27,869 nioEventLoopGroup-9-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:227] - 127.0.0.1:5003接收到日志请求
-2024-12-08 15:59:27,869 nioEventLoopGroup-7-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:227] - 127.0.0.1:5002接收到日志请求
-2024-12-08 15:59:27,871 nioEventLoopGroup-5-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:239] - 127.0.0.1:5001追加日志
-2024-12-08 15:59:27,872 nioEventLoopGroup-7-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:239] - 127.0.0.1:5002追加日志
-2024-12-08 15:59:27,872 nioEventLoopGroup-9-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:239] - 127.0.0.1:5003追加日志
-2024-12-08 15:59:27,882 nioEventLoopGroup-11-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:266] - 127.0.0.1:5000:接收到127.0.0.1:5002的日志回应
-2024-12-08 15:59:27,882 nioEventLoopGroup-10-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:266] - 127.0.0.1:5000:接收到127.0.0.1:5003的日志回应
-2024-12-08 15:59:27,882 nioEventLoopGroup-11-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:272] - 127.0.0.1:5000:127.0.0.1:5002接收成功
-2024-12-08 15:59:27,882 nioEventLoopGroup-10-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:272] - 127.0.0.1:5000:127.0.0.1:5003接收成功
-2024-12-08 15:59:27,882 nioEventLoopGroup-11-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:281] - 127.0.0.1:5000:超过半数接收日志成功，提交日志到15
-2024-12-08 15:59:27,882 nioEventLoopGroup-10-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:281] - 127.0.0.1:5000:超过半数接收日志成功，提交日志到15
-2024-12-08 15:59:27,882 nioEventLoopGroup-12-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:266] - 127.0.0.1:5000:接收到127.0.0.1:5001的日志回应
-2024-12-08 15:59:27,882 nioEventLoopGroup-12-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:272] - 127.0.0.1:5000:127.0.0.1:5001接收成功
-2024-12-08 15:59:27,882 nioEventLoopGroup-12-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:281] - 127.0.0.1:5000:超过半数接收日志成功，提交日志到15
-2024-12-08 15:59:27,891 nioEventLoopGroup-11-1  WARN [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:292] - 127.0.0.1:5000:127.0.0.1:5002还未同步到最新的日志
-2024-12-08 15:59:27,891 nioEventLoopGroup-10-1  WARN [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:292] - 127.0.0.1:5000:127.0.0.1:5003还未同步到最新的日志
-2024-12-08 15:59:27,891 nioEventLoopGroup-12-1  WARN [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:292] - 127.0.0.1:5000:127.0.0.1:5001还未同步到最新的日志
-2024-12-08 15:59:27,896 nioEventLoopGroup-7-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:227] - 127.0.0.1:5002接收到日志请求
-2024-12-08 15:59:27,896 nioEventLoopGroup-9-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:227] - 127.0.0.1:5003接收到日志请求
-2024-12-08 15:59:27,897 nioEventLoopGroup-5-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:227] - 127.0.0.1:5001接收到日志请求
-2024-12-08 15:59:27,898 nioEventLoopGroup-7-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:239] - 127.0.0.1:5002追加日志
-2024-12-08 15:59:27,899 nioEventLoopGroup-9-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:239] - 127.0.0.1:5003追加日志
-2024-12-08 15:59:27,900 nioEventLoopGroup-5-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:239] - 127.0.0.1:5001追加日志
-2024-12-08 15:59:27,903 nioEventLoopGroup-11-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:266] - 127.0.0.1:5000:接收到127.0.0.1:5002的日志回应
-2024-12-08 15:59:27,903 nioEventLoopGroup-11-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:272] - 127.0.0.1:5000:127.0.0.1:5002接收成功
-2024-12-08 15:59:27,905 nioEventLoopGroup-10-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:266] - 127.0.0.1:5000:接收到127.0.0.1:5003的日志回应
-2024-12-08 15:59:27,905 nioEventLoopGroup-10-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:272] - 127.0.0.1:5000:127.0.0.1:5003接收成功
-2024-12-08 15:59:27,905 nioEventLoopGroup-10-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:281] - 127.0.0.1:5000:超过半数接收日志成功，提交日志到16
-2024-12-08 15:59:27,906 nioEventLoopGroup-12-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:266] - 127.0.0.1:5000:接收到127.0.0.1:5001的日志回应
-2024-12-08 15:59:27,906 nioEventLoopGroup-12-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:272] - 127.0.0.1:5000:127.0.0.1:5001接收成功
-2024-12-08 15:59:27,906 nioEventLoopGroup-12-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:281] - 127.0.0.1:5000:超过半数接收日志成功，提交日志到16
-2024-12-08 15:59:32,866 Raft thread  INFO [cn.wjc.server.action.AppendAentryAction:run:28] - 进行一次同步检查
-2024-12-08 15:59:32,868 nioEventLoopGroup-7-4  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recCommandReq:391] - 节点:127.0.0.1:5002  接收到指令:SET test168 326
-2024-12-08 15:59:32,869 nioEventLoopGroup-7-4  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recCommandReq:413] - 节点不是LEADER, LEADER地址为：127.0.0.1:5000
-2024-12-08 15:59:32,869 nioEventLoopGroup-25-1  WARN [cn.wjc.server.msg.impl.MsgProcessingImpl:recCommandRes:368] - 请求发送失败,应该发往:127.0.0.1:5000
-2024-12-08 15:59:32,869 nioEventLoopGroup-3-4  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recCommandReq:391] - 节点:127.0.0.1:5000  接收到指令:SET test168 326
-2024-12-08 15:59:32,869 nioEventLoopGroup-3-4  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recCommandReq:416] - 节点127.0.0.1:5000,接收该指令
-2024-12-08 15:59:37,866 Raft thread  INFO [cn.wjc.server.action.AppendAentryAction:run:28] - 进行一次同步检查
-2024-12-08 15:59:37,868 nioEventLoopGroup-7-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:227] - 127.0.0.1:5002接收到日志请求
-2024-12-08 15:59:37,868 nioEventLoopGroup-7-4  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recCommandReq:391] - 节点:127.0.0.1:5002  接收到指令:SET test102 817
-2024-12-08 15:59:37,868 nioEventLoopGroup-5-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:227] - 127.0.0.1:5001接收到日志请求
-2024-12-08 15:59:37,868 nioEventLoopGroup-9-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:227] - 127.0.0.1:5003接收到日志请求
-2024-12-08 15:59:37,869 nioEventLoopGroup-7-4  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recCommandReq:413] - 节点不是LEADER, LEADER地址为：127.0.0.1:5000
-2024-12-08 15:59:37,869 nioEventLoopGroup-25-1  WARN [cn.wjc.server.msg.impl.MsgProcessingImpl:recCommandRes:368] - 请求发送失败,应该发往:127.0.0.1:5000
-2024-12-08 15:59:37,869 nioEventLoopGroup-3-4  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recCommandReq:391] - 节点:127.0.0.1:5000  接收到指令:SET test102 817
-2024-12-08 15:59:37,869 nioEventLoopGroup-3-4  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recCommandReq:416] - 节点127.0.0.1:5000,接收该指令
-2024-12-08 15:59:37,871 nioEventLoopGroup-5-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:239] - 127.0.0.1:5001追加日志
-2024-12-08 15:59:37,871 nioEventLoopGroup-9-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:239] - 127.0.0.1:5003追加日志
-2024-12-08 15:59:37,871 nioEventLoopGroup-7-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:239] - 127.0.0.1:5002追加日志
-2024-12-08 15:59:37,883 nioEventLoopGroup-10-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:266] - 127.0.0.1:5000:接收到127.0.0.1:5003的日志回应
-2024-12-08 15:59:37,883 nioEventLoopGroup-10-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:272] - 127.0.0.1:5000:127.0.0.1:5003接收成功
-2024-12-08 15:59:37,883 nioEventLoopGroup-12-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:266] - 127.0.0.1:5000:接收到127.0.0.1:5001的日志回应
-2024-12-08 15:59:37,883 nioEventLoopGroup-12-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:272] - 127.0.0.1:5000:127.0.0.1:5001接收成功
-2024-12-08 15:59:37,883 nioEventLoopGroup-12-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:281] - 127.0.0.1:5000:超过半数接收日志成功，提交日志到17
-2024-12-08 15:59:37,883 nioEventLoopGroup-11-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:266] - 127.0.0.1:5000:接收到127.0.0.1:5002的日志回应
-2024-12-08 15:59:37,883 nioEventLoopGroup-11-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:272] - 127.0.0.1:5000:127.0.0.1:5002接收成功
-2024-12-08 15:59:37,883 nioEventLoopGroup-11-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:281] - 127.0.0.1:5000:超过半数接收日志成功，提交日志到17
-2024-12-08 15:59:37,889 nioEventLoopGroup-10-1  WARN [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:292] - 127.0.0.1:5000:127.0.0.1:5003还未同步到最新的日志
-2024-12-08 15:59:37,896 nioEventLoopGroup-12-1  WARN [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:292] - 127.0.0.1:5000:127.0.0.1:5001还未同步到最新的日志
-2024-12-08 15:59:37,897 nioEventLoopGroup-9-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:227] - 127.0.0.1:5003接收到日志请求
-2024-12-08 15:59:37,898 nioEventLoopGroup-11-1  WARN [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:292] - 127.0.0.1:5000:127.0.0.1:5002还未同步到最新的日志
-2024-12-08 15:59:37,900 nioEventLoopGroup-9-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:239] - 127.0.0.1:5003追加日志
-2024-12-08 15:59:37,904 nioEventLoopGroup-5-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:227] - 127.0.0.1:5001接收到日志请求
-2024-12-08 15:59:37,905 nioEventLoopGroup-7-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:227] - 127.0.0.1:5002接收到日志请求
-2024-12-08 15:59:37,906 nioEventLoopGroup-10-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:266] - 127.0.0.1:5000:接收到127.0.0.1:5003的日志回应
-2024-12-08 15:59:37,906 nioEventLoopGroup-10-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:272] - 127.0.0.1:5000:127.0.0.1:5003接收成功
-2024-12-08 15:59:37,906 nioEventLoopGroup-5-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:239] - 127.0.0.1:5001追加日志
-2024-12-08 15:59:37,908 nioEventLoopGroup-7-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:239] - 127.0.0.1:5002追加日志
-2024-12-08 15:59:37,911 nioEventLoopGroup-12-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:266] - 127.0.0.1:5000:接收到127.0.0.1:5001的日志回应
-2024-12-08 15:59:37,911 nioEventLoopGroup-12-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:272] - 127.0.0.1:5000:127.0.0.1:5001接收成功
-2024-12-08 15:59:37,911 nioEventLoopGroup-12-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:281] - 127.0.0.1:5000:超过半数接收日志成功，提交日志到18
-2024-12-08 15:59:37,914 nioEventLoopGroup-11-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:266] - 127.0.0.1:5000:接收到127.0.0.1:5002的日志回应
-2024-12-08 15:59:37,914 nioEventLoopGroup-11-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:272] - 127.0.0.1:5000:127.0.0.1:5002接收成功
-2024-12-08 15:59:42,866 Raft thread  INFO [cn.wjc.server.action.AppendAentryAction:run:28] - 进行一次同步检查
-2024-12-08 15:59:42,869 nioEventLoopGroup-7-4  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recCommandReq:391] - 节点:127.0.0.1:5002  接收到指令:SET test732 149
-2024-12-08 15:59:42,869 nioEventLoopGroup-7-4  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recCommandReq:413] - 节点不是LEADER, LEADER地址为：127.0.0.1:5000
-2024-12-08 15:59:42,869 nioEventLoopGroup-25-1  WARN [cn.wjc.server.msg.impl.MsgProcessingImpl:recCommandRes:368] - 请求发送失败,应该发往:127.0.0.1:5000
-2024-12-08 15:59:42,869 nioEventLoopGroup-3-4  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recCommandReq:391] - 节点:127.0.0.1:5000  接收到指令:SET test732 149
-2024-12-08 15:59:42,869 nioEventLoopGroup-3-4  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recCommandReq:416] - 节点127.0.0.1:5000,接收该指令
+2024-12-10 02:35:59,318 main  INFO [cn.wjc.server.model.impl.NodeDefaultImpl:setConfig:43] - 开始初始化127.0.0.1:5000
+2024-12-10 02:35:59,777 main  INFO [cn.wjc.server.model.impl.NodeDefaultImpl:setConfig:43] - 开始初始化127.0.0.1:5001
+2024-12-10 02:35:59,817 main  INFO [cn.wjc.server.model.impl.NodeDefaultImpl:setConfig:43] - 开始初始化127.0.0.1:5002
+2024-12-10 02:35:59,835 main  INFO [cn.wjc.server.model.impl.NodeDefaultImpl:setConfig:43] - 开始初始化127.0.0.1:5003
+2024-12-10 02:36:20,700 Raft thread  INFO [cn.wjc.server.model.impl.NodeDefaultImpl:changeState:127] - 127.0.0.1:5000: 改变角色为CANDIDATE
+2024-12-10 02:36:20,701 Raft thread DEBUG [cn.wjc.server.model.impl.NodeDefaultImpl:changeState:133] - 节点Peer(addr=127.0.0.1:5000)转变为了CANDIDATE
+2024-12-10 02:36:20,701 Raft thread  INFO [cn.wjc.server.action.VoteAction:run:33] - 127.0.0.1:5000开始发起投票请求
+2024-12-10 02:36:20,702 Raft thread DEBUG [cn.wjc.server.action.TImeOutHeartBeatAction:run:89] - 节点(127.0.0.1:5000)超时，进入新一轮的选举状态，当前Trem:5
+2024-12-10 02:36:20,758 nioEventLoopGroup-7-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recReq:95] - 127.0.0.1:5002接收到投票请求
+2024-12-10 02:36:20,759 nioEventLoopGroup-5-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recReq:95] - 127.0.0.1:5001接收到投票请求
+2024-12-10 02:36:20,759 nioEventLoopGroup-9-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recReq:95] - 127.0.0.1:5003接收到投票请求
+2024-12-10 02:36:20,793 nioEventLoopGroup-10-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recVoteRes:109] - 127.0.0.1:5000接收到投票请求的结果
+2024-12-10 02:36:20,793 nioEventLoopGroup-12-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recVoteRes:109] - 127.0.0.1:5000接收到投票请求的结果
+2024-12-10 02:36:20,793 nioEventLoopGroup-12-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recVoteRes:119] - 接收到赞同票，来自127.0.0.1:5001
+2024-12-10 02:36:20,793 nioEventLoopGroup-10-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recVoteRes:119] - 接收到赞同票，来自127.0.0.1:5003
+2024-12-10 02:36:20,793 nioEventLoopGroup-12-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recVoteRes:136] - 当前收到的赞成票:1
+2024-12-10 02:36:20,793 nioEventLoopGroup-10-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recVoteRes:136] - 当前收到的赞成票:2
+2024-12-10 02:36:20,795 nioEventLoopGroup-11-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recVoteRes:109] - 127.0.0.1:5000接收到投票请求的结果
+2024-12-10 02:36:20,795 nioEventLoopGroup-11-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recVoteRes:119] - 接收到赞同票，来自127.0.0.1:5002
+2024-12-10 02:36:20,795 nioEventLoopGroup-11-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recVoteRes:136] - 当前收到的赞成票:3
+2024-12-10 02:36:20,795 nioEventLoopGroup-11-1  INFO [cn.wjc.server.model.impl.NodeDefaultImpl:changeState:135] - 127.0.0.1:5000: 改变角色为LEADER
+2024-12-10 02:36:20,795 main  INFO [cn.wjc.server.model.impl.NodeDefaultImpl:setConfig:43] - 开始初始化127.0.0.1:5004
+2024-12-10 02:36:20,796 nioEventLoopGroup-11-1 DEBUG [cn.wjc.server.model.impl.NodeDefaultImpl:changeState:142] - 节点Peer(addr=127.0.0.1:5000)转变为了LEADER
+2024-12-10 02:36:20,800 Raft thread  INFO [cn.wjc.server.action.AppendAentryAction:run:25] - 127.0.0.1:5000:进行一次同步检查PeerSet(list=[Peer(addr=127.0.0.1:5003), Peer(addr=127.0.0.1:5002), Peer(addr=127.0.0.1:5001), Peer(addr=127.0.0.1:5000)], cOldNewList=[], leader=null, self=Peer(addr=127.0.0.1:5000)),4
+2024-12-10 02:36:20,801 Raft thread  INFO [cn.wjc.server.model.impl.NodeDefaultImpl:sendUpdateLog:164] - 节点127.0.0.1:5000,!!接收到同步日志指令,当前节点commitindex：11
+2024-12-10 02:36:20,824 Raft thread  INFO [cn.wjc.server.model.impl.NodeDefaultImpl:sendUpdateLog:164] - 节点127.0.0.1:5000,!!接收到同步日志指令,当前节点commitindex：11
+2024-12-10 02:36:20,828 nioEventLoopGroup-9-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:249] - 127.0.0.1:5003接收到日志请求
+2024-12-10 02:36:20,831 nioEventLoopGroup-7-4  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recCommandReq:445] - 节点:127.0.0.1:5002  接收到指令:UPDATE 127.0.0.1:5004
+2024-12-10 02:36:20,832 Raft thread  INFO [cn.wjc.server.model.impl.NodeDefaultImpl:sendUpdateLog:164] - 节点127.0.0.1:5000,!!接收到同步日志指令,当前节点commitindex：11
+2024-12-10 02:36:20,833 nioEventLoopGroup-7-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:249] - 127.0.0.1:5002接收到日志请求
+2024-12-10 02:36:20,834 nioEventLoopGroup-9-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:257] - 127.0.0.1:5003已经接收过该日志
+2024-12-10 02:36:20,838 nioEventLoopGroup-7-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:257] - 127.0.0.1:5002已经接收过该日志
+2024-12-10 02:36:20,841 nioEventLoopGroup-5-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:249] - 127.0.0.1:5001接收到日志请求
+2024-12-10 02:36:20,845 nioEventLoopGroup-5-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:257] - 127.0.0.1:5001已经接收过该日志
+2024-12-10 02:36:20,993 nioEventLoopGroup-9-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:235] - 127.0.0.1:5003: FOLLOWER提交日志
+2024-12-10 02:36:20,996 nioEventLoopGroup-7-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:235] - 127.0.0.1:5002: FOLLOWER提交日志
+2024-12-10 02:36:21,009 nioEventLoopGroup-5-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:235] - 127.0.0.1:5001: FOLLOWER提交日志
+2024-12-10 02:36:21,031 nioEventLoopGroup-7-4  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recCommandReq:468] - 节点不是LEADER, LEADER地址为：127.0.0.1:5000
+2024-12-10 02:36:21,033 nioEventLoopGroup-25-1  WARN [cn.wjc.server.msg.impl.MsgProcessingImpl:recCommandRes:415] - 请求发送失败,应该发往:127.0.0.1:5000
+2024-12-10 02:36:21,036 nioEventLoopGroup-3-4  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recCommandReq:445] - 节点:127.0.0.1:5000  接收到指令:UPDATE 127.0.0.1:5004
+2024-12-10 02:36:21,037 nioEventLoopGroup-3-4  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recCommandReq:502] - 节点127.0.0.1:5000,接收到同步日志指令,当前节点commitindex：11
+2024-12-10 02:36:21,038 nioEventLoopGroup-3-4  INFO [cn.wjc.server.model.impl.NodeDefaultImpl:sendUpdateLog:164] - 节点127.0.0.1:5000,!!接收到同步日志指令,当前节点commitindex：11
+2024-12-10 02:36:21,046 nioEventLoopGroup-3-4  INFO [cn.wjc.server.action.AppendAentryAction:run:25] - 127.0.0.1:5000:进行一次同步检查PeerSet(list=[Peer(addr=127.0.0.1:5003), Peer(addr=127.0.0.1:5002), Peer(addr=127.0.0.1:5001), Peer(addr=127.0.0.1:5000)], cOldNewList=[], leader=null, self=Peer(addr=127.0.0.1:5000)),4
+2024-12-10 02:36:21,046 nioEventLoopGroup-3-4  INFO [cn.wjc.server.model.impl.NodeDefaultImpl:sendUpdateLog:164] - 节点127.0.0.1:5000,!!接收到同步日志指令,当前节点commitindex：11
+2024-12-10 02:36:21,054 nioEventLoopGroup-3-4  INFO [cn.wjc.server.model.impl.NodeDefaultImpl:sendUpdateLog:164] - 节点127.0.0.1:5000,!!接收到同步日志指令,当前节点commitindex：11
+2024-12-10 02:36:21,054 nioEventLoopGroup-9-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:249] - 127.0.0.1:5003接收到日志请求
+2024-12-10 02:36:21,055 nioEventLoopGroup-23-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:249] - 127.0.0.1:5004接收到日志请求
+2024-12-10 02:36:21,059 nioEventLoopGroup-9-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:257] - 127.0.0.1:5003已经接收过该日志
+2024-12-10 02:36:21,059 nioEventLoopGroup-23-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:257] - 127.0.0.1:5004已经接收过该日志
+2024-12-10 02:36:21,060 nioEventLoopGroup-23-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:263] - 127.0.0.1:5004追加日志
+2024-12-10 02:36:21,062 nioEventLoopGroup-3-4  INFO [cn.wjc.server.model.impl.NodeDefaultImpl:sendUpdateLog:164] - 节点127.0.0.1:5000,!!接收到同步日志指令,当前节点commitindex：11
+2024-12-10 02:36:21,063 nioEventLoopGroup-7-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:249] - 127.0.0.1:5002接收到日志请求
+2024-12-10 02:36:21,067 nioEventLoopGroup-7-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:257] - 127.0.0.1:5002已经接收过该日志
+2024-12-10 02:36:21,068 nioEventLoopGroup-5-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:249] - 127.0.0.1:5001接收到日志请求
+2024-12-10 02:36:21,073 nioEventLoopGroup-5-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:257] - 127.0.0.1:5001已经接收过该日志
+2024-12-10 02:36:21,082 nioEventLoopGroup-23-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:286] - 127.0.0.1:5004:检查！！！AentryParam(term=5, serverId=null, leaderId=127.0.0.1:5000, preLogIndex=10, preLogTerm=4, entries=[LogEntry(index=11, term=4, command=Command(command=CNEW))], leaderCommit=11)
+2024-12-10 02:36:21,083 nioEventLoopGroup-23-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:290] - 127.0.0.1:5004日志已经是最新的了,可以加入节点
+2024-12-10 02:36:21,083 main  WARN [cn.wjc.server.cOldNewTest:main:151] - 观察！！！！！！！！PeerSet(list=[Peer(addr=127.0.0.1:5003), Peer(addr=127.0.0.1:5002), Peer(addr=127.0.0.1:5001), Peer(addr=127.0.0.1:5000)], cOldNewList=[], leader=127.0.0.1:5000, self=Peer(addr=127.0.0.1:5001))
+2024-12-10 02:36:21,083 nioEventLoopGroup-7-4  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recCommandReq:445] - 节点:127.0.0.1:5002  接收到指令:CHANGE ADD 127.0.0.1:5004
+2024-12-10 02:36:21,083 nioEventLoopGroup-7-4  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recCommandReq:468] - 节点不是LEADER, LEADER地址为：127.0.0.1:5000
+2024-12-10 02:36:21,084 nioEventLoopGroup-25-1  WARN [cn.wjc.server.msg.impl.MsgProcessingImpl:recCommandRes:415] - 请求发送失败,应该发往:127.0.0.1:5000
+2024-12-10 02:36:21,084 nioEventLoopGroup-3-4  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recCommandReq:445] - 节点:127.0.0.1:5000  接收到指令:CHANGE ADD 127.0.0.1:5004
+2024-12-10 02:36:21,085 nioEventLoopGroup-3-4  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recCommandReq:492] - 节点127.0.0.1:5000,接收到节点变更指令PeerSet(list=[Peer(addr=127.0.0.1:5003), Peer(addr=127.0.0.1:5002), Peer(addr=127.0.0.1:5001), Peer(addr=127.0.0.1:5000)], cOldNewList=[], leader=null, self=Peer(addr=127.0.0.1:5000))
+2024-12-10 02:36:21,089 nioEventLoopGroup-28-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:312] - 127.0.0.1:5000:接收到127.0.0.1:5004的日志回应
+2024-12-10 02:36:21,089 nioEventLoopGroup-28-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:318] - 127.0.0.1:5000:127.0.0.1:5004接收成功
+2024-12-10 02:36:21,092 nioEventLoopGroup-3-4  INFO [cn.wjc.server.action.AppendAentryAction:run:25] - 127.0.0.1:5000:进行一次同步检查PeerSet(list=[Peer(addr=127.0.0.1:5003), Peer(addr=127.0.0.1:5002), Peer(addr=127.0.0.1:5001), Peer(addr=127.0.0.1:5000)], cOldNewList=[], leader=null, self=Peer(addr=127.0.0.1:5000)),2
+2024-12-10 02:36:21,092 nioEventLoopGroup-3-4  INFO [cn.wjc.server.model.impl.NodeDefaultImpl:sendUpdateLog:164] - 节点127.0.0.1:5000,!!接收到同步日志指令,当前节点commitindex：11
+2024-12-10 02:36:21,097 nioEventLoopGroup-3-4  INFO [cn.wjc.server.model.impl.NodeDefaultImpl:sendUpdateLog:164] - 节点127.0.0.1:5000,!!接收到同步日志指令,当前节点commitindex：11
+2024-12-10 02:36:21,097 nioEventLoopGroup-9-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:249] - 127.0.0.1:5003接收到日志请求
+2024-12-10 02:36:21,101 nioEventLoopGroup-9-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:263] - 127.0.0.1:5003追加日志
+2024-12-10 02:36:21,102 nioEventLoopGroup-3-4  INFO [cn.wjc.server.model.impl.NodeDefaultImpl:sendUpdateLog:164] - 节点127.0.0.1:5000,!!接收到同步日志指令,当前节点commitindex：11
+2024-12-10 02:36:21,103 nioEventLoopGroup-7-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:249] - 127.0.0.1:5002接收到日志请求
+2024-12-10 02:36:21,106 nioEventLoopGroup-7-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:263] - 127.0.0.1:5002追加日志
+2024-12-10 02:36:21,109 nioEventLoopGroup-10-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:312] - 127.0.0.1:5000:接收到127.0.0.1:5003的日志回应
+2024-12-10 02:36:21,109 nioEventLoopGroup-10-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:318] - 127.0.0.1:5000:127.0.0.1:5003接收成功
+2024-12-10 02:36:21,110 nioEventLoopGroup-5-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:249] - 127.0.0.1:5001接收到日志请求
+2024-12-10 02:36:21,113 nioEventLoopGroup-5-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:263] - 127.0.0.1:5001追加日志
+2024-12-10 02:36:21,114 nioEventLoopGroup-11-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:312] - 127.0.0.1:5000:接收到127.0.0.1:5002的日志回应
+2024-12-10 02:36:21,114 nioEventLoopGroup-11-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:318] - 127.0.0.1:5000:127.0.0.1:5002接收成功
+2024-12-10 02:36:21,114 nioEventLoopGroup-11-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:327] - 127.0.0.1:5000:超过半数接收日志成功，提交日志到12
+2024-12-10 02:36:21,123 nioEventLoopGroup-12-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:312] - 127.0.0.1:5000:接收到127.0.0.1:5001的日志回应
+2024-12-10 02:36:21,123 nioEventLoopGroup-12-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:318] - 127.0.0.1:5000:127.0.0.1:5001接收成功
+2024-12-10 02:36:21,129 nioEventLoopGroup-11-1  INFO [cn.wjc.server.action.AppendAentryAction:run:25] - 127.0.0.1:5000:进行一次同步检查PeerSet(list=[Peer(addr=127.0.0.1:5003), Peer(addr=127.0.0.1:5002), Peer(addr=127.0.0.1:5001), Peer(addr=127.0.0.1:5000)], cOldNewList=[Peer(addr=127.0.0.1:5004)], leader=null, self=Peer(addr=127.0.0.1:5000)),2
+2024-12-10 02:36:21,129 nioEventLoopGroup-11-1  INFO [cn.wjc.server.model.impl.NodeDefaultImpl:sendUpdateLog:164] - 节点127.0.0.1:5000,!!接收到同步日志指令,当前节点commitindex：12
+2024-12-10 02:36:21,133 nioEventLoopGroup-11-1  INFO [cn.wjc.server.model.impl.NodeDefaultImpl:sendUpdateLog:164] - 节点127.0.0.1:5000,!!接收到同步日志指令,当前节点commitindex：12
+2024-12-10 02:36:21,134 nioEventLoopGroup-9-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:249] - 127.0.0.1:5003接收到日志请求
+2024-12-10 02:36:21,137 nioEventLoopGroup-9-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:263] - 127.0.0.1:5003追加日志
+2024-12-10 02:36:21,137 nioEventLoopGroup-11-1  INFO [cn.wjc.server.model.impl.NodeDefaultImpl:sendUpdateLog:164] - 节点127.0.0.1:5000,!!接收到同步日志指令,当前节点commitindex：12
+2024-12-10 02:36:21,139 nioEventLoopGroup-7-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:249] - 127.0.0.1:5002接收到日志请求
+2024-12-10 02:36:21,141 nioEventLoopGroup-11-1  INFO [cn.wjc.server.model.impl.NodeDefaultImpl:sendUpdateLog:164] - 节点127.0.0.1:5000,!!接收到同步日志指令,当前节点commitindex：12
+2024-12-10 02:36:21,142 nioEventLoopGroup-5-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:249] - 127.0.0.1:5001接收到日志请求
+2024-12-10 02:36:21,143 nioEventLoopGroup-9-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:275] - 127.0.0.1:5003: FOLLOWER提交日志
+2024-12-10 02:36:21,152 nioEventLoopGroup-7-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:263] - 127.0.0.1:5002追加日志
+2024-12-10 02:36:21,155 nioEventLoopGroup-5-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:263] - 127.0.0.1:5001追加日志
+2024-12-10 02:36:21,157 nioEventLoopGroup-23-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:249] - 127.0.0.1:5004接收到日志请求
+2024-12-10 02:36:21,159 nioEventLoopGroup-11-1  WARN [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:338] - 127.0.0.1:5000:127.0.0.1:5002还未同步到最新的日志
+2024-12-10 02:36:21,160 nioEventLoopGroup-7-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:275] - 127.0.0.1:5002: FOLLOWER提交日志
+2024-12-10 02:36:21,161 nioEventLoopGroup-23-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:295] - 127.0.0.1:5004日志不一致，追溯前一个日志12
+2024-12-10 02:36:21,162 nioEventLoopGroup-28-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:312] - 127.0.0.1:5000:接收到127.0.0.1:5004的日志回应
+2024-12-10 02:36:21,163 nioEventLoopGroup-10-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:312] - 127.0.0.1:5000:接收到127.0.0.1:5003的日志回应
+2024-12-10 02:36:21,163 nioEventLoopGroup-10-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:318] - 127.0.0.1:5000:127.0.0.1:5003接收成功
+2024-12-10 02:36:21,164 nioEventLoopGroup-5-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:275] - 127.0.0.1:5001: FOLLOWER提交日志
+2024-12-10 02:36:21,165 nioEventLoopGroup-28-1  WARN [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:374] - 127.0.0.1:5000:127.0.0.1:5004接收失败，追溯前一个日志11 : AentryResult(term=5, success=false, MatchIndex=0, ConflictIndex=12)
+2024-12-10 02:36:21,170 nioEventLoopGroup-23-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:249] - 127.0.0.1:5004接收到日志请求
+2024-12-10 02:36:21,172 nioEventLoopGroup-23-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:263] - 127.0.0.1:5004追加日志
+2024-12-10 02:36:21,174 nioEventLoopGroup-11-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:312] - 127.0.0.1:5000:接收到127.0.0.1:5002的日志回应
+2024-12-10 02:36:21,174 nioEventLoopGroup-7-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:249] - 127.0.0.1:5002接收到日志请求
+2024-12-10 02:36:21,175 nioEventLoopGroup-11-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:318] - 127.0.0.1:5000:127.0.0.1:5002接收成功
+2024-12-10 02:36:21,175 nioEventLoopGroup-11-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:327] - 127.0.0.1:5000:超过半数接收日志成功，提交日志到13
+2024-12-10 02:36:21,175 nioEventLoopGroup-12-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:312] - 127.0.0.1:5000:接收到127.0.0.1:5001的日志回应
+2024-12-10 02:36:21,175 nioEventLoopGroup-12-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:318] - 127.0.0.1:5000:127.0.0.1:5001接收成功
+2024-12-10 02:36:21,178 nioEventLoopGroup-7-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:257] - 127.0.0.1:5002已经接收过该日志
+2024-12-10 02:36:21,180 nioEventLoopGroup-23-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:275] - 127.0.0.1:5004: FOLLOWER提交日志
+2024-12-10 02:36:21,191 nioEventLoopGroup-28-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:312] - 127.0.0.1:5000:接收到127.0.0.1:5004的日志回应
+2024-12-10 02:36:21,191 nioEventLoopGroup-28-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:318] - 127.0.0.1:5000:127.0.0.1:5004接收成功
+2024-12-10 02:36:21,192 nioEventLoopGroup-28-1  WARN [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:338] - 127.0.0.1:5000:127.0.0.1:5004还未同步到最新的日志
+2024-12-10 02:36:21,198 nioEventLoopGroup-23-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:249] - 127.0.0.1:5004接收到日志请求
+2024-12-10 02:36:21,201 nioEventLoopGroup-23-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:263] - 127.0.0.1:5004追加日志
+2024-12-10 02:36:21,206 nioEventLoopGroup-23-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:275] - 127.0.0.1:5004: FOLLOWER提交日志
+2024-12-10 02:36:21,214 nioEventLoopGroup-28-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:312] - 127.0.0.1:5000:接收到127.0.0.1:5004的日志回应
+2024-12-10 02:36:21,214 nioEventLoopGroup-28-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryRes:318] - 127.0.0.1:5000:127.0.0.1:5004接收成功
+2024-12-10 02:36:21,293 nioEventLoopGroup-9-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:235] - 127.0.0.1:5003: FOLLOWER提交日志
+2024-12-10 02:36:21,295 nioEventLoopGroup-7-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:235] - 127.0.0.1:5002: FOLLOWER提交日志
+2024-12-10 02:36:21,297 nioEventLoopGroup-5-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:235] - 127.0.0.1:5001: FOLLOWER提交日志
+2024-12-10 02:36:22,083 main  WARN [cn.wjc.server.cOldNewTest:main:151] - 观察！！！！！！！！PeerSet(list=[Peer(addr=127.0.0.1:5003), Peer(addr=127.0.0.1:5002), Peer(addr=127.0.0.1:5001), Peer(addr=127.0.0.1:5000), Peer(addr=127.0.0.1:5004)], cOldNewList=[], leader=127.0.0.1:5000, self=Peer(addr=127.0.0.1:5001))
+2024-12-10 02:36:23,083 main  WARN [cn.wjc.server.cOldNewTest:main:151] - 观察！！！！！！！！PeerSet(list=[Peer(addr=127.0.0.1:5003), Peer(addr=127.0.0.1:5002), Peer(addr=127.0.0.1:5001), Peer(addr=127.0.0.1:5000), Peer(addr=127.0.0.1:5004)], cOldNewList=[], leader=127.0.0.1:5000, self=Peer(addr=127.0.0.1:5001))
+2024-12-10 02:36:24,084 main  WARN [cn.wjc.server.cOldNewTest:main:151] - 观察！！！！！！！！PeerSet(list=[Peer(addr=127.0.0.1:5003), Peer(addr=127.0.0.1:5002), Peer(addr=127.0.0.1:5001), Peer(addr=127.0.0.1:5000), Peer(addr=127.0.0.1:5004)], cOldNewList=[], leader=127.0.0.1:5000, self=Peer(addr=127.0.0.1:5001))
+2024-12-10 02:36:25,084 main  WARN [cn.wjc.server.cOldNewTest:main:151] - 观察！！！！！！！！PeerSet(list=[Peer(addr=127.0.0.1:5003), Peer(addr=127.0.0.1:5002), Peer(addr=127.0.0.1:5001), Peer(addr=127.0.0.1:5000), Peer(addr=127.0.0.1:5004)], cOldNewList=[], leader=127.0.0.1:5000, self=Peer(addr=127.0.0.1:5001))
+2024-12-10 02:36:25,795 Raft thread  INFO [cn.wjc.server.action.AppendAentryAction:run:25] - 127.0.0.1:5000:进行一次同步检查PeerSet(list=[Peer(addr=127.0.0.1:5003), Peer(addr=127.0.0.1:5002), Peer(addr=127.0.0.1:5001), Peer(addr=127.0.0.1:5000), Peer(addr=127.0.0.1:5004)], cOldNewList=[], leader=null, self=Peer(addr=127.0.0.1:5000)),4
+2024-12-10 02:36:25,796 Raft thread  INFO [cn.wjc.server.model.impl.NodeDefaultImpl:sendUpdateLog:164] - 节点127.0.0.1:5000,!!接收到同步日志指令,当前节点commitindex：13
+2024-12-10 02:36:25,798 Raft thread  INFO [cn.wjc.server.model.impl.NodeDefaultImpl:sendUpdateLog:164] - 节点127.0.0.1:5000,!!接收到同步日志指令,当前节点commitindex：13
+2024-12-10 02:36:25,798 nioEventLoopGroup-9-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:249] - 127.0.0.1:5003接收到日志请求
+2024-12-10 02:36:25,801 nioEventLoopGroup-9-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:257] - 127.0.0.1:5003已经接收过该日志
+2024-12-10 02:36:25,802 Raft thread  INFO [cn.wjc.server.model.impl.NodeDefaultImpl:sendUpdateLog:164] - 节点127.0.0.1:5000,!!接收到同步日志指令,当前节点commitindex：13
+2024-12-10 02:36:25,803 nioEventLoopGroup-7-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:249] - 127.0.0.1:5002接收到日志请求
+2024-12-10 02:36:25,805 nioEventLoopGroup-7-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:257] - 127.0.0.1:5002已经接收过该日志
+2024-12-10 02:36:25,807 Raft thread  INFO [cn.wjc.server.model.impl.NodeDefaultImpl:sendUpdateLog:164] - 节点127.0.0.1:5000,!!接收到同步日志指令,当前节点commitindex：13
+2024-12-10 02:36:25,808 nioEventLoopGroup-5-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:249] - 127.0.0.1:5001接收到日志请求
+2024-12-10 02:36:25,809 nioEventLoopGroup-5-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:257] - 127.0.0.1:5001已经接收过该日志
+2024-12-10 02:36:25,810 nioEventLoopGroup-23-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:249] - 127.0.0.1:5004接收到日志请求
+2024-12-10 02:36:25,812 nioEventLoopGroup-23-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:257] - 127.0.0.1:5004已经接收过该日志
+2024-12-10 02:36:26,084 main  WARN [cn.wjc.server.cOldNewTest:main:151] - 观察！！！！！！！！PeerSet(list=[Peer(addr=127.0.0.1:5003), Peer(addr=127.0.0.1:5002), Peer(addr=127.0.0.1:5001), Peer(addr=127.0.0.1:5000), Peer(addr=127.0.0.1:5004)], cOldNewList=[], leader=127.0.0.1:5000, self=Peer(addr=127.0.0.1:5001))
+2024-12-10 02:36:27,085 main  WARN [cn.wjc.server.cOldNewTest:main:151] - 观察！！！！！！！！PeerSet(list=[Peer(addr=127.0.0.1:5003), Peer(addr=127.0.0.1:5002), Peer(addr=127.0.0.1:5001), Peer(addr=127.0.0.1:5000), Peer(addr=127.0.0.1:5004)], cOldNewList=[], leader=127.0.0.1:5000, self=Peer(addr=127.0.0.1:5001))
+2024-12-10 02:36:28,085 main  WARN [cn.wjc.server.cOldNewTest:main:151] - 观察！！！！！！！！PeerSet(list=[Peer(addr=127.0.0.1:5003), Peer(addr=127.0.0.1:5002), Peer(addr=127.0.0.1:5001), Peer(addr=127.0.0.1:5000), Peer(addr=127.0.0.1:5004)], cOldNewList=[], leader=127.0.0.1:5000, self=Peer(addr=127.0.0.1:5001))
+2024-12-10 02:36:29,085 main  WARN [cn.wjc.server.cOldNewTest:main:151] - 观察！！！！！！！！PeerSet(list=[Peer(addr=127.0.0.1:5003), Peer(addr=127.0.0.1:5002), Peer(addr=127.0.0.1:5001), Peer(addr=127.0.0.1:5000), Peer(addr=127.0.0.1:5004)], cOldNewList=[], leader=127.0.0.1:5000, self=Peer(addr=127.0.0.1:5001))
+2024-12-10 02:36:30,085 main  WARN [cn.wjc.server.cOldNewTest:main:151] - 观察！！！！！！！！PeerSet(list=[Peer(addr=127.0.0.1:5003), Peer(addr=127.0.0.1:5002), Peer(addr=127.0.0.1:5001), Peer(addr=127.0.0.1:5000), Peer(addr=127.0.0.1:5004)], cOldNewList=[], leader=127.0.0.1:5000, self=Peer(addr=127.0.0.1:5001))
+2024-12-10 02:36:30,796 Raft thread  INFO [cn.wjc.server.action.AppendAentryAction:run:25] - 127.0.0.1:5000:进行一次同步检查PeerSet(list=[Peer(addr=127.0.0.1:5003), Peer(addr=127.0.0.1:5002), Peer(addr=127.0.0.1:5001), Peer(addr=127.0.0.1:5000), Peer(addr=127.0.0.1:5004)], cOldNewList=[], leader=null, self=Peer(addr=127.0.0.1:5000)),4
+2024-12-10 02:36:30,796 Raft thread  INFO [cn.wjc.server.model.impl.NodeDefaultImpl:sendUpdateLog:164] - 节点127.0.0.1:5000,!!接收到同步日志指令,当前节点commitindex：13
+2024-12-10 02:36:30,799 Raft thread  INFO [cn.wjc.server.model.impl.NodeDefaultImpl:sendUpdateLog:164] - 节点127.0.0.1:5000,!!接收到同步日志指令,当前节点commitindex：13
+2024-12-10 02:36:30,800 nioEventLoopGroup-9-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:249] - 127.0.0.1:5003接收到日志请求
+2024-12-10 02:36:30,801 nioEventLoopGroup-9-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:257] - 127.0.0.1:5003已经接收过该日志
+2024-12-10 02:36:30,803 Raft thread  INFO [cn.wjc.server.model.impl.NodeDefaultImpl:sendUpdateLog:164] - 节点127.0.0.1:5000,!!接收到同步日志指令,当前节点commitindex：13
+2024-12-10 02:36:30,803 nioEventLoopGroup-7-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:249] - 127.0.0.1:5002接收到日志请求
+2024-12-10 02:36:30,805 nioEventLoopGroup-7-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:257] - 127.0.0.1:5002已经接收过该日志
+2024-12-10 02:36:30,807 Raft thread  INFO [cn.wjc.server.model.impl.NodeDefaultImpl:sendUpdateLog:164] - 节点127.0.0.1:5000,!!接收到同步日志指令,当前节点commitindex：13
+2024-12-10 02:36:30,808 nioEventLoopGroup-5-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:249] - 127.0.0.1:5001接收到日志请求
+2024-12-10 02:36:30,811 nioEventLoopGroup-5-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:257] - 127.0.0.1:5001已经接收过该日志
+2024-12-10 02:36:30,812 nioEventLoopGroup-23-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:249] - 127.0.0.1:5004接收到日志请求
+2024-12-10 02:36:30,814 nioEventLoopGroup-23-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:257] - 127.0.0.1:5004已经接收过该日志
+2024-12-10 02:36:31,086 main  WARN [cn.wjc.server.cOldNewTest:main:151] - 观察！！！！！！！！PeerSet(list=[Peer(addr=127.0.0.1:5003), Peer(addr=127.0.0.1:5002), Peer(addr=127.0.0.1:5001), Peer(addr=127.0.0.1:5000), Peer(addr=127.0.0.1:5004)], cOldNewList=[], leader=127.0.0.1:5000, self=Peer(addr=127.0.0.1:5001))
+2024-12-10 02:36:32,086 main  WARN [cn.wjc.server.cOldNewTest:main:151] - 观察！！！！！！！！PeerSet(list=[Peer(addr=127.0.0.1:5003), Peer(addr=127.0.0.1:5002), Peer(addr=127.0.0.1:5001), Peer(addr=127.0.0.1:5000), Peer(addr=127.0.0.1:5004)], cOldNewList=[], leader=127.0.0.1:5000, self=Peer(addr=127.0.0.1:5001))
+2024-12-10 02:36:33,086 main  WARN [cn.wjc.server.cOldNewTest:main:151] - 观察！！！！！！！！PeerSet(list=[Peer(addr=127.0.0.1:5003), Peer(addr=127.0.0.1:5002), Peer(addr=127.0.0.1:5001), Peer(addr=127.0.0.1:5000), Peer(addr=127.0.0.1:5004)], cOldNewList=[], leader=127.0.0.1:5000, self=Peer(addr=127.0.0.1:5001))
+2024-12-10 02:36:34,086 main  WARN [cn.wjc.server.cOldNewTest:main:151] - 观察！！！！！！！！PeerSet(list=[Peer(addr=127.0.0.1:5003), Peer(addr=127.0.0.1:5002), Peer(addr=127.0.0.1:5001), Peer(addr=127.0.0.1:5000), Peer(addr=127.0.0.1:5004)], cOldNewList=[], leader=127.0.0.1:5000, self=Peer(addr=127.0.0.1:5001))
+2024-12-10 02:36:35,087 main  WARN [cn.wjc.server.cOldNewTest:main:151] - 观察！！！！！！！！PeerSet(list=[Peer(addr=127.0.0.1:5003), Peer(addr=127.0.0.1:5002), Peer(addr=127.0.0.1:5001), Peer(addr=127.0.0.1:5000), Peer(addr=127.0.0.1:5004)], cOldNewList=[], leader=127.0.0.1:5000, self=Peer(addr=127.0.0.1:5001))
+2024-12-10 02:36:35,795 Raft thread  INFO [cn.wjc.server.action.AppendAentryAction:run:25] - 127.0.0.1:5000:进行一次同步检查PeerSet(list=[Peer(addr=127.0.0.1:5003), Peer(addr=127.0.0.1:5002), Peer(addr=127.0.0.1:5001), Peer(addr=127.0.0.1:5000), Peer(addr=127.0.0.1:5004)], cOldNewList=[], leader=null, self=Peer(addr=127.0.0.1:5000)),4
+2024-12-10 02:36:35,796 Raft thread  INFO [cn.wjc.server.model.impl.NodeDefaultImpl:sendUpdateLog:164] - 节点127.0.0.1:5000,!!接收到同步日志指令,当前节点commitindex：13
+2024-12-10 02:36:35,799 Raft thread  INFO [cn.wjc.server.model.impl.NodeDefaultImpl:sendUpdateLog:164] - 节点127.0.0.1:5000,!!接收到同步日志指令,当前节点commitindex：13
+2024-12-10 02:36:35,799 nioEventLoopGroup-9-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:249] - 127.0.0.1:5003接收到日志请求
+2024-12-10 02:36:35,802 nioEventLoopGroup-9-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:257] - 127.0.0.1:5003已经接收过该日志
+2024-12-10 02:36:35,803 Raft thread  INFO [cn.wjc.server.model.impl.NodeDefaultImpl:sendUpdateLog:164] - 节点127.0.0.1:5000,!!接收到同步日志指令,当前节点commitindex：13
+2024-12-10 02:36:35,803 nioEventLoopGroup-7-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:249] - 127.0.0.1:5002接收到日志请求
+2024-12-10 02:36:35,806 nioEventLoopGroup-7-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:257] - 127.0.0.1:5002已经接收过该日志
+2024-12-10 02:36:35,806 Raft thread  INFO [cn.wjc.server.model.impl.NodeDefaultImpl:sendUpdateLog:164] - 节点127.0.0.1:5000,!!接收到同步日志指令,当前节点commitindex：13
+2024-12-10 02:36:35,806 nioEventLoopGroup-5-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:249] - 127.0.0.1:5001接收到日志请求
+2024-12-10 02:36:35,809 nioEventLoopGroup-5-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:257] - 127.0.0.1:5001已经接收过该日志
+2024-12-10 02:36:35,809 nioEventLoopGroup-23-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:249] - 127.0.0.1:5004接收到日志请求
+2024-12-10 02:36:35,810 nioEventLoopGroup-23-1  INFO [cn.wjc.server.msg.impl.MsgProcessingImpl:recAentryReq:257] - 127.0.0.1:5004已经接收过该日志
+2024-12-10 02:36:36,087 main  WARN [cn.wjc.server.cOldNewTest:main:151] - 观察！！！！！！！！PeerSet(list=[Peer(addr=127.0.0.1:5003), Peer(addr=127.0.0.1:5002), Peer(addr=127.0.0.1:5001), Peer(addr=127.0.0.1:5000), Peer(addr=127.0.0.1:5004)], cOldNewList=[], leader=127.0.0.1:5000, self=Peer(addr=127.0.0.1:5001))
+2024-12-10 02:36:37,087 main  WARN [cn.wjc.server.cOldNewTest:main:151] - 观察！！！！！！！！PeerSet(list=[Peer(addr=127.0.0.1:5003), Peer(addr=127.0.0.1:5002), Peer(addr=127.0.0.1:5001), Peer(addr=127.0.0.1:5000), Peer(addr=127.0.0.1:5004)], cOldNewList=[], leader=127.0.0.1:5000, self=Peer(addr=127.0.0.1:5001))

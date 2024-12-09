@@ -13,6 +13,7 @@ public class server1 {
         NodeDefaultImpl nodeDefaultImpl = new NodeDefaultImpl(node);
         Peer selfpeer = new Peer("127.0.0.1:8001");
         PeerSet peerSet = new PeerSet();
+        node.setCanJoin(true);
         peerSet.setSelf(selfpeer);
         nodeDefaultImpl.setConfig(peerSet);
         nodeDefaultImpl.setConfig2connectAndStart(peerSet);

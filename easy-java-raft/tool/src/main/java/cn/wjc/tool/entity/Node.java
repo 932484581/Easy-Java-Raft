@@ -58,6 +58,11 @@ public class Node {
     /* ============KV============ */
     KVStorageImpl kvStorageImpl;
 
+    /* ============节点变更============ */
+    @Builder.Default
+    private volatile int cOldNew = CommandParam.CNEW;
+    private volatile Boolean canJoin;
+
     public void setCurrentTerm(long currentTerm) {
         this.currentTerm = currentTerm;
         kvStorageImpl.updataString("currentTerm", String.valueOf(currentTerm));
@@ -67,4 +72,5 @@ public class Node {
         this.commitIndex = commitIndex;
         kvStorageImpl.updataString("commitIndex", String.valueOf(commitIndex));
     }
+
 }

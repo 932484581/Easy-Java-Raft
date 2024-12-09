@@ -1,12 +1,9 @@
 package cn.wjc.server.action;
 
-import cn.wjc.tool.entity.AentryParam;
-import cn.wjc.tool.entity.LogEntry;
+import cn.wjc.server.model.impl.NodeDefaultImpl;
 import cn.wjc.tool.entity.Node;
 import cn.wjc.tool.entity.Peer;
-import cn.wjc.tool.entity.Request;
 import cn.wjc.tool.entity.State;
-import cn.wjc.tool.exception.NettyException;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -25,36 +22,11 @@ public class AppendAentryAction implements Runnable {
     @Override
     public void run() {
         if (node.getState() == State.LEADER) {
-            log.info("进行一次同步检查");
-            Long lastLogIndex = node.getLogStorage().getLastLogIndex();
-            LogEntry lastLogEntry = node.getLogStorage().getEntry(lastLogIndex);
-            LogEntry preLogEntry = node.getLogStorage().getEntry(lastLogIndex - 1);
-            LogEntry[] wait2SentEntries = { lastLogEntry };
-
-            AentryParam aentryParam = AentryParam.builder()
-                    .term(node.currentTerm)
-                    .preLogIndex(preLogEntry.getIndex())
-                    .preLogTerm(preLogEntry.getTerm())
-                    .leaderId(node.getPeerSet().getSelf().getAddr())
-                    .entries(wait2SentEntries)
-                    .build();
-            Request request = Request.builder()
-                    .cmd(Request.A_ENTRIES)
-                    .obj(aentryParam)
-                    .reqTerm(node.currentTerm)
-                    .build();
+            log.info(node.getPeerSet().getSelf().getAddr() + ":进行一次同步检查" + String.valueOf(node.getPeerSet()) + ","
+                    + node.getCOldNew());
+            NodeDefaultImpl nodeDefaultImpl = new NodeDefaultImpl(node);
             for (Peer peers : node.getPeerSet().getPeersWithOutSelf()) {
-                if (node.getResultMap.get(peers.getAddr()) < lastLogIndex) {
-                    aentryParam.setServerId(peers.getAddr());
-                    request.setAddr(peers.getAddr());
-                    try {
-                        node.getClient().send(request);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    } catch (NettyException e) {
-                        e.printStackTrace();
-                    }
-                }
+                nodeDefaultImpl.sendUpdateLog(peers.getAddr());
             }
         }
     }

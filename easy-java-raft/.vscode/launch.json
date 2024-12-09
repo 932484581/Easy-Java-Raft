@@ -2,6 +2,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "cOldNewTest",
+      "request": "launch",
+      "mainClass": "cn.wjc.server.cOldNewTest",
+      "projectName": "server"
+    },
+    {
+      "type": "java",
       "name": "MultiVoteTestServer",
       "request": "launch",
       "mainClass": "cn.wjc.server.MultiVoteTestServer",

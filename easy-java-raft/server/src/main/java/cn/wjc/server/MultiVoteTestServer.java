@@ -45,6 +45,11 @@ public class MultiVoteTestServer {
         node4.setPeerSet(peerSet4);
         peerSet4.setSelf(selfpeer4);
 
+        node.setCanJoin(true);
+        node2.setCanJoin(true);
+        node3.setCanJoin(true);
+        node4.setCanJoin(true);
+
         list.add(new Peer("127.0.0.1:5003"));
         list.add(new Peer("127.0.0.1:5002"));
         list.add(new Peer("127.0.0.1:5001"));
