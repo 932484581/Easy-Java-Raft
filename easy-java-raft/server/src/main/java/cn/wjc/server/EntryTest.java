@@ -2,6 +2,7 @@ package cn.wjc.server;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import cn.wjc.server.model.impl.NodeDefaultImpl;
 import cn.wjc.tool.entity.Command;
@@ -96,15 +97,18 @@ public class EntryTest {
                 }
             }
         }
-
-        // 发送测试数据
-        System.out.println("发送消息");
-        clientNode.client.send(cmdrequest);
-
-        try {
-            Thread.sleep(30000); // 让主线程休眠3秒，以便观察周期性任务的执行
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
+        Random random = new Random();
+        while (true) {
+            try {
+                Thread.sleep(5000); // 让主线程休眠3秒，以便观察周期性任务的执行
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+            // 发送测试数据
+            System.out.println("发送消息");
+            cmdrequest.setObj(
+                    Command.builder().command("SET test" + random.nextInt(1000) + " " + random.nextInt(1000)).build());
+            clientNode.client.send(cmdrequest);
         }
     }
 }

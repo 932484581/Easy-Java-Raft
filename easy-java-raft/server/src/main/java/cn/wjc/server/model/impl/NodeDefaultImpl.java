@@ -125,7 +125,7 @@ public class NodeDefaultImpl implements NodeDefault {
             // 给自己投票
             node.getResultMap.put(node.getPeerSet().getSelf().getAddr(), 1L);
             node.votedFor = node.getPeerSet().getSelf().getAddr();
-            futureList.add(RaftThreadPool.scheduleAtFixedRate(new VoteAction(node), 0, 50000));
+            futureList.add(RaftThreadPool.scheduleAtFixedRate(new VoteAction(node), 0, 5000));
             log.debug("节点" + node.peerSet.getSelf() + "转变为了CANDIDATE");
         } else if (state == State.LEADER) {
             List<Peer> peers = node.peerSet.getPeersWithOutSelf();
@@ -133,7 +133,7 @@ public class NodeDefaultImpl implements NodeDefault {
                 node.getResultMap.put(peer.getAddr(), 0L);
             }
             node.setState(State.LEADER);
-            futureList.add(RaftThreadPool.scheduleAtFixedRate(new AppendAentryAction(node), 0, 50000));
+            futureList.add(RaftThreadPool.scheduleAtFixedRate(new AppendAentryAction(node), 0, 5000));
             log.debug("节点" + node.peerSet.getSelf() + "转变为了LEADER");
         }
 
