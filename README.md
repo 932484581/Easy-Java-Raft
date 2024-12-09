@@ -23,8 +23,8 @@
 ### 文件说明  
 主要实现raft逻辑的部分为
 
-> -server
-> &ensp;&ensp; -msg&ensp;&ensp;&ensp;&ensp;(根据接收到的不同的消息，做出动作以及回应)
-> &ensp;&ensp; -model&ensp;&ensp;&ensp;&ensp;(一些改变服务器状态时做出的动作，以及一些常用的函数)
-> &ensp;&ensp; -action&ensp;&ensp;&ensp;&ensp;(服务器后台线程，比如心跳和超时机制)
+> -server  
+> &ensp;&ensp; -msg&ensp;&ensp;&ensp;&ensp;(根据接收到的不同的消息，做出动作以及回应)  
+> &ensp;&ensp; -model&ensp;&ensp;&ensp;&ensp;(一些改变服务器状态时做出的动作，以及一些常用的函数)  
+> &ensp;&ensp; -action&ensp;&ensp;&ensp;&ensp;(服务器后台线程，比如心跳和超时机制)  
 
